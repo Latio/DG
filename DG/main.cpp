@@ -37,10 +37,11 @@
 //	catch (NcException& e)
 //	{
 //		e.what();
-//		return NC_ERR;
+//		return NC_ERR; 
 //	}
 //}
 
+//DFSADF
 #include<iostream>
 #include <netcdfcpp.h>
 using namespace std;
