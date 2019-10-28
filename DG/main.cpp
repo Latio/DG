@@ -6,6 +6,18 @@ int main()
 {
 	MeshUnion x;
 
+	cout << "This is the mesh file test" << endl;
+
+	cout << *(x.BoundaryEdge_FToE + 6) << endl;
+
+	cout << "This is the object x" << endl;
+
+
+	MeshUnion * testMesh;
+
+	cout << *(testMesh->BoundaryEdge_FToE + 6) << endl;
+	cout << "Test finished" << endl;
+
 	cout << x.K <<",,"<<x.Np<< endl;
 	cout << x.cell_Dr << endl;
 
