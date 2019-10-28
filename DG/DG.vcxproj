@@ -132,12 +132,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MeshUnion.cpp" />
     <ClCompile Include="ncAtt.cpp" />
     <ClCompile Include="ncByte.cpp" />
     <ClCompile Include="ncChar.cpp" />
     <ClCompile Include="ncCheck.cpp" />
     <ClCompile Include="ncCompoundType.cpp" />
     <ClCompile Include="ncDim.cpp" />
+    <ClCompile Include="ncdim_read.cpp" />
     <ClCompile Include="ncDouble.cpp" />
     <ClCompile Include="ncEnumType.cpp" />
     <ClCompile Include="ncException.cpp" />
@@ -158,6 +160,13 @@
     <ClCompile Include="ncVar.cpp" />
     <ClCompile Include="ncVarAtt.cpp" />
     <ClCompile Include="ncVlenType.cpp" />
+    <ClCompile Include="ncvar_read.cpp" />
+    <ClCompile Include="test.cpp" />
+    <ClCompile Include="临时.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MeshUnion.h" />
+    <ClInclude Include="ncread_meshunion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

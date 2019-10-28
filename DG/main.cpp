@@ -1,3 +1,25 @@
+#include"MeshUnion.h"
+
+using namespace std;
+
+int main()
+{
+	MeshUnion x;
+
+	cout << x.K <<",,"<<x.Np<< endl;
+	cout << x.cell_Dr << endl;
+
+	//x.ncvar_read(x.BoundaryEdge_FToE,"BoundaryEdge_FToE",x.Ne_boundary,x.two);
+	/*x.ncvar_read(x.BoundaryEdge_FToE,"BoundaryEdge_FToE");*/
+	for (int i = 0; i < x.Np*x.Np; i++)
+	{
+		cout << *((x.cell_Dr)++)<< endl;
+	}
+	cout << x.cell_Dr << endl;
+	system("pause");
+	return 0;
+}
+
 //#include <iostream>
 //#include <netcdfcpp.h>
 //#include <vector>
@@ -40,52 +62,51 @@
 //		return NC_ERR; 
 //	}
 //}
-
-//DFSADF
-#include<iostream>
-#include <netcdfcpp.h>
-using namespace std;
-using namespace netCDF;
-using namespace netCDF::exceptions;
-
-static const int NX = 6;
-static const int NY = 12;
-
-static const int NC_ERR = 2;
-
-int main()
-{
-	try
-	{
-		int dataIn[NX][NY];
-
-		NcFile dataFile("simple_xy.nc", NcFile::read);
-
-		NcVar data = dataFile.getVar("data");
-		if (data.isNull()) return NC_ERR;
-		data.getVar(dataIn);
-
-		for (int i = 0; i < NX; i++)
-			for (int j = 0; j < NY; j++)
-			{
-				cout << dataIn[i][j] << endl;
-
-			}
-
-		system("pause");
-		return 0;
-	}
-	catch (NcException& e)
-	{
-		e.what();
-		cout << "FAILURE*************************************" << endl;
-		return NC_ERR;
-	}
-}
-
-
-
-
+//
+//#include<iostream>
+//#include <netcdfcpp.h>
+//using namespace std;
+//using namespace netCDF;
+//using namespace netCDF::exceptions;
+//
+//static const int NX = 6;
+//static const int NY = 12;
+//
+//static const int NC_ERR = 2;
+//
+//int main()
+//{
+//	try
+//	{
+//		int dataIn[NX][NY];
+//
+//		NcFile dataFile("simple_xy.nc", NcFile::read);
+//
+//		NcVar data = dataFile.getVar("data");
+//		if (data.isNull()) return NC_ERR;
+//		data.getVar(dataIn);
+//
+//		for (int i = 0; i < NX; i++)
+//			for (int j = 0; j < NY; j++)
+//			{
+//				cout << dataIn[i][j] << endl;
+//
+//			}
+//
+//		system("pause");
+//		return 0;
+//	}
+//	catch (NcException& e)
+//	{
+//		e.what();
+//		cout << "FAILURE*************************************" << endl;
+//		return NC_ERR;
+//	}
+//}
+//
+//
+//
+//
 //#include<cblas.h>   // <strong>由于cblas.h文件已经拷贝到工作目录中，只需用双引号 </strong>
 //#include<iostream>
 //using namespace std;
@@ -117,4 +138,113 @@ int main()
 //	system("pause");
 //
 //	return EXIT_SUCCESS;
+//}
+//
+//
+//
+//#include <iostream> 
+//using namespace std;
+//
+//class Shape {
+//protected:
+//	int width, height;
+//public:
+//	Shape(int a = 0, int b = 0)
+//	{
+//		width = a;
+//		height = b;
+//	}
+//	virtual int area()
+//	{
+//		cout << "Parent class area :" << endl;
+//		return 0;
+//	}
+//};
+//class Rectangle : public Shape {
+//public:
+//	Rectangle(int a = 0, int b = 0) :Shape(a, b) { }
+//	int area()
+//	{
+//		cout << "Rectangle class area :" << endl;
+//		return (width * height);
+//	}
+//};
+//class Triangle : public Shape {
+//public:
+//	Triangle(int a = 0, int b = 0) :Shape(a, b) { }
+//	int area()
+//	{
+//		cout << "Triangle class area :" << endl;
+//		return (width * height / 2);
+//	}
+//};
+//
+//class Cuboid:public Rectangle
+//{
+//public:
+//	Cuboid(int a = 0, int b = 0, int c = 1) :Rectangle(a,b), length(c) {};
+//	~Cuboid() {};
+//	int area()
+//	{
+//		cout << "Cuboid class area:" << endl;
+//		return (width*height*length);
+//	}
+//protected:
+//	int length;
+//};
+//
+//
+//
+//// 程序的主函数
+//int main()
+//{
+//	Shape *shape;
+//	Rectangle rec(10, 7);
+//	Triangle  tri(10, 5);
+//	Cuboid cub(2, 3, 4);
+//	// 存储矩形的地址
+//	shape = &rec;
+//	// 调用矩形的求面积函数 area
+//
+//	cout << shape->area()<<endl;
+//
+//	// 存储三角形的地址
+//	shape = &tri;
+//	// 调用三角形的求面积函数 area
+//	
+//	cout << shape->area();
+//
+//	shape = &cub;
+//	cout << shape->area();
+//
+//	system("pause");
+//	return 0;
+//
+//
+//#include <iostream>
+//
+//using namespace std;
+//const int MAX = 3;
+//
+//int main()
+//{
+//	int  var[MAX] = { 10, 100, 200 };
+//	int  *ptr;
+//
+//	// 指针中的数组地址
+//	ptr = var;
+//	for (int i = 0; i < 5; i++)
+//	{
+//		cout << "Address of var[" << i << "] = ";
+//		cout << ptr << endl;
+//
+//		cout << "Value of var[" << i << "] = ";
+//		cout << *ptr << endl;
+//
+//		// 移动到下一个位置
+//		ptr++;
+//	}
+//	cout << var << endl;
+//	system("pause");
+//	return 0;
 //}
