@@ -1,5 +1,9 @@
 #pragma once
 #include<iostream>
+#include"BoundaryEdge.h"
+#include"InnerEdge.h"
+#include"Cell.h"
+
 
 class MeshUnion
 {
@@ -8,69 +12,13 @@ public:
 
 	~MeshUnion();
 
-	void ncdim_read();
-	void ncvar_read(double *&meshunion_data, std::string ncvarname, int &dim1, int &dim2);
-	void ncvar_read(double *&meshunion_data, std::string ncvarname, int &dim1);
+	BoundaryEdge boundarydge;
+	InnerEdge inneredge;
+	Cell cell;
 
-	int K;
-	int Nv;
-	int	Ne_inner;
-	int Ne_boundary;
-	int Nfp;
-	int Np;
-	int cell_Nv;
-	int cell_Nq;
-	int two = 2;
-	int one = 1;
+	static int*K;
+	static int*Nv;
 
-	static double*BoundaryEdge_FToE;
-	static double*BoundaryEdge_FToF;
-	static double*BoundaryEdge_FToM;
-	static double*BoundaryEdge_FToN1;
-	static double*BoundaryEdge_FToN2;
-	static double*BoundaryEdge_FToV;
-	static double*BoundaryEdge_ftype;
-	static double*BoundaryEdge_Js;
-	static double*BoundaryEdge_LAV;
-	static double*BoundaryEdge_M;
-	static double*BoundaryEdge_Ne;
-	static double*BoundaryEdge_Nfp;
-	static double*BoundaryEdge_nx;
-	static double*BoundaryEdge_ny;
-	static double*BoundaryEdge_nz;
-	static double*BoundaryEdge_r;
-	static double*BoundaryEdge_xb;
-	static double*BoundaryEdge_yb;
-	static double*cell_Dr;
-	static double*cell_Ds;
-	static double*cell_Dt;
-	static double*cell_EToV;
-	static double*cell_faceType;
-	static double*cell_Fmask;
-	static double*cell_invM;
-	static double*cell_LAV;
-	static double*cell_M;
-	static double*cell_N;
-	static double*cell_Nface;
-	static double*cell_Nfp;
-	static double*cell_Nfv;
-	static double*cell_Np;
-	//static double*cell_Nq;
-	//static double*cell_Nv;
-	static double*cell_r;
-	static double*cell_rq;
-	static double*cell_s;
-	static double*cell_sq;
-	static double*cell_t;
-	static double*cell_TNfp;
-	static double*cell_tq;
-	static double*cell_type;
-	static double*cell_V;
-	static double*cell_Vq;
-	static double*cell_vr;
-	static double*cell_vs;
-	static double*cell_vt;
-	static double*cell_wq;
 	static double*charLength;
 	static double*EToE;
 	static double*EToF;
@@ -78,51 +26,6 @@ public:
 	static double*EToR;
 	static double*EToV;
 	static double*ind;
-	static double*InnerEdge_cell_Dr;
-	static double*InnerEdge_cell_Ds;
-	static double*InnerEdge_cell_Dt;
-	static double*InnerEdge_cell_faceType;
-	static double*InnerEdge_cell_Fmask;
-	static double*InnerEdge_cell_FToV;
-	static double*InnerEdge_cell_invM;
-	static double*InnerEdge_cell_LAV;
-	static double*InnerEdge_cell_M;
-	static double*InnerEdge_cell_N;
-	static double*InnerEdge_cell_Nface;
-	static double*InnerEdge_cell_Nfp;
-	static double*InnerEdge_cell_Nfv;
-	static double*InnerEdge_cell_Np;
-	static double*InnerEdge_cell_Nq;
-	static double*InnerEdge_cell_Nv;
-	static double*InnerEdge_cell_r;
-	static double*InnerEdge_cell_rq;
-	static double*InnerEdge_cell_s;
-	static double*InnerEdge_cell_sq;
-	static double*InnerEdge_cell_t;
-	static double*InnerEdge_cell_TNfp;
-	static double*InnerEdge_cell_tq;
-	static double*InnerEdge_cell_type;
-	static double*InnerEdge_cell_V;
-	static double*InnerEdge_cell_Vq;
-	static double*InnerEdge_cell_vr;
-	static double*InnerEdge_cell_vs;
-	static double*InnerEdge_cell_vt;
-	static double*InnerEdge_cell_wq;
-	static double*InnerEdge_FToE;
-	static double*InnerEdge_FToF;
-	static double*InnerEdge_FToM;
-	static double*InnerEdge_FToN1;
-	static double*InnerEdge_FToN2;
-	static double*InnerEdge_FToV;
-	static double*InnerEdge_Js;
-	static double*InnerEdge_LAV;
-	static double*InnerEdge_M;
-	static double*InnerEdge_Ne;
-	static double*InnerEdge_Nfp;
-	static double*InnerEdge_nx;
-	static double*InnerEdge_ny;
-	static double*InnerEdge_nz;
-	static double*InnerEdge_r;
 	static double*J;
 	//static double*K;
 	static double*LAV;

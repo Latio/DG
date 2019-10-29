@@ -4,30 +4,38 @@ using namespace std;
 
 int main()
 {
-	MeshUnion x;
+	{MeshUnion x;
 
-	cout << "This is the mesh file test" << endl;
-
-	cout << *(x.BoundaryEdge_FToE + 6) << endl;
-
-	cout << "This is the object x" << endl;
-
-
-	MeshUnion * testMesh;
-
-	cout << *(testMesh->BoundaryEdge_FToE + 6) << endl;
-	cout << "Test finished" << endl;
-
-	cout << x.K <<",,"<<x.Np<< endl;
-	cout << x.cell_Dr << endl;
-
-	//x.ncvar_read(x.BoundaryEdge_FToE,"BoundaryEdge_FToE",x.Ne_boundary,x.two);
-	/*x.ncvar_read(x.BoundaryEdge_FToE,"BoundaryEdge_FToE");*/
-	for (int i = 0; i < x.Np*x.Np; i++)
+	for (int i = 0; i < 4; i++)
 	{
-		cout << *((x.cell_Dr)++)<< endl;
+		cout << *(x.cell.Dr) << endl;
 	}
-	cout << x.cell_Dr << endl;
+
+	}
+
+//	cout << "This is the mesh file test" << endl;
+//
+//	cout << *(x.BoundaryEdge_FToE + 6) << endl;
+//
+//	cout << "This is the object x" << endl;
+//
+//
+//	MeshUnion * testMesh;
+//
+//	cout << *(testMesh->BoundaryEdge_FToE + 6) << endl;
+//	cout << "Test finished" << endl;
+//
+//	cout << x.K <<",,"<<x.Np<< endl;
+//	cout << x.cell_Dr << endl;
+//
+//	//x.ncvar_read(x.BoundaryEdge_FToE,"BoundaryEdge_FToE",x.Ne_boundary,x.two);
+//	/*x.ncvar_read(x.BoundaryEdge_FToE,"BoundaryEdge_FToE");*/
+//	for (int i = 0; i < x.Np*x.Np; i++)
+//	{
+//		cout << *((x.cell_Dr)++)<< endl;
+//	}
+//	cout << x.cell_Dr << endl;
+
 	system("pause");
 	return 0;
 }
@@ -260,3 +268,7 @@ int main()
 //	system("pause");
 //	return 0;
 //}
+
+
+
+

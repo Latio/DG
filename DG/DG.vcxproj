@@ -131,15 +131,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cell.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MeshUnion.cpp" />
+    <ClCompile Include="BoundaryEdge.cpp" />
+    <ClCompile Include="Bcell.cpp" />
+    <ClCompile Include="MeshUnion_dim.cpp" />
+    <ClCompile Include="InnerEdge.cpp" />
+    <ClCompile Include="Icell.cpp" />
     <ClCompile Include="ncAtt.cpp" />
     <ClCompile Include="ncByte.cpp" />
     <ClCompile Include="ncChar.cpp" />
     <ClCompile Include="ncCheck.cpp" />
     <ClCompile Include="ncCompoundType.cpp" />
     <ClCompile Include="ncDim.cpp" />
-    <ClCompile Include="ncdim_read.cpp" />
     <ClCompile Include="ncDouble.cpp" />
     <ClCompile Include="ncEnumType.cpp" />
     <ClCompile Include="ncException.cpp" />
@@ -160,13 +165,15 @@
     <ClCompile Include="ncVar.cpp" />
     <ClCompile Include="ncVarAtt.cpp" />
     <ClCompile Include="ncVlenType.cpp" />
-    <ClCompile Include="ncvar_read.cpp" />
-    <ClCompile Include="test.cpp" />
-    <ClCompile Include="临时.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cell.h" />
     <ClInclude Include="MeshUnion.h" />
-    <ClInclude Include="ncread_meshunion.h" />
+    <ClInclude Include="BoundaryEdge.h" />
+    <ClInclude Include="Bcell.h" />
+    <ClInclude Include="MeshUnion_dim.h" />
+    <ClInclude Include="InnerEdge.h" />
+    <ClInclude Include="Icell.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
