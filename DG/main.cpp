@@ -1,4 +1,4 @@
-#include"MeshUnion.h"
+
 #include"NdgPhysMat.h"
 using namespace std;
 
@@ -10,8 +10,7 @@ int main()
 {
 	
 	{	
-		const MeshUnion mesh;
-		const MeshUnion *meshunion = &mesh;
+
 		for (int i = 0; i < 6; i++)
 		{
 			cout << *(meshunion->cell->FToV+i) << endl;
@@ -19,7 +18,7 @@ int main()
 
 		double xxxx = pow(5, 0.5);
 		cout << xxxx << endl;
-	//NdgPhysMat x;
+	NdgPhysMat x;
 	}
 
 	cout << "hello";

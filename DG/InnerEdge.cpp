@@ -2,7 +2,7 @@
 #include<iostream>
 extern "C"
 {
-	void c_EvaluateSurfValue(double *FToE_, double *FToN1_, double *FToN2_, double *fphys_, double *fm_, double *fp_);
+	void c_EvaluateSurfValue(double *FToE_, double *FToN1_, double *FToN2_, double *fphys_, double *fm_, double *fp_, int *Nfp_, int *Ne_, int *Np_, int *K_, int Nfield_);
 };
 
 double *InnerEdge::FToE = NULL;
@@ -21,7 +21,7 @@ double *InnerEdge::ny = NULL;
 double *InnerEdge::nz = NULL;
 double *InnerEdge::r = NULL;
 
-InnerEdge::InnerEdge():icell()
+InnerEdge::InnerEdge() :icell()
 {
 	MeshUnion_dim::ncvar_read(FToE, "InnerEdge_FToE", MeshUnion_dim::Ne_inner, MeshUnion_dim::two);
 	MeshUnion_dim::ncvar_read(FToF, "InnerEdge_FToF", MeshUnion_dim::Ne_inner, MeshUnion_dim::two);
@@ -63,9 +63,8 @@ InnerEdge::~InnerEdge()
 
 
 
-
-
-void InnerEdge::EvaluateSurfValue(double *fphys, double *fm, double *fp)
+void InnerEdge::EvaluateSurfValue(double *fphys, double *fm, double *fp,int *Np ,int *K,int Nfield)
 {
-	c_EvaluateSurfValue(InnerEdge::FToE, InnerEdge::FToN1, InnerEdge::FToN2, fphys, fm, fp);
+	c_EvaluateSurfValue(InnerEdge::FToE, InnerEdge::FToN1, InnerEdge::FToN2, fphys, fm, fp,InnerEdge::Nfp,InnerEdge::Ne,Np,K,Nfield);
+
 }

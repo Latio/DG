@@ -43,23 +43,23 @@ void evaluateFlowRateByDeptheThreshold(
 }
 
 /* Evaluate whether the cell adjacent to a given cell is dry*/
-void evaluateWetDryInterface(
-	signed char *status,
-	const double *FToE,
-	double *DryFaceFlag
-) {
-	const int *dims = mxGetDimensions(FToE);
-	double *FaceToElement = mxGetPr(FToE);
-	const int Ne = dims[1];
-#ifdef _OPENMP
-#pragma omp parallel for num_threads(DG_THREADS)
-#endif
-	for (int i = 0; i < Ne; i++) {
-		int Local_Element = (int)FaceToElement[2 * i];
-		int Adjacent_Element = (int)FaceToElement[2 * i + 1];
-		NdgRegionType Local_type = (NdgRegionType)status[Local_Element - 1];
-		NdgRegionType Adjacent_type = (NdgRegionType)status[Adjacent_Element - 1];
-		if (Local_type != NdgRegionWet || Adjacent_type != NdgRegionWet)
-			DryFaceFlag[i] = 1;
-	}
-}
+//void evaluateWetDryInterface(
+//	signed char *status,
+//	const double *FToE,
+//	double *DryFaceFlag
+//) {
+//	const int *dims = mxGetDimensions(FToE);
+//	double *FaceToElement = mxGetPr(FToE);
+//	const int Ne = dims[1];
+//#ifdef _OPENMP
+//#pragma omp parallel for num_threads(DG_THREADS)
+//#endif
+//	for (int i = 0; i < Ne; i++) {
+//		int Local_Element = (int)FaceToElement[2 * i];
+//		int Adjacent_Element = (int)FaceToElement[2 * i + 1];
+//		NdgRegionType Local_type = (NdgRegionType)status[Local_Element - 1];
+//		NdgRegionType Adjacent_type = (NdgRegionType)status[Adjacent_Element - 1];
+//		if (Local_type != NdgRegionWet || Adjacent_type != NdgRegionWet)
+//			DryFaceFlag[i] = 1;
+//	}
+//}

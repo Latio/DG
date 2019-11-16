@@ -19,7 +19,7 @@ public:
 	static double* invM;
 	static double* LAV;
 	static double* M;
-	static double* N;
+	static int* N;
 	static double* Nface;
 	static double* Nfp;
 	static double* Nfv;

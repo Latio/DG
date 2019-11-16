@@ -1,23 +1,23 @@
 #include "NdgPhysMat.h"
-
-
 #include "NdgQuadFreeStrongFormAdvSolver2d.h"
-
 #include"cblas.h"
 
 
 //int NdgPhysMat::Np = 0;
 //int NdgPhysMat::K = 0;
 //int NdgPhysMat::Nfield = 0;
-extern MeshUnion *meshunion;
+extern const MeshUnion *meshunion;
 
 double *NdgPhysMat::fphys0 = NULL;
 double *NdgPhysMat::fphys = NULL;
+double NdgPhysMat::dt = 0;
 
 NdgPhysMat::NdgPhysMat() :time(0)
 {
 	ftime = 10;//total simulation time;
 	Nfield = 7;
+	Nvar = 3;
+
 	gra = 9.8;
 	hmin = 0.05;
 	Np = *meshunion->cell->Np;
@@ -34,7 +34,6 @@ NdgPhysMat::NdgPhysMat() :time(0)
 
 NdgPhysMat::~NdgPhysMat()
 {
-	//delete fphys0;
 	freememory(&fphys);
 	freememory(&fphys0);
 	freememory(&frhs);
@@ -56,7 +55,7 @@ void NdgPhysMat::matEvaluateSSPRK22()
 	//fphys0{n} = zeros( obj.meshUnion(n).cell.Np, obj.meshUnion(n).K, obj.Nvar );
 	requestmemory(&fphys0, meshunion->cell->Np, meshunion->K, Nfield);//申请内存并初始化fphys0为0；
 	requestmemory(&fphys, meshunion->cell->Np, meshunion->K, Nfield);//申请内存并初始化fphys为0；
-	requestmemory(&frhs, meshunion->cell->Np, meshunion->K, Nfield);//申请内存并初始化fphys为0；
+	requestmemory(&frhs, meshunion->cell->Np, meshunion->K, Nvar);//申请内存并初始化fphys为0；
 
  //这一行需要给定fphys的初始场条件;
 
@@ -121,7 +120,7 @@ double NdgPhysMat::UpdateTimeInterval(double *fphys)
 
 void NdgPhysMat::EvaluateRHS(double *fphys)
 {
-	NdgQuadFreeStrongFormAdvSolver2d::evaluateAdvectionRHS(fphys, frhs);
+	ndgquadfreestrongformadvsolver2d.evaluateAdvectionRHS(fphys, frhs);
 	//matEvaluateRHS(fphys);
 	//matEvaluateSourceTerm(fphys);
 };

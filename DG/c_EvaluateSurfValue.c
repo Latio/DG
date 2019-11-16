@@ -7,7 +7,7 @@
 #include<stdio.h>
 
 
-void c_EvaluateSurfValue(double *FToE_, double *FToN1_, double *FToN2_, double *fphys_, double *fm_, double *fp_, int *Nfp_, int *Ne_, int *Np_, int *K_, int *Nfield_)
+void c_EvaluateSurfValue(double *FToE_, double *FToN1_, double *FToN2_, double *fphys_, double *fm_, double *fp_, int *Nfp_, int *Ne_, int *Np_, int *K_, int Nfield_)
 {
 	double *FToE = FToE_;
 	double *FToN1 = FToN1_;
@@ -19,9 +19,9 @@ void c_EvaluateSurfValue(double *FToE_, double *FToN1_, double *FToN2_, double *
 	const int K = *K_;
 	int Nfield;
 
-	if (*Nfield_ > 2)
+	if (Nfield_ > 2)
 	{
-		Nfield = *Nfield_;
+		Nfield = Nfield_;
 	}
 	else
 	{

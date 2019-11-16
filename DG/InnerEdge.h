@@ -6,7 +6,7 @@ class InnerEdge
 public:
 	InnerEdge();
 	~InnerEdge();
-	void EvaluateSurfValue(double *fphys, double *fm, double *fp);
+	void EvaluateSurfValue(double *fphys, double *fm, double *fp, int *Np, int *K, int Nfield);
 
 	Icell icell;
 

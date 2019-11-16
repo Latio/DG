@@ -1,5 +1,5 @@
 #pragma once
-
+#include"NdgQuadFreeStrongFormAdvSolver2d.h"
 #include "MeshUnion.h"
 
 extern "C" {
@@ -58,6 +58,9 @@ protected:
 	int Np;// dimension 
 	int K;// dimension 
 	int Nfield;// dimension 
+	int Nvar;// dimension 
+
+	NdgQuadFreeStrongFormAdvSolver2d ndgquadfreestrongformadvsolver2d;
 
 
 

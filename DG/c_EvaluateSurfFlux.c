@@ -2,49 +2,6 @@
 //#include "mex.h"
 #include "SWE2d.h"
 
-void c_EvaluateSurfFlux(double hmin_, double gra_, double *nx_, double *ny_, double *fm_, double *fluxM_,int fm_dim1,int fm_dim2,int fm_dim3)
-{
-	double hcrit = hmin_;
-	double gra = gra_;
-	double* nx = nx_; ny_;
-	// double* fm = mxGetPr(prhs[4]);
-
-	PhysField fm = convertMexToPhysField(fm_,);
-
-	const mwSize* dims = mxGetDimensions(prhs[4]);
-	const size_t TNfp = fm.Np;
-	const size_t K = fm.K;
-
-	const size_t ndimOut = 3;
-	const mwSize dimOut[3] = { TNfp, K, NVAR };
-	plhs[0] = mxCreateNumericArray(ndimOut, dimOut, mxDOUBLE_CLASS, mxREAL);
-
-	PhysField surfFlux = convertMexToPhysField(plhs[0]);
-
-#ifdef _OPENMP
-#pragma omp parallel for num_threads(DG_THREADS)
-#endif
-
-	for (int k = 0; k < K; k++) {
-		for (int n = 0; n < TNfp; n++) {
-			const size_t sk = k * TNfp + n;
-			// double fm[4] = {fm.h[sk], hu[sk], hv[sk], z[sk]};
-			const double nx_ = nx[sk];
-			const double ny_ = ny[sk];
-
-			double E[3], G[3];
-			evaluateSurfFluxTerm(hcrit, gra, fm.h[sk], fm.hu[sk], fm.hv[sk], E, G);
-
-			surfFlux.h[sk] = nx_ * E[0] + ny_ * G[0];
-			surfFlux.hu[sk] = nx_ * E[1] + ny_ * G[1];
-			surfFlux.hv[sk] = nx_ * E[2] + ny_ * G[2];
-		}
-	}
-	return;
-}
-};
-
-
 #ifdef _OPENMP
 #include <omp.h>
 #endif
@@ -69,6 +26,51 @@ void evaluateSurfFluxTerm(const double hmin,  ///< water depth threshold
 	G[2] = h * v * v + 0.5 * gra * h2;
 	return;
 }
+
+#define NVAR 3
+
+void c_EvaluateSurfFlux(double hmin_, double gra_, double *nx_, double *ny_, double *fm_, double *fluxM_, int *fm_Nfp, int *fm_Ne, int *fm_Nfield)
+{
+	double hcrit = hmin_;
+	double gra = gra_;
+	double *nx = nx_;
+	double *ny = ny_;
+	// double* fm = mxGetPr(prhs[4]);
+
+	PhysField fm = convertMexToPhysField(fm_, fm_Nfp, fm_Ne, fm_Nfield);
+
+	//const mwSize* dims = mxGetDimensions(prhs[4]);
+	const int TNfp = fm.Np;
+	const int K = fm.K;
+
+	//const size_t ndimOut = 3;
+	//const mwSize dimOut[3] = { TNfp, K, NVAR };
+	//plhs[0] = mxCreateNumericArray(ndimOut, dimOut, mxDOUBLE_CLASS, mxREAL);
+
+	PhysField surfFlux = convertMexToPhysField(fluxM_, TNfp, K, NVAR);
+
+
+#ifdef _OPENMP
+#pragma omp parallel for num_threads(DG_THREADS)
+#endif
+
+	for (int k = 0; k < K; k++) {
+		for (int n = 0; n < TNfp; n++) {
+			const size_t sk = k * TNfp + n;
+			// double fm[4] = {fm.h[sk], hu[sk], hv[sk], z[sk]};
+			const double nx_ = nx[sk];
+			const double ny_ = ny[sk];
+
+			double E[3], G[3];
+			evaluateSurfFluxTerm(hcrit, gra, fm.h[sk], fm.hu[sk], fm.hv[sk], E, G);
+
+			surfFlux.h[sk] = nx_ * E[0] + ny_ * G[0];
+			surfFlux.hu[sk] = nx_ * E[1] + ny_ * G[1];
+			surfFlux.hv[sk] = nx_ * E[2] + ny_ * G[2];
+		}
+	}
+	return;
+};
 
 
 

@@ -12,7 +12,7 @@ SWEAbstract2d::~SWEAbstract2d()
 {
 }
 
-void SWEAbstract2d::EvaluateSurfFlux(MeshUnion *mesh, double *nx, double *ny, double *fm, InnerEdge *edge)
+void SWEAbstract2d::EvaluateSurfFlux(MeshUnion *mesh, double *nx, double *ny, double *fm, double *fluxM_)
 {
-	surfluxSolver_evaluate(hmin,gra,nx,ny,fm,mesh,edge)
+	swefacefluxsolver2d.evaluate(hmin, gra, fm, mesh->inneredge->nx, mesh->inneredge->ny, fluxM_, *mesh->inneredge->Nfp, *mesh->inneredge->Ne, mesh->Nfield);
 };
