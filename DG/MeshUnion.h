@@ -1,5 +1,5 @@
 #pragma once
-#include<iostream>
+
 #include"BoundaryEdge.h"
 #include"InnerEdge.h"
 #include"Cell.h"
@@ -12,12 +12,20 @@ public:
 
 	~MeshUnion();
 
-	BoundaryEdge boundarydge;
-	InnerEdge inneredge;
-	Cell cell;
+	
+	InnerEdge inneredge_temp;
+	static InnerEdge *inneredge;
+
+	BoundaryEdge boundarydge_temp;
+	static BoundaryEdge *boundarydge;
+
+	Cell cell_temp;
+	static Cell *cell;
+	//notice the order of definition,which will cause the of constructor. 
 
 	static int*K;
 	static int*Nv;
+	static int Nfield;
 
 	static double*charLength;
 	static double*EToE;

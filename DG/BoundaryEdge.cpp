@@ -20,7 +20,7 @@ double *BoundaryEdge::r = NULL;
 double *BoundaryEdge::xb = NULL;
 double *BoundaryEdge::yb = NULL;
 
-BoundaryEdge::BoundaryEdge()
+BoundaryEdge::BoundaryEdge():bcell()
 {
 	MeshUnion_dim::ncvar_read(FToE, "BoundaryEdge_FToE", MeshUnion_dim::Ne_boundary, MeshUnion_dim::two);
 	MeshUnion_dim::ncvar_read(FToF, "BoundaryEdge_FToF", MeshUnion_dim::Ne_boundary, MeshUnion_dim::two);
@@ -45,24 +45,24 @@ BoundaryEdge::BoundaryEdge()
 
 BoundaryEdge::~BoundaryEdge()
 {
-	delete FToE;
-	delete FToF;
-	delete FToM;
-	delete FToN1;
-	delete FToN2;
-	delete FToV;
-	delete ftype;
-	delete Js;
-	delete LAV;
-	delete M;
-	delete Ne;
-	delete Nfp;
-	delete nx;
-	delete ny;
-	delete nz;
-	delete r;
-	delete xb;
-	delete yb;
+	freememory(&FToE);
+	freememory(&FToF);
+	freememory(&FToM);
+	freememory(&FToN1);
+	freememory(&FToN2);
+	freememory(&FToV);
+	freememory(&ftype);
+	freememory(&Js);
+	freememory(&LAV);
+	freememory(&M);
+	freememory(&Ne);
+	freememory(&Nfp);
+	freememory(&nx);
+	freememory(&ny);
+	freememory(&nz);
+	freememory(&r);
+	freememory(&xb);
+	freememory(&yb);
 
 	std::cout << "Îö¹¹MeshUnion_BoundaryEdge" << std::endl;
 }

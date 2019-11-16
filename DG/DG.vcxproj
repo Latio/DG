@@ -120,7 +120,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\DG_wrj\netCDF4.7.1-NC4-64\netCDF 4.7.1\include;D:\DG_wrj\netcdf-cxx4-4.3.1\netcdf-cxx4-4.3.1\cxx4;D:\DG_wrj\OpenBLAS-0.3.6-x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\DG_wrj\netCDF4.7.1-NC4-64\netCDF 4.7.1\include;D:\MATLAB\extern\include;D:\DG_wrj\netcdf-cxx4-4.3.1\netcdf-cxx4-4.3.1\cxx4;D:\DG_wrj\OpenBLAS-0.3.6-x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -132,6 +132,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="c_EvaluateSurfValue.c" />
+    <ClCompile Include="c_EvaluateSurfFlux.c" />
+    <ClCompile Include="NdgQuadFreeStrongFormAdvSolver2d.cpp" />
+    <ClCompile Include="SWE2d.c" />
+    <ClCompile Include="SWEAbstract2d.cpp" />
+    <ClCompile Include="SWEFaceFluxSolver2d.cpp" />
+    <ClCompile Include="test.c" />
+    <ClCompile Include="UpdateTimeInterval2d.c" />
+    <ClCompile Include="new_delete.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MeshUnion.cpp" />
     <ClCompile Include="BoundaryEdge.cpp" />
@@ -165,15 +174,22 @@
     <ClCompile Include="ncVar.cpp" />
     <ClCompile Include="ncVarAtt.cpp" />
     <ClCompile Include="ncVlenType.cpp" />
+    <ClCompile Include="NdgPhysMat.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h" />
+    <ClInclude Include="NdgQuadFreeStrongFormAdvSolver2d.h" />
+    <ClInclude Include="SWE2d.h" />
+    <ClInclude Include="new_delete.h" />
     <ClInclude Include="MeshUnion.h" />
     <ClInclude Include="BoundaryEdge.h" />
     <ClInclude Include="Bcell.h" />
     <ClInclude Include="MeshUnion_dim.h" />
     <ClInclude Include="InnerEdge.h" />
     <ClInclude Include="Icell.h" />
+    <ClInclude Include="NdgPhysMat.h" />
+    <ClInclude Include="SWEAbstract2d.h" />
+    <ClInclude Include="SWEFaceFluxSolver2d.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

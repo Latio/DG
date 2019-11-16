@@ -9,18 +9,69 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="源文件\netcdf">
-      <UniqueIdentifier>{308bfc17-7e08-4b57-a9ca-d3c100078995}</UniqueIdentifier>
-    </Filter>
     <Filter Include="头文件">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="头文件\%40MeshUnion">
-      <UniqueIdentifier>{30825ee5-a948-4cfa-98a6-859b3ba7b5bc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="源文件\MeshUnion">
       <UniqueIdentifier>{a9daa053-5333-47b5-ab22-76add35214e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\SWEAbstract2d">
+      <UniqueIdentifier>{43b14253-ddc3-492f-b579-e71490570df5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\MeshUnion">
+      <UniqueIdentifier>{30825ee5-a948-4cfa-98a6-859b3ba7b5bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\private">
+      <UniqueIdentifier>{a08d3002-36cb-4c15-b213-bfaec07fd06c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\MeshUnion\InnerEdge">
+      <UniqueIdentifier>{49a88339-5f3b-4cd8-8cb2-bab9dfbd8acd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\MeshUnion\InnerEdge">
+      <UniqueIdentifier>{23791d9f-6e3f-47db-b30b-ffeb505dcc9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\MeshUnion\InnerEdge\private">
+      <UniqueIdentifier>{501f2b47-abcb-4459-a991-7a04da46896e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\SWEAbstract2d\private">
+      <UniqueIdentifier>{d28fe62f-5b09-48c7-9b2d-03df9786e3a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\MeshUnion\BoundaryEdge">
+      <UniqueIdentifier>{9659d9c2-8fa8-4487-9557-0a08cdda0bfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\MeshUnion\Cell">
+      <UniqueIdentifier>{76122921-ee40-4e66-be87-5223d6662e38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\MeshUnion\BoundaryEdge">
+      <UniqueIdentifier>{bcbb578c-5f2a-459b-b831-a71630163a81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\MeshUnion\Cell">
+      <UniqueIdentifier>{c79511df-c884-4f01-8391-dd76e7394f85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\MeshUnion\Basic">
+      <UniqueIdentifier>{cff23b8d-3655-4d3e-8dbe-49e6e27680e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\MeshUnion\Basic">
+      <UniqueIdentifier>{9ae8c633-b1a3-4460-a8eb-dc5863ae7c99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver">
+      <UniqueIdentifier>{cc27a99c-5dee-48b9-9294-b1cc221ea9ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\NetCDF">
+      <UniqueIdentifier>{308bfc17-7e08-4b57-a9ca-d3c100078995}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWEFaceFluxSolver2d">
+      <UniqueIdentifier>{a25f1f94-6dcf-4f4d-a99a-4837de8a92b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver">
+      <UniqueIdentifier>{de879350-d7ce-44c9-90ca-2328a28e9af4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\SWEFaceFluxSolver2d">
+      <UniqueIdentifier>{2cc7019f-15a2-497e-9d2c-d31039d521e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWEFaceFluxSolver2d\private">
+      <UniqueIdentifier>{cdedc2f9-5ec5-40ca-a5ee-95cdc6058592}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -28,126 +79,174 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ncCheck.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncFile.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncAtt.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncByte.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncChar.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncCompoundType.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncDim.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncDouble.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncEnumType.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncException.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncFloat.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncGroup.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncGroupAtt.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncInt.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncInt64.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncOpaqueType.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncShort.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncString.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncType.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncUbyte.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncUint.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncUint64.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncUshort.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncVar.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncVarAtt.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="ncVlenType.cpp">
-      <Filter>源文件\netcdf</Filter>
+      <Filter>源文件\NetCDF</Filter>
     </ClCompile>
     <ClCompile Include="MeshUnion.cpp">
       <Filter>源文件\MeshUnion</Filter>
     </ClCompile>
-    <ClCompile Include="MeshUnion_dim.cpp">
-      <Filter>源文件\MeshUnion</Filter>
+    <ClCompile Include="NdgPhysMat.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="BoundaryEdge.cpp">
-      <Filter>源文件\MeshUnion</Filter>
+    <ClCompile Include="NdgQuadFreeStrongFormAdvSolver2d.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="InnerEdge.cpp">
-      <Filter>源文件\MeshUnion</Filter>
+    <ClCompile Include="SWEAbstract2d.cpp">
+      <Filter>源文件\SWEAbstract2d</Filter>
+    </ClCompile>
+    <ClCompile Include="test.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SWE2d.c">
+      <Filter>源文件\private</Filter>
+    </ClCompile>
+    <ClCompile Include="UpdateTimeInterval2d.c">
+      <Filter>源文件\private</Filter>
     </ClCompile>
     <ClCompile Include="Icell.cpp">
-      <Filter>源文件\MeshUnion</Filter>
+      <Filter>源文件\MeshUnion\InnerEdge</Filter>
     </ClCompile>
-    <ClCompile Include="Cell.cpp">
-      <Filter>源文件\MeshUnion</Filter>
+    <ClCompile Include="InnerEdge.cpp">
+      <Filter>源文件\MeshUnion\InnerEdge</Filter>
+    </ClCompile>
+    <ClCompile Include="c_EvaluateSurfValue.c">
+      <Filter>源文件\MeshUnion\InnerEdge\private</Filter>
     </ClCompile>
     <ClCompile Include="Bcell.cpp">
-      <Filter>源文件\MeshUnion</Filter>
+      <Filter>源文件\MeshUnion\BoundaryEdge</Filter>
+    </ClCompile>
+    <ClCompile Include="BoundaryEdge.cpp">
+      <Filter>源文件\MeshUnion\BoundaryEdge</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>源文件\MeshUnion\Cell</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshUnion_dim.cpp">
+      <Filter>源文件\MeshUnion\Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="new_delete.cpp">
+      <Filter>源文件\MeshUnion\Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="SWEFaceFluxSolver2d.cpp">
+      <Filter>源文件\Solver\SWEFaceFluxSolver2d</Filter>
+    </ClCompile>
+    <ClCompile Include="c_EvaluateSurfFlux.c">
+      <Filter>源文件\Solver\SWEFaceFluxSolver2d\private</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MeshUnion.h">
-      <Filter>头文件\%40MeshUnion</Filter>
+      <Filter>头文件\MeshUnion</Filter>
     </ClInclude>
-    <ClInclude Include="MeshUnion_dim.h">
-      <Filter>头文件\%40MeshUnion</Filter>
+    <ClInclude Include="NdgPhysMat.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="BoundaryEdge.h">
-      <Filter>头文件\%40MeshUnion</Filter>
+    <ClInclude Include="NdgQuadFreeStrongFormAdvSolver2d.h">
+      <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="InnerEdge.h">
-      <Filter>头文件\%40MeshUnion</Filter>
+      <Filter>头文件\MeshUnion\InnerEdge</Filter>
     </ClInclude>
     <ClInclude Include="Icell.h">
-      <Filter>头文件\%40MeshUnion</Filter>
+      <Filter>头文件\MeshUnion\InnerEdge</Filter>
     </ClInclude>
-    <ClInclude Include="Cell.h">
-      <Filter>头文件\%40MeshUnion</Filter>
+    <ClInclude Include="SWEAbstract2d.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SWE2d.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BoundaryEdge.h">
+      <Filter>头文件\MeshUnion\BoundaryEdge</Filter>
     </ClInclude>
     <ClInclude Include="Bcell.h">
-      <Filter>头文件\%40MeshUnion</Filter>
+      <Filter>头文件\MeshUnion\BoundaryEdge</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>头文件\MeshUnion\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshUnion_dim.h">
+      <Filter>头文件\MeshUnion\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="new_delete.h">
+      <Filter>头文件\MeshUnion\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="SWEFaceFluxSolver2d.h">
+      <Filter>头文件\Solver\SWEFaceFluxSolver2d</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

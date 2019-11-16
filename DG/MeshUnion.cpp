@@ -5,6 +5,9 @@ using namespace netCDF;
 
 int *MeshUnion::K = NULL;
 int *MeshUnion::Nv = NULL;
+int MeshUnion::Nfield = 7;
+
+
 double *MeshUnion::charLength = NULL;
 double *MeshUnion::EToE = NULL;
 double *MeshUnion::EToF = NULL;
@@ -36,12 +39,18 @@ double *MeshUnion::y = NULL;
 double *MeshUnion::yc = NULL;
 double *MeshUnion::z = NULL;
 double *MeshUnion::zc = NULL;
+Cell *MeshUnion::cell = NULL;
+BoundaryEdge *MeshUnion::boundarydge = NULL;
+InnerEdge *MeshUnion::inneredge = NULL;
 
 
-MeshUnion::MeshUnion()
+MeshUnion::MeshUnion() :boundarydge_temp(), inneredge_temp(), cell_temp()
 {
+	boundarydge = &boundarydge_temp;
+	inneredge = &inneredge_temp;
+	cell = &cell_temp;
 
-	MeshUnion_dim::ncvar_read(K,"K", MeshUnion_dim::one);
+	MeshUnion_dim::ncvar_read(K, "K", MeshUnion_dim::one);
 	MeshUnion_dim::ncvar_read(Nv, "Nv", MeshUnion_dim::one);
 	MeshUnion_dim::ncvar_read(charLength, "charLength", MeshUnion_dim::K, MeshUnion_dim::one);
 	MeshUnion_dim::ncvar_read(EToE, "EToE", MeshUnion_dim::K, MeshUnion_dim::cell_Nv);
@@ -50,7 +59,7 @@ MeshUnion::MeshUnion()
 	MeshUnion_dim::ncvar_read(EToR, "EToR", MeshUnion_dim::one, MeshUnion_dim::K);
 	MeshUnion_dim::ncvar_read(EToV, "EToV", MeshUnion_dim::K, MeshUnion_dim::cell_Nv);
 	MeshUnion_dim::ncvar_read(ind, "ind", MeshUnion_dim::one);
-	
+
 	MeshUnion_dim::ncvar_read(J, "J", MeshUnion_dim::K, MeshUnion_dim::Np);
 	//ncvar_read(K, "K", one);
 	MeshUnion_dim::ncvar_read(LAV, "LAV", MeshUnion_dim::K, MeshUnion_dim::one);
@@ -81,35 +90,35 @@ MeshUnion::MeshUnion()
 
 MeshUnion::~MeshUnion()
 {
-	delete charLength;
-	delete EToE;
-	delete EToF;
-	delete EToM;
-	delete EToR;
-	delete EToV;
-	delete ind;
-	delete J;
-	delete LAV;
-	delete rx;
-	delete ry;
-	delete rz;
-	delete status;
-	delete sx;
-	delete sy;
-	delete sz;
-	delete tx;
-	delete ty;
-	delete type;
-	delete tz;
-	delete vx;
-	delete vy;
-	delete vz;
-	delete x;
-	delete xc;
-	delete y;
-	delete yc;
-	delete z;
-	delete zc;
+	freememory(&charLength);
+	freememory(&EToE);
+	freememory(&EToF);
+	freememory(&EToM);
+	freememory(&EToR);
+	freememory(&EToV);
+	freememory(&ind);
+	freememory(&J);
+	freememory(&LAV);
+	freememory(&rx);
+	freememory(&ry);
+	freememory(&rz);
+	freememory(&status);
+	freememory(&sx);
+	freememory(&sy);
+	freememory(&sz);
+	freememory(&tx);
+	freememory(&ty);
+	freememory(&type);
+	freememory(&tz);
+	freememory(&vx);
+	freememory(&vy);
+	freememory(&vz);
+	freememory(&x);
+	freememory(&xc);
+	freememory(&y);
+	freememory(&yc);
+	freememory(&z);
+	freememory(&zc);
 
 	std::cout << "Îö¹¹MeshUnion" << std::endl;
 }

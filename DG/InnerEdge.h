@@ -6,6 +6,7 @@ class InnerEdge
 public:
 	InnerEdge();
 	~InnerEdge();
+	void EvaluateSurfValue(double *fphys, double *fm, double *fp);
 
 	Icell icell;
 
@@ -18,11 +19,12 @@ public:
 	static double* Js;
 	static double* LAV;
 	static double* M;
-	static double* Ne;
-	static double* Nfp;
+	static int* Ne;
+	static int* Nfp;
 	static double* nx;
 	static double* ny;
 	static double* nz;
 	static double* r;
+
 };
 

@@ -1,4 +1,5 @@
 #include "MeshUnion_dim.h"
+
 #include<netcdfcpp.h>
 
 using namespace netCDF;
@@ -46,7 +47,10 @@ void MeshUnion_dim::ncdim_read()
 	Np_v.getVar(&Np);
 	cell_Nv_v.getVar(&cell_Nv);
 	cell_Nq_v.getVar(&cell_Nq);
+
 }
+
+
 
 void MeshUnion_dim::ncvar_read(double *&meshunion_data, std::string ncvarname, int &dim1, int &dim2)
 {
@@ -69,6 +73,17 @@ void MeshUnion_dim::ncvar_read(double *&meshunion_data, std::string ncvarname, i
 	temp_v.getVar(meshunion_data);
 }
 
+void MeshUnion_dim::ncvar_read(int *&meshunion_data, std::string ncvarname, int &dim1, int &dim2)
+{
+	//meshunion_data = new double[Ne_boundary*two];
+	meshunion_data = new int[dim1*dim2];
+	NcFile dataFile("meshUnion.nc", NcFile::read);
+
+	NcVar temp_v = dataFile.getVar(ncvarname);
+
+	temp_v.getVar(meshunion_data);
+}
+
 void MeshUnion_dim::ncvar_read(int *&meshunion_data, std::string ncvarname, int &dim1)
 {
 	meshunion_data = new int[dim1];
@@ -78,3 +93,4 @@ void MeshUnion_dim::ncvar_read(int *&meshunion_data, std::string ncvarname, int 
 
 	temp_v.getVar(meshunion_data);
 }
+

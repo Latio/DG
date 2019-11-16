@@ -1,5 +1,9 @@
 #include "InnerEdge.h"
 #include<iostream>
+extern "C"
+{
+	void c_EvaluateSurfValue(double *FToE_, double *FToN1_, double *FToN2_, double *fphys_, double *fm_, double *fp_);
+};
 
 double *InnerEdge::FToE = NULL;
 double *InnerEdge::FToF = NULL;
@@ -10,14 +14,14 @@ double *InnerEdge::FToV = NULL;
 double *InnerEdge::Js = NULL;
 double *InnerEdge::LAV = NULL;
 double *InnerEdge::M = NULL;
-double *InnerEdge::Ne = NULL;
-double *InnerEdge::Nfp = NULL;
+int *InnerEdge::Ne = NULL;
+int *InnerEdge::Nfp = NULL;
 double *InnerEdge::nx = NULL;
 double *InnerEdge::ny = NULL;
 double *InnerEdge::nz = NULL;
 double *InnerEdge::r = NULL;
 
-InnerEdge::InnerEdge()
+InnerEdge::InnerEdge():icell()
 {
 	MeshUnion_dim::ncvar_read(FToE, "InnerEdge_FToE", MeshUnion_dim::Ne_inner, MeshUnion_dim::two);
 	MeshUnion_dim::ncvar_read(FToF, "InnerEdge_FToF", MeshUnion_dim::Ne_inner, MeshUnion_dim::two);
@@ -39,20 +43,29 @@ InnerEdge::InnerEdge()
 
 InnerEdge::~InnerEdge()
 {
-	delete FToE;
-	delete FToF;
-	delete FToM;
-	delete FToN1;
-	delete FToN2;
-	delete FToV;
-	delete Js;
-	delete LAV;
-	delete M;
-	delete Ne;
-	delete Nfp;
-	delete nx;
-	delete ny;
-	delete nz;
-	delete r;
+	freememory(&FToE);
+	freememory(&FToF);
+	freememory(&FToM);
+	freememory(&FToN1);
+	freememory(&FToN2);
+	freememory(&FToV);
+	freememory(&Js);
+	freememory(&LAV);
+	freememory(&M);
+	freememory(&Ne);
+	freememory(&Nfp);
+	freememory(&nx);
+	freememory(&ny);
+	freememory(&nz);
+	freememory(&r);
 	std::cout << "Îö¹¹MeshUnion_InnerEdge" << std::endl;
+}
+
+
+
+
+
+void InnerEdge::EvaluateSurfValue(double *fphys, double *fm, double *fp)
+{
+	c_EvaluateSurfValue(InnerEdge::FToE, InnerEdge::FToN1, InnerEdge::FToN2, fphys, fm, fp);
 }

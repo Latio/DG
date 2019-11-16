@@ -6,7 +6,7 @@ public:
 	Bcell();
 	~Bcell();
 
-	MeshUnion_dim meshunion_boundary;
+	//MeshUnion_dim meshunion_boundary;
 
 	static double* Dr;
 	static double* Ds;

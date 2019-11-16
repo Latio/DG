@@ -1,5 +1,4 @@
 #pragma once
-#include<iostream>
 #include"MeshUnion_dim.h"
 
 class Cell
@@ -14,7 +13,7 @@ public:
 	static double* Dr;
 	static double* Ds;
 	static double* Dt;
-	static double* EToV;
+	static double* FToV;
 	static double* faceType;
 	static double* Fmask;
 	static double* invM;
@@ -24,7 +23,7 @@ public:
 	static double* Nface;
 	static double* Nfp;
 	static double* Nfv;
-	static double* Np;
+	static int* Np;
 	//static double* Nq;
 	//static double* Nv;
 	static double* r;

@@ -71,36 +71,36 @@ Bcell::Bcell()
 
 Bcell::~Bcell()
 {
-	delete Dr;
-	delete Ds;
-	delete Dt;
-	delete faceType;
-	delete Fmask;
-	delete FToV;
-	delete invM;
-	delete LAV;
-	delete M;
-	delete N;
-	delete Nface;
-	delete Nfp;
-	delete Nfv;
-	delete Np;
-	delete Nq;
-	delete Nv;
-	delete r;
-	delete rq;
-	delete s;
-	delete sq;
-	delete t;
-	delete TNfp;
-	delete tq;
-	delete type;
-	delete V;
-	delete Vq;
-	delete vr;
-	delete vs;
-	delete vt;
-	delete wq;
+	freememory(&Dr);
+	freememory(&Ds);
+	freememory(&Dt);
+	freememory(&faceType);
+	freememory(&Fmask);
+	freememory(&FToV);
+	freememory(&invM);
+	freememory(&LAV);
+	freememory(&M);
+	freememory(&N);
+	freememory(&Nface);
+	freememory(&Nfp);
+	freememory(&Nfv);
+	freememory(&Np);
+	freememory(&Nq);
+	freememory(&Nv);
+	freememory(&r);
+	freememory(&rq);
+	freememory(&s);
+	freememory(&sq);
+	freememory(&t);
+	freememory(&TNfp);
+	freememory(&tq);
+	freememory(&type);
+	freememory(&V);
+	freememory(&Vq);
+	freememory(&vr);
+	freememory(&vs);
+	freememory(&vt);
+	freememory(&wq);
 
 	std::cout << "Îö¹¹MeshUnion_BoundaryEdge_Bcell" << std::endl;
 }
