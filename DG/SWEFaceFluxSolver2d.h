@@ -1,5 +1,6 @@
 #pragma once
 #include"MeshUnion.h"
+extern MeshUnion mesh;
 extern const MeshUnion *meshunion;
 
 
@@ -13,8 +14,6 @@ public:
 	SWEFaceFluxSolver2d();
 	~SWEFaceFluxSolver2d();
 
-	friend class SWEAbstract2d;
-
-	void evaluate(double hmin_, double gra_, double *nx_, double *ny_, double *fm_, double *fluxM_, int *fm_Nfp, int *fm_Ne, int fm_Nfield);
+	void surfluxSolver_evaluate(double hmin_, double gra_, double *nx_, double *ny_, double *fm_, double *fluxM_);
 };
 

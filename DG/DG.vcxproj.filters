@@ -85,6 +85,15 @@
     <Filter Include="头文件\SWEAbstract2d">
       <UniqueIdentifier>{77f996b5-b5d7-4377-b9ad-4460d52f6950}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Solver\SWEHLLNumFluxSolver2d">
+      <UniqueIdentifier>{8f19d478-c2a3-47b5-a711-d4594f987418}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWEHLLNumFluxSolver2d">
+      <UniqueIdentifier>{df7258fb-d18b-4e37-abdf-7a910598014c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWEHLLNumFluxSolver2d\private">
+      <UniqueIdentifier>{7202f371-6a76-4e23-97b5-b394423f8144}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -219,6 +228,12 @@
     <ClCompile Include="test.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="SWEHLLNumFluxSolver2d.cpp">
+      <Filter>源文件\Solver\SWEHLLNumFluxSolver2d</Filter>
+    </ClCompile>
+    <ClCompile Include="c_Evaluate.c">
+      <Filter>源文件\Solver\SWEHLLNumFluxSolver2d\private</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MeshUnion.h">
@@ -259,6 +274,12 @@
     </ClInclude>
     <ClInclude Include="SWEAbstract2d.h">
       <Filter>头文件\SWEAbstract2d</Filter>
+    </ClInclude>
+    <ClInclude Include="SWEHLLNumFluxSolver2d.h">
+      <Filter>头文件\Solver\SWEHLLNumFluxSolver2d</Filter>
+    </ClInclude>
+    <ClInclude Include="SWENumFlux2d.h">
+      <Filter>头文件\Solver\SWEHLLNumFluxSolver2d</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

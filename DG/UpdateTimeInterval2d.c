@@ -29,7 +29,7 @@ double UpdateTimeInterval2d(double hmin, double gra, int N, double *status, doub
 {
 
 	signed char* regionType = (signed char*)status;
-	PhysField fphys_ = convertMexToPhysField(fphys, Np_, K_, Nfield_);
+	PhysField fphys_ = convertMexToPhysFieldp(fphys, Np_, K_, Nfield_);
 
 	const int Np = fphys_.Np;
 	const int K = fphys_.K;

@@ -19,7 +19,7 @@ NdgPhysMat::NdgPhysMat() :time(0)
 
 	gra = 9.8;
 	hmin = 0.05;
-	Np = *meshunion->cell->Np;
+	Np = *meshunion->cell_p->Np;
 	K = *meshunion->K;
 
 	//for (int i = 0; i < (*meshunion->cell->Np)*(*meshunion->K); i++)
@@ -49,9 +49,9 @@ void NdgPhysMat::matSolver()
 void NdgPhysMat::matEvaluateSSPRK22()
 {
 	//fphys0{n} = zeros( obj.meshUnion(n).cell.Np, obj.meshUnion(n).K, obj.Nvar );
-	requestmemory(&fphys0, meshunion->cell->Np, meshunion->K, Nfield);//申请内存并初始化fphys0为0；
-	requestmemory(&fphys, meshunion->cell->Np, meshunion->K, Nfield);//申请内存并初始化fphys为0；
-	requestmemory(&frhs, meshunion->cell->Np, meshunion->K, Nvar);//申请内存并初始化fphys为0；
+	requestmemory(&fphys0, meshunion->cell_p->Np, meshunion->K, Nfield);//申请内存并初始化fphys0为0；
+	requestmemory(&fphys, meshunion->cell_p->Np, meshunion->K, Nfield);//申请内存并初始化fphys为0；
+	requestmemory(&frhs, meshunion->cell_p->Np, meshunion->K, Nvar);//申请内存并初始化fphys为0；
 
  //这一行需要给定fphys的初始场条件;
 
@@ -65,7 +65,7 @@ void NdgPhysMat::matEvaluateSSPRK22()
 		}
 
 		//fphys0{ n } = fphys{ n };
-		cblas_dcopy((*meshunion->K)*(*meshunion->cell->Nv)*Nfield, fphys, 1, fphys0, 1);//cblas拷贝函数
+		cblas_dcopy((*meshunion->K)*(*meshunion->cell_p->Nv)*Nfield, fphys, 1, fphys0, 1);//cblas拷贝函数
 
 		for (int intRK = 0; intRK < 2; intRK++)
 		{
@@ -83,7 +83,7 @@ void NdgPhysMat::matEvaluateSSPRK22()
 			fphys = EvaluatePostFunc(fphys);
 		}
 
-		for (int i = 0; i < (*meshunion->cell->Np)*(*meshunion->K) * 3; i++)
+		for (int i = 0; i < (*meshunion->cell_p->Np)*(*meshunion->K) * 3; i++)
 		{
 			*(fphys + i) = *(fphys0 + i)*0.5 + (*(fphys + i)*0.5);
 		};

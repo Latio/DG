@@ -5,14 +5,12 @@
 //
 //int main()
 //{
-//	double dt = 20;
-//	double dtm = 5;
-//	double cfl = 3;
+//	double dt[5] = { 1,3,5,7,9 };
+//	double *p = dt;
+//	const double *pg = p;
+//	p++;
 //
-//	double final;
-//	final = (dt < dtm*cfl) ? dt : dtm * cfl;
-//
-//	cout << final << endl;
+//	cout << pg << endl << p << endl;
 //	system("pause");
 //	return 0;
 //}

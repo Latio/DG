@@ -1,7 +1,7 @@
 #pragma once
 #include"MeshUnion.h"
+#include"SWEAbstract2d.h"
 
-extern const MeshUnion *meshunion;
 
 
 class NdgQuadFreeStrongFormAdvSolver2d
@@ -12,7 +12,7 @@ public:
 
 	void evaluateAdvectionRHS(double *fphys, double *frhs);
 
-
-	InnerEdge inneredge;
+	SWEAbstract2d sweabstract2d;
+	/*InnerEdge inneredge;*/
 };
 

@@ -2,7 +2,7 @@
 //#include "mex.h"
 
 /** convert mex variable to PhysVolField structure */
-PhysField convertMexToPhysField(const double *mxfield, int *Np_, int *K_, int Nfield_) {
+PhysField convertMexToPhysFieldp(const double *mxfield, int *Np_, int *K_, int Nfield_) {
 
 	PhysField field;
 	field.Np = *Np_;

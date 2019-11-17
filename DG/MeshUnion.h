@@ -12,15 +12,16 @@ public:
 
 	~MeshUnion();
 
+	friend class NdgQuadFreeStrongFormAdvSolver2d;
 	
-	InnerEdge inneredge_temp;
-	static InnerEdge *inneredge;
+	InnerEdge inneredge;
+	static InnerEdge *inneredge_p;
 
-	BoundaryEdge boundarydge_temp;
-	static BoundaryEdge *boundarydge;
+	BoundaryEdge boundarydge;
+	static BoundaryEdge *boundarydge_p;
 
-	Cell cell_temp;
-	static Cell *cell;
+	Cell cell;
+	static Cell *cell_p;
 	//notice the order of definition,which will cause the of constructor. 
 
 	static int*K;

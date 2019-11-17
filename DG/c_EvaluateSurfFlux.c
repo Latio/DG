@@ -27,17 +27,18 @@ void evaluateSurfFluxTerm(const double hmin,  ///< water depth threshold
 	return;
 }
 
-#define NVAR 3
 
 void c_EvaluateSurfFlux(double hmin_, double gra_, double *nx_, double *ny_, double *fm_, double *fluxM_, int *fm_Nfp, int *fm_Ne, int fm_Nfield)
 {
+
 	double hcrit = hmin_;
 	double gra = gra_;
 	double *nx = nx_;
 	double *ny = ny_;
+	int NVAR = 3;
 	// double* fm = mxGetPr(prhs[4]);
 
-	PhysField fm = convertMexToPhysField(fm_, fm_Nfp, fm_Ne, fm_Nfield);
+	PhysField fm = convertMexToPhysFieldp(fm_, fm_Nfp, fm_Ne, fm_Nfield);
 
 	//const mwSize* dims = mxGetDimensions(prhs[4]);
 	const int TNfp = fm.Np;
@@ -56,7 +57,7 @@ void c_EvaluateSurfFlux(double hmin_, double gra_, double *nx_, double *ny_, dou
 
 	for (int k = 0; k < K; k++) {
 		for (int n = 0; n < TNfp; n++) {
-			const size_t sk = k * TNfp + n;
+			const int sk = k * TNfp + n;
 			// double fm[4] = {fm.h[sk], hu[sk], hv[sk], z[sk]};
 			const double nx_ = nx[sk];
 			const double ny_ = ny[sk];

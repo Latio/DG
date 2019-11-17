@@ -39,16 +39,16 @@ double *MeshUnion::y = NULL;
 double *MeshUnion::yc = NULL;
 double *MeshUnion::z = NULL;
 double *MeshUnion::zc = NULL;
-Cell *MeshUnion::cell = NULL;
-BoundaryEdge *MeshUnion::boundarydge = NULL;
-InnerEdge *MeshUnion::inneredge = NULL;
+Cell *MeshUnion::cell_p = NULL;
+BoundaryEdge *MeshUnion::boundarydge_p = NULL;
+InnerEdge *MeshUnion::inneredge_p = NULL;
 
 
-MeshUnion::MeshUnion() :boundarydge_temp(), inneredge_temp(), cell_temp()
+MeshUnion::MeshUnion() :boundarydge(), inneredge(), cell()
 {
-	boundarydge = &boundarydge_temp;
-	inneredge = &inneredge_temp;
-	cell = &cell_temp;
+	boundarydge_p = &boundarydge;
+	inneredge_p = &inneredge;
+	cell_p = &cell;
 
 	MeshUnion_dim::ncvar_read(K, "K", MeshUnion_dim::one);
 	MeshUnion_dim::ncvar_read(Nv, "Nv", MeshUnion_dim::one);

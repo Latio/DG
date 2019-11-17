@@ -132,12 +132,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="c_Evaluate.c" />
     <ClCompile Include="c_EvaluateSurfValue.c" />
     <ClCompile Include="c_EvaluateSurfFlux.c" />
     <ClCompile Include="NdgQuadFreeStrongFormAdvSolver2d.cpp" />
     <ClCompile Include="SWE2d.c" />
     <ClCompile Include="SWEAbstract2d.cpp" />
     <ClCompile Include="SWEFaceFluxSolver2d.cpp" />
+    <ClCompile Include="SWEHLLNumFluxSolver2d.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="UpdateTimeInterval2d.c" />
     <ClCompile Include="new_delete.cpp" />
@@ -190,6 +192,8 @@
     <ClInclude Include="NdgPhysMat.h" />
     <ClInclude Include="SWEAbstract2d.h" />
     <ClInclude Include="SWEFaceFluxSolver2d.h" />
+    <ClInclude Include="SWEHLLNumFluxSolver2d.h" />
+    <ClInclude Include="SWENumFlux2d.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
