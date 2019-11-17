@@ -63,8 +63,8 @@ InnerEdge::~InnerEdge()
 
 
 
-void InnerEdge::EvaluateSurfValue(double *fphys, double *fm, double *fp,int *Np ,int *K,int Nfield)
+void InnerEdge::EvaluateSurfValue(double *fphys, double *fm, double *fp, int *Np, int *K, int Nfield)
 {
-	c_EvaluateSurfValue(InnerEdge::FToE, InnerEdge::FToN1, InnerEdge::FToN2, fphys, fm, fp,InnerEdge::Nfp,InnerEdge::Ne,Np,K,Nfield);
+	c_EvaluateSurfValue(InnerEdge::FToE, InnerEdge::FToN1, InnerEdge::FToN2, fphys, fm, fp, InnerEdge::Nfp, InnerEdge::Ne, Np, K, Nfield);
 
 }

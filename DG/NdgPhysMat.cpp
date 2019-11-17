@@ -1,12 +1,11 @@
 #include "NdgPhysMat.h"
-#include "NdgQuadFreeStrongFormAdvSolver2d.h"
 #include"cblas.h"
 
 
 //int NdgPhysMat::Np = 0;
 //int NdgPhysMat::K = 0;
 //int NdgPhysMat::Nfield = 0;
-extern const MeshUnion *meshunion;
+
 
 double *NdgPhysMat::fphys0 = NULL;
 double *NdgPhysMat::fphys = NULL;
@@ -23,8 +22,6 @@ NdgPhysMat::NdgPhysMat() :time(0)
 	Np = *meshunion->cell->Np;
 	K = *meshunion->K;
 
-	requestmemory(&dx, *meshunion->K);
-
 	//for (int i = 0; i < (*meshunion->cell->Np)*(*meshunion->K); i++)
 	//{
 	//	std::cout << *(fphys0 + i) << std::endl;
@@ -37,8 +34,7 @@ NdgPhysMat::~NdgPhysMat()
 	freememory(&fphys);
 	freememory(&fphys0);
 	freememory(&frhs);
-
-	freememory(&dx);
+	//freememory(&dx);
 	std::cout << "析构NdgPhyMat" << std::endl;
 
 }
@@ -61,7 +57,7 @@ void NdgPhysMat::matEvaluateSSPRK22()
 
 	while (time < ftime)
 	{
-		dt = UpdateTimeInterval(fphys)*0.4;
+		dt = sweabstract2d.UpdateTimeInterval(fphys)*0.4;
 
 		if (time + dt > ftime)
 		{
@@ -98,23 +94,23 @@ void NdgPhysMat::matEvaluateSSPRK22()
 		double timeRatio = time / ftime;
 	}
 }
-
-double NdgPhysMat::UpdateTimeInterval(double *fphys)
-{
-	dt = 0;
-	for (int i = 0; i < *meshunion->K; i++)
-	{
-		*(dx + i) = pow(*(meshunion->LAV + i), 0.5);
-	}
-	int N = *meshunion->cell->N;
-	double dtm = UpdateTimeInterval2d(hmin, gra, N, meshunion->status, fphys, dx, Np, K, Nfield);
-
-	if (dtm > 0)
-	{
-		dt = (dt < dtm/*  *cfl  */) ? dt : dtm;
-	}//如需改cfl.
-
-};//计算时间步长
+//
+//double NdgPhysMat::UpdateTimeInterval(double *fphys)
+//{
+//	dt = 0;
+//	for (int i = 0; i < *meshunion->K; i++)
+//	{
+//		*(dx + i) = pow(*(meshunion->LAV + i), 0.5);
+//	}
+//	int N = *meshunion->cell->N;
+//	double dtm = UpdateTimeInterval2d(hmin, gra, N, meshunion->status, fphys, dx, Np, K, Nfield);
+//
+//	if (dtm > 0)
+//	{
+//		dt = (dt < dtm/*  *cfl  */) ? dt : dtm;
+//	}//如需改cfl.
+//
+//};//计算时间步长
 
 
 

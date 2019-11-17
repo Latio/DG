@@ -1,12 +1,18 @@
 //#include<iostream>
 //#include"cblas.h"
+//
 //using namespace std;
 //
 //int main()
 //{
-//	const double test::pi = 3.1415;
-//	cout << test::pi << endl;
+//	double dt = 20;
+//	double dtm = 5;
+//	double cfl = 3;
 //
+//	double final;
+//	final = (dt < dtm*cfl) ? dt : dtm * cfl;
+//
+//	cout << final << endl;
 //	system("pause");
 //	return 0;
 //}

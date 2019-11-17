@@ -30,6 +30,7 @@ typedef struct {
 } PhysField;
 
 /** convert mex variable to PhysVolField structure */
+PhysField convertMexToPhysField(const double *, int *Np_, int *K_, int Nfield_);
 PhysField convertMexToPhysField(const double *, int Np_, int K_, int Nfield_);
 
 /** Evaluate the flow rate depending on the depth threshold */

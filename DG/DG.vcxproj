@@ -138,7 +138,7 @@
     <ClCompile Include="SWE2d.c" />
     <ClCompile Include="SWEAbstract2d.cpp" />
     <ClCompile Include="SWEFaceFluxSolver2d.cpp" />
-    <ClCompile Include="test.c" />
+    <ClCompile Include="test.cpp" />
     <ClCompile Include="UpdateTimeInterval2d.c" />
     <ClCompile Include="new_delete.cpp" />
     <ClCompile Include="main.cpp" />

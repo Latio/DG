@@ -25,7 +25,7 @@ void evaluateFlowRateByCellState(
 }
 
 
-double UpdateTimeInterval2d(double hmin, double gra, int N, double *status, double *fphys, double *dx, int Np_, int K_, int Nfield_)
+double UpdateTimeInterval2d(double hmin, double gra, int N, double *status, double *fphys, double *dx, int *Np_, int *K_, int Nfield_)
 {
 
 	signed char* regionType = (signed char*)status;

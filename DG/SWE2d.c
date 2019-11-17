@@ -2,8 +2,22 @@
 //#include "mex.h"
 
 /** convert mex variable to PhysVolField structure */
+PhysField convertMexToPhysField(const double *mxfield, int *Np_, int *K_, int Nfield_) {
+
+	PhysField field;
+	field.Np = *Np_;
+	field.K = *K_;
+	field.Nfield = Nfield_;
+	const int Ntmp = field.Np * field.K;
+
+	field.h = mxfield;
+	field.hu = field.h + Ntmp;
+	field.hv = field.hu + Ntmp;
+	field.z = field.hv + Ntmp;
+	return field;
+}
 PhysField convertMexToPhysField(const double *mxfield, int Np_, int K_, int Nfield_) {
-	//const int *dims = mxGetDimensions(mxfield);
+
 	PhysField field;
 	field.Np = Np_;
 	field.K = K_;

@@ -15,8 +15,6 @@ NdgQuadFreeStrongFormAdvSolver2d::~NdgQuadFreeStrongFormAdvSolver2d()
 void NdgQuadFreeStrongFormAdvSolver2d::evaluateAdvectionRHS(double *fphys, double *frhs)
 {
 	// evaluate inner edge
-
-	InnerEdge *edge = meshunion->inneredge;
 	double *fm;
 	double *fp;
 	double *fluxM;

@@ -1,9 +1,9 @@
 #pragma once
 #include"NdgQuadFreeStrongFormAdvSolver2d.h"
-#include "MeshUnion.h"
+#include"SWEAbstract2d.h"
 
 extern "C" {
-	double  UpdateTimeInterval2d(double hmin, double gra, int N, double *status, double *fphys, double *dx, int Np_, int K_, int Nfield_);
+	
 }
 class NdgPhysMat
 {
@@ -13,7 +13,7 @@ public:
 
 	void matSolver();
 	void matEvaluateSSPRK22();
-	double UpdateTimeInterval(double *fphys);
+	//double UpdateTimeInterval(double *fphys);
 
 
 
@@ -29,7 +29,7 @@ public:
 
 protected:
 
-
+	SWEAbstract2d sweabstract2d;
 
 	double *fext;
 	int *outputfile;
@@ -38,7 +38,6 @@ protected:
 	double *viscositySolver;
 	double *NonhydrostaticSolver;
 
-	double *dx;
 
 	static double dt;
 	double time;

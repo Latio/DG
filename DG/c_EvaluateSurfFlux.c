@@ -29,7 +29,7 @@ void evaluateSurfFluxTerm(const double hmin,  ///< water depth threshold
 
 #define NVAR 3
 
-void c_EvaluateSurfFlux(double hmin_, double gra_, double *nx_, double *ny_, double *fm_, double *fluxM_, int *fm_Nfp, int *fm_Ne, int *fm_Nfield)
+void c_EvaluateSurfFlux(double hmin_, double gra_, double *nx_, double *ny_, double *fm_, double *fluxM_, int *fm_Nfp, int *fm_Ne, int fm_Nfield)
 {
 	double hcrit = hmin_;
 	double gra = gra_;

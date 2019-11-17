@@ -22,9 +22,6 @@
     <Filter Include="头文件\MeshUnion">
       <UniqueIdentifier>{30825ee5-a948-4cfa-98a6-859b3ba7b5bc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="源文件\private">
-      <UniqueIdentifier>{a08d3002-36cb-4c15-b213-bfaec07fd06c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="头文件\MeshUnion\InnerEdge">
       <UniqueIdentifier>{49a88339-5f3b-4cd8-8cb2-bab9dfbd8acd}</UniqueIdentifier>
     </Filter>
@@ -72,6 +69,21 @@
     </Filter>
     <Filter Include="源文件\Solver\SWEFaceFluxSolver2d\private">
       <UniqueIdentifier>{cdedc2f9-5ec5-40ca-a5ee-95cdc6058592}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\NdgQuadFreeStrongFormAdvSolver2d">
+      <UniqueIdentifier>{b769995e-f7a6-470e-9559-f2fdbed1f15f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\NdgPhysMat">
+      <UniqueIdentifier>{4b86d17c-fe76-4f7d-9504-28e6b16786a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\NdgPhysMat">
+      <UniqueIdentifier>{4142e19e-73e3-4823-854c-6a26118ea901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\NdgQuadFreeStrongFormAdvSolver2d">
+      <UniqueIdentifier>{1e9f454c-80bd-445b-8475-6f3137df7903}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\SWEAbstract2d">
+      <UniqueIdentifier>{77f996b5-b5d7-4377-b9ad-4460d52f6950}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -159,23 +171,8 @@
     <ClCompile Include="MeshUnion.cpp">
       <Filter>源文件\MeshUnion</Filter>
     </ClCompile>
-    <ClCompile Include="NdgPhysMat.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="NdgQuadFreeStrongFormAdvSolver2d.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="SWEAbstract2d.cpp">
       <Filter>源文件\SWEAbstract2d</Filter>
-    </ClCompile>
-    <ClCompile Include="test.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="SWE2d.c">
-      <Filter>源文件\private</Filter>
-    </ClCompile>
-    <ClCompile Include="UpdateTimeInterval2d.c">
-      <Filter>源文件\private</Filter>
     </ClCompile>
     <ClCompile Include="Icell.cpp">
       <Filter>源文件\MeshUnion\InnerEdge</Filter>
@@ -207,28 +204,31 @@
     <ClCompile Include="c_EvaluateSurfFlux.c">
       <Filter>源文件\Solver\SWEFaceFluxSolver2d\private</Filter>
     </ClCompile>
+    <ClCompile Include="NdgQuadFreeStrongFormAdvSolver2d.cpp">
+      <Filter>源文件\NdgQuadFreeStrongFormAdvSolver2d</Filter>
+    </ClCompile>
+    <ClCompile Include="NdgPhysMat.cpp">
+      <Filter>源文件\NdgPhysMat</Filter>
+    </ClCompile>
+    <ClCompile Include="SWE2d.c">
+      <Filter>源文件\SWEAbstract2d\private</Filter>
+    </ClCompile>
+    <ClCompile Include="UpdateTimeInterval2d.c">
+      <Filter>源文件\SWEAbstract2d\private</Filter>
+    </ClCompile>
+    <ClCompile Include="test.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MeshUnion.h">
       <Filter>头文件\MeshUnion</Filter>
-    </ClInclude>
-    <ClInclude Include="NdgPhysMat.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="NdgQuadFreeStrongFormAdvSolver2d.h">
-      <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="InnerEdge.h">
       <Filter>头文件\MeshUnion\InnerEdge</Filter>
     </ClInclude>
     <ClInclude Include="Icell.h">
       <Filter>头文件\MeshUnion\InnerEdge</Filter>
-    </ClInclude>
-    <ClInclude Include="SWEAbstract2d.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="SWE2d.h">
-      <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="BoundaryEdge.h">
       <Filter>头文件\MeshUnion\BoundaryEdge</Filter>
@@ -247,6 +247,18 @@
     </ClInclude>
     <ClInclude Include="SWEFaceFluxSolver2d.h">
       <Filter>头文件\Solver\SWEFaceFluxSolver2d</Filter>
+    </ClInclude>
+    <ClInclude Include="NdgPhysMat.h">
+      <Filter>头文件\NdgPhysMat</Filter>
+    </ClInclude>
+    <ClInclude Include="NdgQuadFreeStrongFormAdvSolver2d.h">
+      <Filter>头文件\NdgQuadFreeStrongFormAdvSolver2d</Filter>
+    </ClInclude>
+    <ClInclude Include="SWE2d.h">
+      <Filter>头文件\SWEAbstract2d</Filter>
+    </ClInclude>
+    <ClInclude Include="SWEAbstract2d.h">
+      <Filter>头文件\SWEAbstract2d</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
