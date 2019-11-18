@@ -246,7 +246,10 @@
 ////	double C[M*N];
 ////
 ////	cblas_dgemm(CblasRowMajor, CblasTrans, CblasTrans, M, N, K, alpha, A, lda, B, ldb, beta, C, ldc);
-////
+
+
+
+
 ////	int a[5] = { 1,2,3,4,5 };
 ////	int b[8] = { 8,7,6,5,4,3,2,1 };
 ////	int *pa = a;

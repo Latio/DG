@@ -131,10 +131,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\Desktop\DG\NDGOM-master(2)\NDGOM-master\NdgEdge\%40NdgInnerEdge\private\mxEvaluateStrongFromEdgeRHS.c" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="c_Evaluate.c" />
     <ClCompile Include="c_EvaluateSurfValue.c" />
     <ClCompile Include="c_EvaluateSurfFlux.c" />
+    <ClCompile Include="c_EvaluateStrongFromEdgeRHS.c" />
     <ClCompile Include="NdgQuadFreeStrongFormAdvSolver2d.cpp" />
     <ClCompile Include="SWE2d.c" />
     <ClCompile Include="SWEAbstract2d.cpp" />

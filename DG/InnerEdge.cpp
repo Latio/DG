@@ -1,9 +1,6 @@
 #include "InnerEdge.h"
-#include<iostream>
-extern "C"
-{
-	void c_EvaluateSurfValue(double *FToE_, double *FToN1_, double *FToN2_, double *fphys_, double *fm_, double *fp_, int *Nfp_, int *Ne_, int *Np_, int *K_, int Nfield_);
-};
+
+
 
 double *InnerEdge::FToE = NULL;
 double *InnerEdge::FToF = NULL;
@@ -65,5 +62,11 @@ InnerEdge::~InnerEdge()
 
 void InnerEdge::EvaluateSurfValue(double *fphys, double *fm, double *fp, int *Np, int *K, int Nfield)
 {
-	c_EvaluateSurfValue(InnerEdge::FToE, InnerEdge::FToN1, InnerEdge::FToN2, fphys, fm, fp, InnerEdge::Nfp, InnerEdge::Ne, Np, K, Nfield);
+	c_EvaluateSurfValue(FToE, FToN1, FToN2, fphys, fm, fp, Nfp, Ne, Np, K, Nfield);
 }
+
+void InnerEdge::EvaluateStrongFromEdgeRHS(double *fluxM, double *fluxP, double *fluxS, double *frhs, double *invM, double *J, int *Np, int *K, int Nfield)
+
+{
+	c_EvaluateStrongFromEdgeRHS(invM, M, FToE, FToN1, FToN2, Js, J, fluxM, fluxP, fluxS, frhs, Np, K, Nfp, Ne,Nfield);
+};

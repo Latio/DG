@@ -1,8 +1,11 @@
 #pragma once
 #include"MeshUnion.h"
+extern MeshUnion mesh;
+extern const MeshUnion *meshunion;
+
 extern "C" {
-	void c_Evaluate();
-}
+	void c_Evaluate(double hmin_, double gra_, double *nx_, double *ny_, double *fm_, double *fp_, double *fluxS_, int *TNfp_, int *K_);
+}//hmin, gra, nx, ny, fm, fp, fluxS_
 
 extern MeshUnion mesh;
 extern const MeshUnion *meshunion;

@@ -3,6 +3,7 @@
 
 //#include "mex.h"
 #include <math.h>
+#include<stdio.h>
 
 #ifdef _OPENMP
 #include <omp.h>
@@ -28,47 +29,73 @@ typedef struct {
   double *hvP;
 } FluxSolver;
 
-#define NRHS 6
-#define NLHS 1
+FluxSolver ConvertInputMexVariable2d(double hmin_, double gra_, double *nx_, double *ny_, double *fm_, double *fp_, int *TNfp_, int *K_)
+{
 
-/** Put input variable into FluxSolver  */
-FluxSolver ConvertInputMexVariable2d(const int Nlhs,        ///< number of LHS
-                                     const int Nrhs,        ///< number of RHS
-                                     const mxArray *plhs[], ///< LHS pointer
-                                     const mxArray *prhs[]  ///< RHS pointer
-) {
-  /* check input & output */
-  if (Nrhs != NRHS) {
-    mexPrintf("Matlab:%s:InvalidNumberInput,\n", __FILE__);
-    mexPrintf("%d inputs required.\n", NRHS);
-  }
+	FluxSolver solver;
+	solver.hmin = hmin_;
+	solver.gra = gra_;
+	solver.nx = nx_;
+	solver.ny = ny_;
+	solver.hM = fm_;
+	solver.hP = fp_;
 
-  if (Nlhs != NLHS) {
-    mexPrintf("Matlab:%s:InvalidNumberOutput,\n", __FILE__);
-    mexPrintf("%d inputs required.\n", NLHS);
-  }
+	//const mwSize *dims = mxGetDimensions(prhs[4]);
+	const int TNfp = *TNfp_;
+	const int K = *K_;
+	const int NFP = K * TNfp;
+	solver.TNfp = TNfp;
+	solver.K = K;
+	solver.huM = solver.hM + NFP;
+	solver.hvM = solver.huM + NFP;
+	solver.huP = solver.hP + NFP;
+	solver.hvP = solver.huP + NFP;
 
-  FluxSolver solver;
-  solver.hmin = mxGetScalar(prhs[0]);
-  solver.gra = mxGetScalar(prhs[1]);
-  solver.nx = mxGetPr(prhs[2]);
-  solver.ny = mxGetPr(prhs[3]);
-  solver.hM = mxGetPr(prhs[4]);
-  solver.hP = mxGetPr(prhs[5]);
-
-  const mwSize *dims = mxGetDimensions(prhs[4]);
-  const size_t TNfp = dims[0];
-  const size_t K = dims[1];
-  const size_t NFP = K * TNfp;
-  solver.TNfp = TNfp;
-  solver.K = K;
-  solver.huM = solver.hM + NFP;
-  solver.hvM = solver.huM + NFP;
-  solver.huP = solver.hP + NFP;
-  solver.hvP = solver.huP + NFP;
-
-  return solver;
+	return solver;
 }
+
+//#define NRHS 6
+//#define NLHS 1
+//
+///** Put input variable into FluxSolver  */
+//FluxSolver ConvertInputMexVariable2d(const int Nlhs,        ///< number of LHS
+//                                     const int Nrhs,        ///< number of RHS
+//                                     const mxArray *plhs[], ///< LHS pointer
+//                                     const mxArray *prhs[]  ///< RHS pointer
+//) {
+//  /* check input & output */
+//  if (Nrhs != NRHS) {
+//    mexPrintf("Matlab:%s:InvalidNumberInput,\n", __FILE__);
+//    mexPrintf("%d inputs required.\n", NRHS);
+//  }
+//
+//  if (Nlhs != NLHS) {
+//    mexPrintf("Matlab:%s:InvalidNumberOutput,\n", __FILE__);
+//    mexPrintf("%d inputs required.\n", NLHS);
+//  }
+//
+//  FluxSolver solver;
+//  solver.hmin = mxGetScalar(prhs[0]);
+//  solver.gra = mxGetScalar(prhs[1]);
+//  solver.nx = mxGetPr(prhs[2]);
+//  solver.ny = mxGetPr(prhs[3]);
+//  solver.hM = mxGetPr(prhs[4]);
+//  solver.hP = mxGetPr(prhs[5]);
+//
+//  const mwSize *dims = mxGetDimensions(prhs[4]);
+//  const size_t TNfp = dims[0];
+//  const size_t K = dims[1];
+//  const size_t NFP = K * TNfp;
+//  solver.TNfp = TNfp;
+//  solver.K = K;
+//  solver.huM = solver.hM + NFP;
+//  solver.hvM = solver.huM + NFP;
+//  solver.huP = solver.hP + NFP;
+//  solver.hvP = solver.huP + NFP;
+//
+//  return solver;
+//}
+
 
 /** Evaluate flux term in surface integration */
 void evaluateFluxTerm2d(const double hmin, ///< water threshold

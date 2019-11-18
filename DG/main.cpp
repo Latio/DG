@@ -20,9 +20,9 @@ int main()
 		cout << xxxx << endl;
 		NdgPhysMat x;
 	}
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 1080; i++)
 	{
-		cout << *(meshunion->inneredge_p->M + i) << endl;
+		cout << *(meshunion->EToE+i) << endl;
 	}
 
 

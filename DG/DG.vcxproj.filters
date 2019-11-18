@@ -234,6 +234,12 @@
     <ClCompile Include="c_Evaluate.c">
       <Filter>源文件\Solver\SWEHLLNumFluxSolver2d\private</Filter>
     </ClCompile>
+    <ClCompile Include="c_EvaluateStrongFromEdgeRHS.c">
+      <Filter>源文件\MeshUnion\InnerEdge\private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Desktop\DG\NDGOM-master(2)\NDGOM-master\NdgEdge\%40NdgInnerEdge\private\mxEvaluateStrongFromEdgeRHS.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MeshUnion.h">
