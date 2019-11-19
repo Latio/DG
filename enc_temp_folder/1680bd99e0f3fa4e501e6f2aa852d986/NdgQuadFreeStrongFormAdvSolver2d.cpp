@@ -48,7 +48,7 @@ void NdgQuadFreeStrongFormAdvSolver2d::evaluateAdvectionRHS(double *fphys, doubl
 	freememory(&fluxS);
 
 
-
+	// evaluate boundary edge
 	int *Nfp_b = meshunion->boundarydge_p->Nfp;//define temporary dimemsion
 	int *Ne_b = meshunion->boundarydge_p->Ne;//define temporary dimemsion
 
@@ -57,11 +57,6 @@ void NdgQuadFreeStrongFormAdvSolver2d::evaluateAdvectionRHS(double *fphys, doubl
 	requestmemory(&fluxM, Nfp_b, Ne_b, NVAR);
 	requestmemory(&fluxP, Nfp_b, Ne_b, NVAR);
 	requestmemory(&fluxS, Nfp_b, Ne_b, NVAR);
-
-	// evaluate boundary edge
-	nx = meshunion->boundarydge_p->nx;
-	ny = meshunion->boundarydge_p->ny;
-
 	mesh.boundarydge.EvaluateSurfValue(fphys, fm, fp, Np, K, Nfield);
 
 

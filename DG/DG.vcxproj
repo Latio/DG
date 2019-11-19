@@ -131,18 +131,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Desktop\DG\NDGOM-master(2)\NDGOM-master\NdgEdge\%40NdgInnerEdge\private\mxEvaluateStrongFromEdgeRHS.c" />
     <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="c_boundary_EvaluateSurfValue.c" />
     <ClCompile Include="c_Evaluate.c" />
-    <ClCompile Include="c_EvaluateSurfValue.c" />
+    <ClCompile Include="c_HydrostaticReconstruction.c" />
+    <ClCompile Include="c_inner_EvaluateSurfValue.c" />
     <ClCompile Include="c_EvaluateSurfFlux.c" />
-    <ClCompile Include="c_EvaluateStrongFromEdgeRHS.c" />
+    <ClCompile Include="c_inner_EvaluateStrongFromEdgeRHS.c" />
+    <ClCompile Include="c_ImposeBoundaryCondition.c" />
     <ClCompile Include="NdgQuadFreeStrongFormAdvSolver2d.cpp" />
     <ClCompile Include="SWE2d.c" />
     <ClCompile Include="SWEAbstract2d.cpp" />
     <ClCompile Include="SWEFaceFluxSolver2d.cpp" />
     <ClCompile Include="SWEHLLNumFluxSolver2d.cpp" />
-    <ClCompile Include="test.cpp" />
+    <ClCompile Include="test.c" />
     <ClCompile Include="UpdateTimeInterval2d.c" />
     <ClCompile Include="new_delete.cpp" />
     <ClCompile Include="main.cpp" />

@@ -94,6 +94,9 @@
     <Filter Include="源文件\Solver\SWEHLLNumFluxSolver2d\private">
       <UniqueIdentifier>{7202f371-6a76-4e23-97b5-b394423f8144}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\MeshUnion\BoundaryEdge\private">
+      <UniqueIdentifier>{6ed4c996-7d83-44cd-bc5a-3c1af3a15fdd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -189,9 +192,6 @@
     <ClCompile Include="InnerEdge.cpp">
       <Filter>源文件\MeshUnion\InnerEdge</Filter>
     </ClCompile>
-    <ClCompile Include="c_EvaluateSurfValue.c">
-      <Filter>源文件\MeshUnion\InnerEdge\private</Filter>
-    </ClCompile>
     <ClCompile Include="Bcell.cpp">
       <Filter>源文件\MeshUnion\BoundaryEdge</Filter>
     </ClCompile>
@@ -225,20 +225,29 @@
     <ClCompile Include="UpdateTimeInterval2d.c">
       <Filter>源文件\SWEAbstract2d\private</Filter>
     </ClCompile>
-    <ClCompile Include="test.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="SWEHLLNumFluxSolver2d.cpp">
       <Filter>源文件\Solver\SWEHLLNumFluxSolver2d</Filter>
     </ClCompile>
     <ClCompile Include="c_Evaluate.c">
       <Filter>源文件\Solver\SWEHLLNumFluxSolver2d\private</Filter>
     </ClCompile>
-    <ClCompile Include="c_EvaluateStrongFromEdgeRHS.c">
+    <ClCompile Include="c_inner_EvaluateSurfValue.c">
       <Filter>源文件\MeshUnion\InnerEdge\private</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Desktop\DG\NDGOM-master(2)\NDGOM-master\NdgEdge\%40NdgInnerEdge\private\mxEvaluateStrongFromEdgeRHS.c">
+    <ClCompile Include="c_inner_EvaluateStrongFromEdgeRHS.c">
+      <Filter>源文件\MeshUnion\InnerEdge\private</Filter>
+    </ClCompile>
+    <ClCompile Include="c_boundary_EvaluateSurfValue.c">
+      <Filter>源文件\MeshUnion\BoundaryEdge\private</Filter>
+    </ClCompile>
+    <ClCompile Include="test.c">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="c_ImposeBoundaryCondition.c">
+      <Filter>源文件\SWEAbstract2d\private</Filter>
+    </ClCompile>
+    <ClCompile Include="c_HydrostaticReconstruction.c">
+      <Filter>源文件\SWEAbstract2d\private</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

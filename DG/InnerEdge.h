@@ -2,8 +2,8 @@
 #include"Icell.h"
 extern "C"
 {
-	void c_EvaluateSurfValue(double *FToE_, double *FToN1_, double *FToN2_, double *fphys_, double *fm_, double *fp_, int *Nfp_, int *Ne_, int *Np_, int *K_, int Nfield_);
-	void c_EvaluateStrongFromEdgeRHS(double *invM_, double *M_, double *FToE_, double *FToN1_, double *FToN2_, double *Js_, double *J_, double *fluxM_, double *fluxP_, double *fluxS_, double *frhs_, int *Np_, int *K_, int *Nfp_, int *Ne_, int Nfield_);
+	void c_inner_EvaluateSurfValue(double *FToE_, double *FToN1_, double *FToN2_, double *fphys_, double *fm_, double *fp_, int *Nfp_, int *Ne_, int *Np_, int *K_, int Nfield_);
+	void c_inner_EvaluateStrongFromEdgeRHS(double *invM_, double *M_, double *FToE_, double *FToN1_, double *FToN2_, double *Js_, double *J_, double *fluxM_, double *fluxP_, double *fluxS_, double *frhs_, int *Np_, int *K_, int *Nfp_, int *Ne_, int Nfield_);
 
 };
 

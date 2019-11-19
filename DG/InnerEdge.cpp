@@ -62,11 +62,11 @@ InnerEdge::~InnerEdge()
 
 void InnerEdge::EvaluateSurfValue(double *fphys, double *fm, double *fp, int *Np, int *K, int Nfield)
 {
-	c_EvaluateSurfValue(FToE, FToN1, FToN2, fphys, fm, fp, Nfp, Ne, Np, K, Nfield);
+	c_inner_EvaluateSurfValue(FToE, FToN1, FToN2, fphys, fm, fp, Nfp, Ne, Np, K, Nfield);
 }
 
 void InnerEdge::EvaluateStrongFromEdgeRHS(double *fluxM, double *fluxP, double *fluxS, double *frhs, double *invM, double *J, int *Np, int *K, int Nfield)
 
 {
-	c_EvaluateStrongFromEdgeRHS(invM, M, FToE, FToN1, FToN2, Js, J, fluxM, fluxP, fluxS, frhs, Np, K, Nfp, Ne,Nfield);
+	c_inner_EvaluateStrongFromEdgeRHS(invM, M, FToE, FToN1, FToN2, Js, J, fluxM, fluxP, fluxS, frhs, Np, K, Nfp, Ne,Nfield);
 };

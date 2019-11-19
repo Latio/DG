@@ -1,4 +1,3 @@
-
 #include"NdgPhysMat.h"
 using namespace std;
 
@@ -22,7 +21,7 @@ int main()
 	}
 	for (int i = 0; i < 1080; i++)
 	{
-		cout << *(meshunion->EToE+i) << endl;
+		cout << *(meshunion->EToE + i) << endl;
 	}
 
 

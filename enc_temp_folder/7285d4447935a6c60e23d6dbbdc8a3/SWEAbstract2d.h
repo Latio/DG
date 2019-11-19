@@ -6,7 +6,6 @@
 extern "C" {
 	//void surfluxSolver_evaluate(double hmin_, double gra_, double *nx_, double *ny_, MeshUnion *mesh_, InnerEdge *edge_);//(hmin, gra, nx, ny, fm, mesh, edge)
 	double UpdateTimeInterval2d(double hmin, double gra, int N, double *status, double *fphys, double *dx, int *Np_, int *K_, int Nfield_);
-	void c_ImposeBoundaryCondition(double gra_,double *nx_,double *ny,);
 }
 
 class SWEAbstract2d
@@ -30,7 +29,6 @@ public:
 
 	void EvaluateSurfFlux(double *nx_, double *ny_, double *fm, double *fluxM_);
 	void EvaluateSurfNumFlux(double *nx, double *ny, double *fm, double *fp, double *fluxS);
-	void ImposeBoundaryCondition();
 
 	double UpdateTimeInterval(double *fphys);
 

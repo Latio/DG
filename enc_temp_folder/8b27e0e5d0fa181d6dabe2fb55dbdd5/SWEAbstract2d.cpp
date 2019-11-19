@@ -51,8 +51,3 @@ double SWEAbstract2d::UpdateTimeInterval(double *fphys)
 
 	return dt;
 };
-
-void SWEAbstract2d::ImposeBoundaryCondition()
-{
-	c_ImposeBoundaryCondition();
-}

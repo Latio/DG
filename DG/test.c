@@ -226,67 +226,67 @@
 ////	return EXIT_SUCCESS;
 ////}
 ////
-////#include<cblas.h>   // <strong>由于cblas.h文件已经拷贝到工作目录中，只需用双引号 </strong>
-////#include<iostream>
-////using namespace std;
-////int main(void) {
-////	const enum CBLAS_ORDER Order = CblasRowMajor;
-////	const enum CBLAS_TRANSPOSE TransA = CblasNoTrans;
-////	const enum CBLAS_TRANSPOSE TransB = CblasNoTrans;
-////	const int M = 4;//A的行数，C的行数
-////	const int N = 2;//B的列数，C的列数
-////	const int K = 3;//A的列数，B的行数
-////	const float alpha = 1;
-////	const float beta = 0;
-////	const int lda = M;//A的行        //如果列优先，分别写ABC的行
-////	const int ldb = K;//B的行
-////	const int ldc = N;//C的列
-////	const double A[K*M] = { 1,4,7,8,2,5,8,7,3,6,9,6 };
-////	const double B[K*N] = { 5,3,1,4,2,0 };
-////	double C[M*N];
-////
-////	cblas_dgemm(CblasRowMajor, CblasTrans, CblasTrans, M, N, K, alpha, A, lda, B, ldb, beta, C, ldc);
+//#include<cblas.h>   // <strong>由于cblas.h文件已经拷贝到工作目录中，只需用双引号 </strong>
+//#include<iostream>
+//using namespace std;
+//int main(void) {
+//	const enum CBLAS_ORDER Order = CblasRowMajor;
+//	const enum CBLAS_TRANSPOSE TransA = CblasNoTrans;
+//	const enum CBLAS_TRANSPOSE TransB = CblasNoTrans;
+//	const int M = 4;//A的行数，C的行数
+//	const int N = 2;//B的列数，C的列数
+//	const int K = 3;//A的列数，B的行数
+//	const float alpha = 1;
+//	const float beta = 0;
+//	const int lda = M;//A的行        //如果列优先，分别写ABC的行
+//	const int ldb = K;//B的行
+//	const int ldc = N;//C的列
+//	const double A[K*M] = { 1,4,7,8,2,5,8,7,3,6,9,6 };
+//	const double B[K*N] = { 5,3,1,4,2,0 };
+//	double C[M*N];
+//
+//	cblas_dgemm(CblasRowMajor, CblasTrans, CblasTrans, M, N, K, alpha, A, lda, B, ldb, beta, C, ldc);
 
 
 
 
-////	int a[5] = { 1,2,3,4,5 };
-////	int b[8] = { 8,7,6,5,4,3,2,1 };
-////	int *pa = a;
-////	int *pb = b;
-////	double *c = C;
-////
-////	double *testcopy1 = new double[10]();
-////	int t1 = 2;
-////	int t2 = 4;
-////	cblas_dcopy(t1*t2, c, 1, testcopy1, 1);
-////
-////
-////	for (int i = 0; i < 10; i++)
-////	{
-////		cout << *(testcopy1 + i) << endl;
-////	}
-////	delete[]testcopy1;
-////	//for (int i = 0; i < 5; i++)
-////	//{
-////	//	*(a + i) = *(a + i) + (*(b + i));
-////	//	cout << *(a + i) << endl;
-////	//}
-////
-////
-////	//for (int i = 0; i < M; i++)
-////	//{
-////	//	for (int j = 0; j < N; j++)
-////	//	{
-////	//		cout << C[i*N + j] << "  ";
-////
-////	//	}
-////	//	cout << endl;
-////	//}
-////	system("pause");
-////
-////	return EXIT_SUCCESS;
-////}
+//	int a[5] = { 1,2,3,4,5 };
+//	int b[8] = { 8,7,6,5,4,3,2,1 };
+//	int *pa = a;
+//	int *pb = b;
+//	double *c = C;
+//
+//	double *testcopy1 = new double[10]();
+//	int t1 = 2;
+//	int t2 = 4;
+//	cblas_dcopy(t1*t2, c, 1, testcopy1, 1);
+//
+//
+//	for (int i = 0; i < 10; i++)
+//	{
+//		cout << *(testcopy1 + i) << endl;
+//	}
+//	delete[]testcopy1;
+//	//for (int i = 0; i < 5; i++)
+//	//{
+//	//	*(a + i) = *(a + i) + (*(b + i));
+//	//	cout << *(a + i) << endl;
+//	//}
+//
+//
+//	//for (int i = 0; i < M; i++)
+//	//{
+//	//	for (int j = 0; j < N; j++)
+//	//	{
+//	//		cout << C[i*N + j] << "  ";
+//
+//	//	}
+//	//	cout << endl;
+//	//}
+//	system("pause");
+//
+//	return EXIT_SUCCESS;
+//}
 //
 //
 ////#include"cblas.h"
@@ -449,3 +449,85 @@
 //
 //
 //
+
+//#include<cblas.h>   // <strong>由于cblas.h文件已经拷贝到工作目录中，只需用双引号 </strong>
+//#include<iostream>
+//using namespace std;
+//int main(void) {
+//	const enum CBLAS_ORDER Order = CblasRowMajor;
+//	const enum CBLAS_TRANSPOSE TransA = CblasNoTrans;
+//	const enum CBLAS_TRANSPOSE TransB = CblasNoTrans;
+//	const int M = 4;//A的行数，C的行数
+//	const int N = 2;//B的列数，C的列数
+//	const int K = 3;//A的列数，B的行数
+//	const float alpha = 1;
+//	const float beta = 0;
+//	const int lda = K;//A的列
+//	const int ldb = N;//B的列
+//	const int ldc = N;//C的列
+//	const float A[K*M] = { 1,2,3,4,5,6,7,8,9,8,7,6 };
+//	const float B[K*N] = { 5,4,3,2,1,0 };
+//	float C[M*N];
+//
+//	cblas_sgemm(Order, TransA, TransB, M, N, K, alpha, A, lda, B, ldb, beta, C, ldc);
+//
+//	for (int i = 0; i < M; i++)
+//	{
+//		for (int j = 0; j < N; j++)
+//		{
+//			cout << C[i*N + j] << "  ";
+//
+//		}
+//		cout << endl;
+//	}
+//	system("pause");
+//
+//	return EXIT_SUCCESS;
+//}
+//
+//#include<cblas.h>   
+//#include<iostream>
+//using namespace std;
+//int main(void) {
+//	const enum CBLAS_ORDER Order = CblasRowMajor;
+//	const enum CBLAS_TRANSPOSE TransA = CblasNoTrans;
+//	const enum CBLAS_TRANSPOSE TransB = CblasNoTrans;
+//	const int M = 4;//A的行数，C的行数
+//	const int N = 2;//B的列数，C的列数
+//	const int K = 3;//A的列数，B的行数
+//	const float alpha = 1;
+//	const float beta = 0;
+//	const int lda = M;//A的行        //如果列优先，分别写ABC的行
+//	const int ldb = K;//B的行
+//	const int ldc = M;//C的列
+//	const float A[K*M] = { 1,4,7,8,2,5,8,7,3,6,9,6 };
+//	const float B[K*N] = { 5,3,1,4,2,0 };
+//	float C[M*N];
+//
+//	cblas_sgemm(CblasColMajor, CblasNoTrans, CblasNoTrans,
+//		M, N, K, alpha, A, lda, B, ldb, beta, C, ldc);
+//
+//	for (int i = 0; i < M; i++)
+//	{
+//		for (int j = 0; j < N; j++)
+//		{
+//			cout << C[i*N + j] << "  ";
+//
+//		}
+//		cout << endl;
+//	}
+//	system("pause");
+//
+//	return EXIT_SUCCESS;
+//}
+
+//
+//#include<stdio.h>
+//#include<stdlib.h>
+//
+//int main() {
+//	int a = 10;
+//	const int b = a;
+//	printf("a:%d,b:%d", a, b);
+//	system("pause");
+//}

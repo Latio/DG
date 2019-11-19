@@ -11,8 +11,8 @@ double *BoundaryEdge::ftype = NULL;
 double *BoundaryEdge::Js = NULL;
 double *BoundaryEdge::LAV = NULL;
 double *BoundaryEdge::M = NULL;
-double *BoundaryEdge::Ne = NULL;
-double *BoundaryEdge::Nfp = NULL;
+int *BoundaryEdge::Ne = NULL;
+int *BoundaryEdge::Nfp = NULL;
 double *BoundaryEdge::nx = NULL;
 double *BoundaryEdge::ny = NULL;
 double *BoundaryEdge::nz = NULL;
@@ -20,7 +20,7 @@ double *BoundaryEdge::r = NULL;
 double *BoundaryEdge::xb = NULL;
 double *BoundaryEdge::yb = NULL;
 
-BoundaryEdge::BoundaryEdge():bcell()
+BoundaryEdge::BoundaryEdge() :bcell()
 {
 	MeshUnion_dim::ncvar_read(FToE, "BoundaryEdge_FToE", MeshUnion_dim::Ne_boundary, MeshUnion_dim::two);
 	MeshUnion_dim::ncvar_read(FToF, "BoundaryEdge_FToF", MeshUnion_dim::Ne_boundary, MeshUnion_dim::two);
@@ -65,5 +65,9 @@ BoundaryEdge::~BoundaryEdge()
 	freememory(&yb);
 
 	std::cout << "Îö¹¹MeshUnion_BoundaryEdge" << std::endl;
+}
+void BoundaryEdge::EvaluateSurfValue(double *fphys, double *fm, double *fp, int *Np, int *K, int Nfield)
+{
+	c_boundary_EvaluateSurfValue(FToM, FToE, FToN1, FToN2, fphys, fm, fp, Nfp, Ne, Np, K, Nfield);
 }
 
