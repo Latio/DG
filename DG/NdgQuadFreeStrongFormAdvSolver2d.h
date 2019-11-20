@@ -10,7 +10,7 @@ public:
 	NdgQuadFreeStrongFormAdvSolver2d();
 	~NdgQuadFreeStrongFormAdvSolver2d();
 
-	void evaluateAdvectionRHS(double *fphys, double *frhs);
+	void evaluateAdvectionRHS(double *fphys, double *frhs, double *fext);
 
 	SWEAbstract2d sweabstract2d;
 	/*InnerEdge inneredge;*/

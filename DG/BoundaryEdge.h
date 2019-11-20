@@ -19,7 +19,7 @@ public:
 	static double* FToN1;
 	static double* FToN2;
 	static double* FToV;
-	static double* ftype;
+	static int* ftype;
 	static double* Js;
 	static double* LAV;
 	static double* M;

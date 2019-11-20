@@ -521,13 +521,39 @@
 //	return EXIT_SUCCESS;
 //}
 
-//
+//#include"cblas.h"
 //#include<stdio.h>
 //#include<stdlib.h>
 //
+//
 //int main() {
-//	int a = 10;
-//	const int b = a;
-//	printf("a:%d,b:%d", a, b);
+//	double a[5] = { 1.1,3.3,5.5,7.8,9.1 };
+//	double b[8] = { 0 };
+//	//for (int i = 0; i < 5; i++)
+//	//{
+//	//	*(b + i) = a[i] + 10;
+//	//}
+//	int dis = 3;
+//	int disss = 2;
+//	double *temp_a = a + disss;
+//	double *temp_b = b + disss;
+//
+//	cblas_dcopy(dis, temp_a, 1, temp_b, 1);
+//	for (int i = 0; i < 5; i++)
+//	{
+//		printf("a:%f,b:%f", a[i], b[i]);
+//	}
 //	system("pause");
 //}
+
+
+
+//
+//void printdata()
+//{
+//	for (int i = 0; i < 1080; i++)
+//	{
+//		std::cout << *(meshunion->EToV+i)<<std::endl;
+//	}
+//	
+

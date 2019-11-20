@@ -14,6 +14,6 @@ public:
 	SWEFaceFluxSolver2d();
 	~SWEFaceFluxSolver2d();
 
-	void surfluxSolver_evaluate(double hmin_, double gra_, double *nx_, double *ny_, double *fm_, double *fluxM_);
+	void surfluxSolver_evaluate(double hmin, double gra, double *nx, double *ny, double *fm, double *fluxM, int *Nfp, int *Ne);
 };
 

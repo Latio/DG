@@ -8,7 +8,7 @@ NdgQuadFreeStrongFormAdvSolver2d::~NdgQuadFreeStrongFormAdvSolver2d()
 {
 }
 
-void NdgQuadFreeStrongFormAdvSolver2d::evaluateAdvectionRHS(double *fphys, double *frhs)
+void NdgQuadFreeStrongFormAdvSolver2d::evaluateAdvectionRHS(double *fphys, double *frhs, double *fext)
 {
 
 	double *fm;
@@ -36,9 +36,9 @@ void NdgQuadFreeStrongFormAdvSolver2d::evaluateAdvectionRHS(double *fphys, doubl
 	double *nx = meshunion->inneredge_p->nx;
 	double *ny = meshunion->inneredge_p->ny;
 	mesh.inneredge.EvaluateSurfValue(fphys, fm, fp, Np, K, Nfield);//return fm,fp
-	sweabstract2d.EvaluateSurfFlux(nx, ny, fm, fluxM);//return fluxM
-	sweabstract2d.EvaluateSurfFlux(nx, ny, fm, fluxP);//return fluxP
-	sweabstract2d.EvaluateSurfNumFlux(nx, ny, fm, fp, fluxS);//retuen fluxS
+	sweabstract2d.EvaluateSurfFlux(nx, ny, fm, fluxM, Nfp, Ne);//return fluxM
+	sweabstract2d.EvaluateSurfFlux(nx, ny, fm, fluxP, Nfp, Ne);//return fluxP
+	sweabstract2d.EvaluateSurfNumFlux(nx, ny, fm, fp, fluxS, Nfp, Ne);//retuen fluxS
 	mesh.inneredge.EvaluateStrongFromEdgeRHS(fluxM, fluxP, fluxS, frhs, invM, J, Np, K, Nfield);
 
 	freememory(&fm);
@@ -55,7 +55,7 @@ void NdgQuadFreeStrongFormAdvSolver2d::evaluateAdvectionRHS(double *fphys, doubl
 	requestmemory(&fm, Nfp_b, Ne_b, Nfield);
 	requestmemory(&fp, Nfp_b, Ne_b, Nfield);
 	requestmemory(&fluxM, Nfp_b, Ne_b, NVAR);
-	requestmemory(&fluxP, Nfp_b, Ne_b, NVAR);
+	//requestmemory(&fluxP, Nfp_b, Ne_b, NVAR);
 	requestmemory(&fluxS, Nfp_b, Ne_b, NVAR);
 
 	// evaluate boundary edge
@@ -63,13 +63,14 @@ void NdgQuadFreeStrongFormAdvSolver2d::evaluateAdvectionRHS(double *fphys, doubl
 	ny = meshunion->boundarydge_p->ny;
 
 	mesh.boundarydge.EvaluateSurfValue(fphys, fm, fp, Np, K, Nfield);
-
-
+	sweabstract2d.ImposeBoundaryCondition(nx, ny, fm, fp, fext);
+	sweabstract2d.EvaluateSurfFlux(nx, ny, fm, fluxM, Nfp_b, Ne_b);//return fluxM
+	sweabstract2d.EvaluateSurfNumFlux(nx, ny, fm, fp, fluxS, Nfp_b, Ne_b);
 
 	freememory(&fm);
 	freememory(&fp);
 	freememory(&fluxM);
-	freememory(&fluxP);
+	//freememory(&fluxP);
 	freememory(&fluxS);
 
 };

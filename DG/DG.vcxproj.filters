@@ -240,14 +240,14 @@
     <ClCompile Include="c_boundary_EvaluateSurfValue.c">
       <Filter>源文件\MeshUnion\BoundaryEdge\private</Filter>
     </ClCompile>
-    <ClCompile Include="test.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="c_ImposeBoundaryCondition.c">
       <Filter>源文件\SWEAbstract2d\private</Filter>
     </ClCompile>
     <ClCompile Include="c_HydrostaticReconstruction.c">
       <Filter>源文件\SWEAbstract2d\private</Filter>
+    </ClCompile>
+    <ClCompile Include="test.c">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
