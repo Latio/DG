@@ -71,3 +71,9 @@ void BoundaryEdge::EvaluateSurfValue(double *fphys, double *fm, double *fp, int 
 	c_boundary_EvaluateSurfValue(FToM, FToE, FToN1, FToN2, fphys, fm, fp, Nfp, Ne, Np, K, Nfield);
 }
 
+void BoundaryEdge::EvaluateStrongFromEdgeRHS(double *invM_,  double *J, double *fluxM, double *fluxS, int *Np, int *K,  int Nfield, double *frhs_temp)
+{
+	c_boundary_EvaluateStrongFormEdgeRHS(invM_, M, FToE, FToN1, Js, J, fluxM, fluxS, Np, K, Nfp, Ne, Nfield, frhs_temp);
+
+};
+

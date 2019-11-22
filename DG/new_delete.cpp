@@ -11,7 +11,7 @@ void requestmemory(double **meshpoint, int&dim1, int&dim2)
 
 void requestmemory(double **meshpoint, int*dim1, int*dim2)
 {
-	*meshpoint = new double[(*dim1)*(*dim2)];
+	*meshpoint = new double[(*dim1)*(*dim2)]();
 };
 
 
@@ -57,6 +57,17 @@ void freememory(int **meshpoint)
 	if (*meshpoint != NULL)
 	{
 		delete []*meshpoint;
+		*meshpoint = NULL;
+
+	}
+
+};
+
+void freememory(signed char **meshpoint)
+{
+	if (*meshpoint != NULL)
+	{
+		delete[] * meshpoint;
 		*meshpoint = NULL;
 
 	}

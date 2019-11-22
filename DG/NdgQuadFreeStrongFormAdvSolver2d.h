@@ -1,6 +1,6 @@
 #pragma once
 #include"MeshUnion.h"
-#include"SWEAbstract2d.h"
+#include"SWEPreBlanaced2d.h"
 
 
 
@@ -13,6 +13,7 @@ public:
 	void evaluateAdvectionRHS(double *fphys, double *frhs, double *fext);
 
 	SWEAbstract2d sweabstract2d;
+	SWEPreBlanaced2d swepreblanaced2d;
 	/*InnerEdge inneredge;*/
 };
 

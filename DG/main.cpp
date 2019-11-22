@@ -22,8 +22,32 @@ int main()
 			cout << *(x.fext + i) << endl;
 		}
 	};
+	typedef enum {
+		NdgRegionNormal = 1,
+		NdgRegionRefine = 2,
+		NdgRegionSponge = 3,
+		NdgRegionWet = 4,
+		NdgRegionDry = 5,
+		NdgRegionPartialWet = 6,
+		NdgRegionPartialWetFlood = 7,
+		NdgRegionPartialWetDamBreak = 8
+	} test;
+
+	signed char *xxx = meshunion->status;
+	signed char* regType = xxx;
 
 
+	int a = 0;
+	for (int i = 0; i < 360; i++)
+	{
+		test type = (test)xxx[i];
+		if (type == NdgRegionWet)
+		{
+			a++;
+			//cout << "success" <<a <<"  "<< i<<endl;
+			cout << int(xxx[i]) << endl;
+		}
+	}
 
 
 

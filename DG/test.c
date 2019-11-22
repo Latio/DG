@@ -528,7 +528,7 @@
 //
 //int main() {
 //	double a[5] = { 1.1,3.3,5.5,7.8,9.1 };
-//	double b[8] = { 0 };
+//	double b[5] = { 0 };
 //	//for (int i = 0; i < 5; i++)
 //	//{
 //	//	*(b + i) = a[i] + 10;
@@ -537,15 +537,19 @@
 //	int disss = 2;
 //	double *temp_a = a + disss;
 //	double *temp_b = b + disss;
-//
-//	cblas_dcopy(dis, temp_a, 1, temp_b, 1);
+//	 
+//	int num = 5;
+//	double alpha = 2.0;
+//	
+//	cblas_daxpy(num,alpha,a,1,a,1);
+//	//cblas_dcopy(dis, temp_a, 1, temp_b, 1);
 //	for (int i = 0; i < 5; i++)
 //	{
 //		printf("a:%f,b:%f", a[i], b[i]);
 //	}
 //	system("pause");
 //}
-
+//
 
 
 //
@@ -557,3 +561,26 @@
 //	}
 //	
 
+
+//#include<stdlib.h>
+//#include<stdio.h>
+
+
+//int main()
+//{
+//	const int a = 5;
+//	typedef int(myarry)[a];
+//	myarry xxx;
+//
+//	for (int i = 0; i < 5; i++)
+//	{
+//		xxx[i] = i * i;
+//	};
+//	for (int j = 0; j < 5; j++)
+//	{
+//		printf("xxx[%d]:%d", j, xxx);
+//	};
+//
+//	system("pause");
+//	return 0;
+//}

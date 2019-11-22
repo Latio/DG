@@ -6,7 +6,7 @@
 
 extern "C" {
 	//void surfluxSolver_evaluate(double hmin_, double gra_, double *nx_, double *ny_, MeshUnion *mesh_, InnerEdge *edge_);//(hmin, gra, nx, ny, fm, mesh, edge)
-	double UpdateTimeInterval2d(double hmin, double gra, int N, double *status, double *fphys, double *dx, int *Np_, int *K_, int Nfield_);
+	double UpdateTimeInterval2d(double hmin, double gra, int N, signed char *status, double *fphys, double *dx, int *Np_, int *K_, int Nfield_);
 	void c_ImposeBoundaryCondition(double gra_, double *nx_, double *ny_, double *fp_, double *fext_, int *ftype_, int *Nfp_, int* Ne_, int Nfield_);
 	void c_HydrostaticReconstruction(double hmin_, double *fm_, double *fp_, const int *Nfp_, const int *Ne_, const int Nfield_);
 }

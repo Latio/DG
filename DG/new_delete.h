@@ -11,3 +11,5 @@ void requestmemory(int **meshpoint, int&dim1);
 void freememory(double **meshpoint);
 
 void freememory(int **meshpoint);
+
+void freememory(signed char **meshpoint);

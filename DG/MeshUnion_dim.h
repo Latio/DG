@@ -14,7 +14,7 @@ public:
 	static void ncvar_read(double *&meshunion_data, std::string ncvarname, int &dim1);
 	static void ncvar_read(int *&meshunion_data, std::string ncvarname, int &dim1, int &dim2);
 	static void ncvar_read(int *&meshunion_data, std::string ncvarname, int &dim1);
-
+	static void ncvar_read(int8_t *&meshunion_data, std::string ncvarname, int &dim1, int &dim2);
 	static int K;
 	static int Nv;
 	static int Ne_inner;

@@ -36,14 +36,14 @@ void c_inner_EvaluateStrongFromEdgeRHS(double *invM_, double *M_, double *FToE_,
 
 	const int Nfp = *Nfp_;
 	const int Ne = *Ne_;  // num of edges
-	int Nfield;
+	int Nfield= Nfield_;
 
-	if (Nfield_ > 2) {
-		Nfield = Nfield_;
-	}
-	else {
-		Nfield = 1;  // fluxM is a 2D matrix
-	}
+	//if (Nfield_ > 2) {
+	//	Nfield = Nfield_;
+	//}
+	//else {
+	//	Nfield = 1;  // fluxM is a 2D matrix
+	//}
 
 	//const size_t ndimOut = 3;
 	//const mwSize dimOut[3] = { Np, K, Nfield };

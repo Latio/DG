@@ -9,10 +9,7 @@ class MeshUnion
 {
 public:
 	MeshUnion() ;
-
 	~MeshUnion();
-
-	friend class NdgQuadFreeStrongFormAdvSolver2d;
 	
 	InnerEdge inneredge;
 	static InnerEdge *inneredge_p;
@@ -42,7 +39,7 @@ public:
 	static double*rx;
 	static double*ry;
 	static double*rz;
-	static double*status;
+	static signed char *status;
 	static double*sx;
 	static double*sy;
 	static double*sz;

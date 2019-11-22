@@ -39,7 +39,7 @@ double SWEAbstract2d::UpdateTimeInterval(double *fphys)
 {
 	double dt = 0;
 	int N = *meshunion->cell_p->N;
-	double *status = meshunion->status;
+	signed char *status = meshunion->status;
 	int *Np = meshunion->cell_p->Np;
 	int *K = meshunion->K;
 

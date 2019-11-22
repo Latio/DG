@@ -94,3 +94,13 @@ void MeshUnion_dim::ncvar_read(int *&meshunion_data, std::string ncvarname, int 
 	temp_v.getVar(meshunion_data);
 }
 
+void MeshUnion_dim::ncvar_read(int8_t *&meshunion_data, std::string ncvarname, int &dim1, int &dim2)
+{
+	//meshunion_data = new double[Ne_boundary*two];
+	meshunion_data = new int8_t[dim1*dim2];
+	NcFile dataFile("meshUnion.nc", NcFile::read);
+
+	NcVar temp_v = dataFile.getVar(ncvarname);
+
+	temp_v.getVar(meshunion_data);
+}

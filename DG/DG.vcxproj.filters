@@ -97,6 +97,27 @@
     <Filter Include="源文件\MeshUnion\BoundaryEdge\private">
       <UniqueIdentifier>{6ed4c996-7d83-44cd-bc5a-3c1af3a15fdd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\SWEPreBlanaced2d">
+      <UniqueIdentifier>{f4cae2df-5cc1-44a9-a596-4114e10b90aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\SWEPreBlanaced2d">
+      <UniqueIdentifier>{5c85457a-7cda-4ffd-931e-ec38941e9020}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWEPrebalanceVolumeFlux2d">
+      <UniqueIdentifier>{7b28c037-28ae-4a66-beb2-44df9e2837fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\SWEPrebalanceVolumeFlux2d">
+      <UniqueIdentifier>{40c24d12-db36-4fb4-99e3-08f9626b8028}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\SWEConventional2d">
+      <UniqueIdentifier>{187db518-708b-48d1-b412-3aec0b08a8be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\SWEConventional2d">
+      <UniqueIdentifier>{eca8fa96-fb4b-4734-9137-d773fcf3d574}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWEPrebalanceVolumeFlux2d\private">
+      <UniqueIdentifier>{d9416d73-2f35-4ac7-b22e-7243c1c60cbb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -249,6 +270,21 @@
     <ClCompile Include="test.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="c_boundary_EvaluateStrongFormEdgeRHS.c">
+      <Filter>源文件\MeshUnion\BoundaryEdge\private</Filter>
+    </ClCompile>
+    <ClCompile Include="SWEPrebalanceVolumeFlux2d.cpp">
+      <Filter>源文件\Solver\SWEPrebalanceVolumeFlux2d</Filter>
+    </ClCompile>
+    <ClCompile Include="SWEConventional2d.cpp">
+      <Filter>源文件\SWEConventional2d</Filter>
+    </ClCompile>
+    <ClCompile Include="SWEPreBlanaced2d.cpp">
+      <Filter>源文件\SWEPreBlanaced2d</Filter>
+    </ClCompile>
+    <ClCompile Include="c_EvaluateFlux2d.c">
+      <Filter>源文件\Solver\SWEPrebalanceVolumeFlux2d\private</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MeshUnion.h">
@@ -295,6 +331,15 @@
     </ClInclude>
     <ClInclude Include="SWENumFlux2d.h">
       <Filter>头文件\Solver\SWEHLLNumFluxSolver2d</Filter>
+    </ClInclude>
+    <ClInclude Include="SWEPrebalanceVolumeFlux2d.h">
+      <Filter>头文件\Solver\SWEPrebalanceVolumeFlux2d</Filter>
+    </ClInclude>
+    <ClInclude Include="SWEConventional2d.h">
+      <Filter>头文件\SWEConventional2d</Filter>
+    </ClInclude>
+    <ClInclude Include="SWEPreBlanaced2d.h">
+      <Filter>头文件\SWEPreBlanaced2d</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
