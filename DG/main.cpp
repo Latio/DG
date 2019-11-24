@@ -45,7 +45,7 @@ int main()
 		{
 			a++;
 			//cout << "success" <<a <<"  "<< i<<endl;
-			cout << int(xxx[i]) << endl;
+			cout << int(xxx[i]) << "num:"<<i<<endl;
 		}
 	}
 

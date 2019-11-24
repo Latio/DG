@@ -123,3 +123,22 @@ MeshUnion::~MeshUnion()
 	std::cout << "Îö¹¹MeshUnion" << std::endl;
 }
 
+void MeshUnion::GetMeshAverageValue(double *nodeVal, double *averageValue)
+{
+	double *wq = cell_p->wq;
+	double *Vq = cell_p->Vq;
+	int *Np = cell_p->Np;
+	int *Nq = cell_p->Nq;
+
+	double *integralValue;
+	requestmemory(&integralValue, K);
+	c_GetMeshIntegralValue(nodeVal, wq, J, Vq, Np, K, Nq, integralValue);
+
+	for (int i = 0; i < *K; i++)
+	{
+		*(averageValue + i) = (*(integralValue + i)) / (*(LAV + i));
+	}
+
+	freememory(&integralValue);
+
+};

@@ -2,7 +2,8 @@
 //#include "NdgPhysMat.h"
 #include "SWEFaceFluxSolver2d.h"
 #include"SWEHLLNumFluxSolver2d.h"
-#include"cblas.h"
+#include"SWEPrebalanceVolumeFlux2d.h"
+#include"SWETopographySourceTerm2d.h"
 
 extern "C" {
 	//void surfluxSolver_evaluate(double hmin_, double gra_, double *nx_, double *ny_, MeshUnion *mesh_, InnerEdge *edge_);//(hmin, gra, nx, ny, fm, mesh, edge)
@@ -25,6 +26,14 @@ public:
 	const int Nfield;
 	const double Nvar;
 
+	//enum enumSWERegion { Sun, Mon, Tue, Wed, Thu, Fri, Sat };
+
+	//Sponge(3) % sponge cell
+	//	Wet(4) % well cell(SWE)
+	//	Dry(5) % dry cell(SWE)
+	//	PartialWet(6)
+	//	PartialWetFlood(7)
+	//	PartialWetDamBreak(8)
 	double *dx;
 
 	//int varFieldIndex[3];
@@ -33,7 +42,7 @@ public:
 	void EvaluateSurfFlux(double *nx, double *ny, double *fm, double *fluxM, int *Nfp, int *Ne);
 	void EvaluateSurfNumFlux(double *nx, double *ny, double *fm, double *fp, double *fluxS, int *Nfp, int *Ne);
 	void ImposeBoundaryCondition(double *nx, double *ny, double *fm, double *fp, double *fext);
-
+	void EvaluateSourceTerm(double *fphys, double *frhs, double *zGrad);
 	double UpdateTimeInterval(double *fphys);
 
 	SWEAbstract2d();
@@ -41,6 +50,7 @@ public:
 
 	SWEFaceFluxSolver2d swefacefluxsolver2d;
 	SWEHLLNumFluxSolver2d swehllnumfluxsolver2d;
-
+	SWEPrebalanceVolumeFlux2d sweprebalancevolumeflux2d;
+	SWETopographySourceTerm2d swetopographysourceterm2d;
 };
 

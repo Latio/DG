@@ -85,7 +85,7 @@ void c_boundary_EvaluateStrongFormEdgeRHS(double *invM_, double *M_, double *FTo
 			const int ind = k * Nfp;
 
 			//double rhsM[Nfp];  // rhsP[Nfp];//
-			
+
 			for (int n = 0; n < Nfp; n++) {
 				rhsM[n] = 0;
 				// rhsP[n] = 0;
@@ -112,10 +112,10 @@ void c_boundary_EvaluateStrongFormEdgeRHS(double *invM_, double *M_, double *FTo
 				rhs[m1] += rhsM[n];
 				// rhs[m2] += rhsP[n];
 			}
-		
-		}	
-		
-		
+
+		}
+
+
 		//double temp[Np];
 		//double *temp = (double*)malloc(sizeof(double)*Np);
 		for (int k = 0; k < K; k++) {

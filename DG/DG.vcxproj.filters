@@ -118,6 +118,54 @@
     <Filter Include="源文件\Solver\SWEPrebalanceVolumeFlux2d\private">
       <UniqueIdentifier>{d9416d73-2f35-4ac7-b22e-7243c1c60cbb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\Solver\SWESourceTerm2d">
+      <UniqueIdentifier>{24b43157-f408-4b5c-856e-d9ca69f076a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWESourceTerm2d\SWETopographySourceTerm2d">
+      <UniqueIdentifier>{1db90796-7949-48bb-bdba-1324b3843bf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWESourceTerm2d\SWETopographySourceTerm2d\private">
+      <UniqueIdentifier>{bc14c292-d648-45a4-a21b-451e0861432e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\SWESourceTerm2d">
+      <UniqueIdentifier>{ca00c47f-136e-4f83-958e-c54a291420f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\SWESourceTerm2d\SWETopographySourceTerm2d">
+      <UniqueIdentifier>{46e1e39a-38ce-46a3-8cc3-6ceeaee5179b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWESourceTerm2d\CoriolisTermSolver">
+      <UniqueIdentifier>{9e4ed06e-a478-4c51-ab81-a01df6978e39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\SWESourceTerm2d\CoriolisTermSolver">
+      <UniqueIdentifier>{93082d38-9682-416a-9001-6ecc688e76a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\SWESourceTerm2d\FrictionTermSolver">
+      <UniqueIdentifier>{40eef7e6-1bbc-4773-89f4-edb1f7b8e8c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWESourceTerm2d\FrictionTermSolver">
+      <UniqueIdentifier>{cc9367ae-a348-4ebd-b0b3-1491e0e8c0f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWESourceTerm2d\WindTermSolver">
+      <UniqueIdentifier>{3b951a31-80cf-4058-aa8c-ff9dd2cb59bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\SWESourceTerm2d\WindTermSolver">
+      <UniqueIdentifier>{0333fe1d-03b1-400b-a417-d690a8433ed9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWESourceTerm2d\NdghydrostaticSolver2d">
+      <UniqueIdentifier>{d9df547d-7ee3-4f91-8a53-2a8dee34752d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\SWESourceTerm2d\NdghydrostaticSolver2d">
+      <UniqueIdentifier>{d168b6a7-547b-4f3d-a6e2-cc2f3e368c18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\MeshUnion\private">
+      <UniqueIdentifier>{d649e2db-9ade-49c0-9965-903757e9c904}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\MeshUnion\private">
+      <UniqueIdentifier>{e7df3de3-5838-42be-bae3-10f7e1c019e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\SWEConventional2d\private">
+      <UniqueIdentifier>{568f361c-e062-46bf-a8cf-77c3ba8776fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -285,6 +333,30 @@
     <ClCompile Include="c_EvaluateFlux2d.c">
       <Filter>源文件\Solver\SWEPrebalanceVolumeFlux2d\private</Filter>
     </ClCompile>
+    <ClCompile Include="c_EvaluateSourceTopography2d.c">
+      <Filter>源文件\Solver\SWESourceTerm2d\SWETopographySourceTerm2d\private</Filter>
+    </ClCompile>
+    <ClCompile Include="SWETopographySourceTerm2d.cpp">
+      <Filter>源文件\Solver\SWESourceTerm2d\SWETopographySourceTerm2d</Filter>
+    </ClCompile>
+    <ClCompile Include="CoriolisTermSolver.cpp">
+      <Filter>源文件\Solver\SWESourceTerm2d\CoriolisTermSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="FrictionTermSolver.cpp">
+      <Filter>源文件\Solver\SWESourceTerm2d\FrictionTermSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="WindTermSolver.cpp">
+      <Filter>源文件\Solver\SWESourceTerm2d\WindTermSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="NdghydrostaticSolver2d.cpp">
+      <Filter>源文件\Solver\SWESourceTerm2d\NdghydrostaticSolver2d</Filter>
+    </ClCompile>
+    <ClCompile Include="c_GetMeshIntegralValue.c">
+      <Filter>源文件\MeshUnion\private</Filter>
+    </ClCompile>
+    <ClCompile Include="c_EvaluatePostFunc2d.c">
+      <Filter>源文件\SWEConventional2d\private</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MeshUnion.h">
@@ -340,6 +412,21 @@
     </ClInclude>
     <ClInclude Include="SWEPreBlanaced2d.h">
       <Filter>头文件\SWEPreBlanaced2d</Filter>
+    </ClInclude>
+    <ClInclude Include="SWETopographySourceTerm2d.h">
+      <Filter>头文件\Solver\SWESourceTerm2d\SWETopographySourceTerm2d</Filter>
+    </ClInclude>
+    <ClInclude Include="CoriolisTermSolver.h">
+      <Filter>头文件\Solver\SWESourceTerm2d\CoriolisTermSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="FrictionTermSolver.h">
+      <Filter>头文件\Solver\SWESourceTerm2d\FrictionTermSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="WindTermSolver.h">
+      <Filter>头文件\Solver\SWESourceTerm2d\WindTermSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="NdghydrostaticSolver2d.h">
+      <Filter>头文件\Solver\SWESourceTerm2d\NdghydrostaticSolver2d</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

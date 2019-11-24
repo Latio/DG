@@ -3,14 +3,19 @@
 #include"BoundaryEdge.h"
 #include"InnerEdge.h"
 #include"Cell.h"
+extern "C" {
+	void c_GetMeshIntegralValue(double *nodeVal_, double *wq_, double *J_, double *Vq_, int *Np_, int *K_, int *Nq_, double *integralValue_);
+}
 
 
 class MeshUnion
 {
 public:
-	MeshUnion() ;
+	MeshUnion();
 	~MeshUnion();
-	
+	void GetMeshAverageValue(double *nodeVal, double *averageValue);
+
+
 	InnerEdge inneredge;
 	static InnerEdge *inneredge_p;
 

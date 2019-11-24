@@ -22,10 +22,6 @@ SWEAbstract2d::~SWEAbstract2d()
 
 void SWEAbstract2d::EvaluateSurfFlux(double *nx, double *ny, double *fm, double *fluxM, int *Nfp, int *Ne)
 {
-	//int *Nfp = meshunion->inneredge_p->Nfp;
-	//int *Ne = meshunion->inneredge_p->Ne;
-	//int Nfield = meshunion->Nfield;
-
 	swefacefluxsolver2d.surfluxSolver_evaluate(hmin, gra, nx, ny, fm, fluxM, Nfp, Ne);
 };
 
@@ -60,7 +56,6 @@ void SWEAbstract2d::ImposeBoundaryCondition(double *nx, double *ny, double *fm, 
 	int Nfield = meshunion->Nfield;
 
 	c_ImposeBoundaryCondition(gra, nx, ny, fp, fext, ftype, Nfp, Ne, Nfield);
-
 	//fP(:,:,6) = fM(:,:,6);
 	int dis = (*Nfp)*(*Ne);
 	double *fp_6 = fp + dis * 5;
@@ -69,5 +64,24 @@ void SWEAbstract2d::ImposeBoundaryCondition(double *nx, double *ny, double *fm, 
 
 	c_HydrostaticReconstruction(hmin, fm, fp, Nfp, Ne, Nfield);
 
-
 }
+
+void SWEAbstract2d::EvaluateSourceTerm(double *fphys,double *frhs,double *zGrad)
+{
+	//function matEvaluateSourceTerm(obj, fphys)
+	//	% frhs = frhs + BottomTerm
+	//	obj.matEvaluateTopographySourceTerm(fphys);
+	//% frhs = frhs + CoriolisTerm
+	//	obj.coriolisSolver.evaluateCoriolisTermRHS(obj, fphys);
+	//% frhs = frhs + FrictionTerm
+	//	obj.frictionSolver.evaluateFrictionTermRHS(obj, fphys);
+	//% frhs = frhs + WindTerm
+	//	obj.windSolver.evaluateWindTermRHS(obj, fphys);
+
+	//obj.NonhydrostaticSolver.evaluateNonhydroRHS(obj, fphys);
+	//end
+
+	//sweprebalancevolumeflux2d.evaluate();
+	swetopographysourceterm2d.EvaluateTopographySourceTerm(gra, fphys, zGrad, frhs);
+
+};

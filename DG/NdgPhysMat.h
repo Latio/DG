@@ -20,7 +20,7 @@ public:
 	void EvaluateSourceTerm(double *fphys);
 
 	void UpdateExternalField(double *fphys);
-	void EvaluateRHS(double *fphys);
+	void EvaluateRHS(double *fphys, double *frhs);
 
 	double* EvaluatePostFunc(double *fphys);
 

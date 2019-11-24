@@ -15,6 +15,7 @@ NdgPhysMat::NdgPhysMat()
 {
 	ftime = 10;//total simulation time;
 	requestmemory(&fext, meshunion->boundarydge_p->Nfp, meshunion->boundarydge_p->Ne, meshunion->Nfield);
+
 	//Nfield = 7;
 	//Nvar = 3;
 
@@ -80,16 +81,25 @@ void NdgPhysMat::matEvaluateSSPRK22()
 		{
 			double tlol = time + dt;//tloc是否要是局部变量待确定。
 			//UpdateExternalField(fphys);
-			EvaluateRHS(fphys);
+			EvaluateRHS(fphys, frhs);
 
-			//for (int i = 0; i < (*meshunion->cell->Np)*(*meshunion->K) * 3; i++)
-			//{
-			//	*(fphys + i) = *(fphys + i) + dt * (*(frhs + i));
-			//}
+			//fphys{ n }(:, : , obj.varFieldIndex) ...
+			//	= fphys{ n }(:, : , obj.varFieldIndex) + dt * obj.frhs{ n };
+
+			const int num = (*Np)*(*K)*Nvar;
+			//const int dis1 = 1;
+			//const int dis2 = 1;
+			//const int alpha = 1;
+			double *frhs_temp;
+			requestmemory(&frhs_temp, Np, K, Nvar);
+			cblas_dcopy(num, frhs, 1, frhs_temp, 1);
+			cblas_dscal(num, dt, frhs_temp, 1);
+			cblas_daxpy(num, 1, frhs_temp, 1, fphys, 1);
+
+			freememory(&frhs_temp);
+			//fphys = EvaluatePostFunc(fphys);
 
 
-
-			fphys = EvaluatePostFunc(fphys);
 		}
 
 		for (int i = 0; i < (*Np)*(*K) * 3; i++)
@@ -123,11 +133,12 @@ void NdgPhysMat::matEvaluateSSPRK22()
 
 
 
-void NdgPhysMat::EvaluateRHS(double *fphys)
+void NdgPhysMat::EvaluateRHS(double *fphys, double *frhs)
 {
 	ndgquadfreestrongformadvsolver2d.evaluateAdvectionRHS(fphys, frhs, fext);
 	//matEvaluateRHS(fphys);
-	//matEvaluateSourceTerm(fphys);
+	double *zGrad;
+	sweabstract2d.EvaluateSourceTerm(fphys, frhs, zGrad);
 };
 
 

@@ -30,6 +30,14 @@ void requestmemory(double **meshpoint, int&dim1)
 {
 	*meshpoint = new double[dim1];
 };
+
+void requestmemory(double **meshpoint, int*dim1)
+{
+	*meshpoint = new double[*dim1]();
+};
+
+
+
 void requestmemory(int **meshpoint, int&dim1, int&dim2)
 {
 	*meshpoint = new int[dim1*dim2];

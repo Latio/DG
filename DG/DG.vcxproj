@@ -136,12 +136,18 @@
     <ClCompile Include="c_boundary_EvaluateSurfValue.c" />
     <ClCompile Include="c_Evaluate.c" />
     <ClCompile Include="c_EvaluateFlux2d.c" />
+    <ClCompile Include="c_EvaluatePostFunc2d.c" />
+    <ClCompile Include="c_EvaluateSourceTopography2d.c" />
+    <ClCompile Include="c_GetMeshIntegralValue.c" />
     <ClCompile Include="c_HydrostaticReconstruction.c" />
     <ClCompile Include="c_inner_EvaluateSurfValue.c" />
     <ClCompile Include="c_EvaluateSurfFlux.c" />
     <ClCompile Include="c_inner_EvaluateStrongFromEdgeRHS.c" />
     <ClCompile Include="c_ImposeBoundaryCondition.c" />
+    <ClCompile Include="FrictionTermSolver.cpp" />
+    <ClCompile Include="NdghydrostaticSolver2d.cpp" />
     <ClCompile Include="NdgQuadFreeStrongFormAdvSolver2d.cpp" />
+    <ClCompile Include="CoriolisTermSolver.cpp" />
     <ClCompile Include="SWE2d.c" />
     <ClCompile Include="SWEAbstract2d.cpp" />
     <ClCompile Include="SWEConventional2d.cpp" />
@@ -149,6 +155,7 @@
     <ClCompile Include="SWEHLLNumFluxSolver2d.cpp" />
     <ClCompile Include="SWEPrebalanceVolumeFlux2d.cpp" />
     <ClCompile Include="SWEPreBlanaced2d.cpp" />
+    <ClCompile Include="SWETopographySourceTerm2d.cpp" />
     <ClCompile Include="test.c" />
     <ClCompile Include="UpdateTimeInterval2d.c" />
     <ClCompile Include="new_delete.cpp" />
@@ -186,10 +193,14 @@
     <ClCompile Include="ncVarAtt.cpp" />
     <ClCompile Include="ncVlenType.cpp" />
     <ClCompile Include="NdgPhysMat.cpp" />
+    <ClCompile Include="WindTermSolver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h" />
+    <ClInclude Include="FrictionTermSolver.h" />
+    <ClInclude Include="NdghydrostaticSolver2d.h" />
     <ClInclude Include="NdgQuadFreeStrongFormAdvSolver2d.h" />
+    <ClInclude Include="CoriolisTermSolver.h" />
     <ClInclude Include="SWE2d.h" />
     <ClInclude Include="new_delete.h" />
     <ClInclude Include="MeshUnion.h" />
@@ -206,6 +217,8 @@
     <ClInclude Include="SWENumFlux2d.h" />
     <ClInclude Include="SWEPrebalanceVolumeFlux2d.h" />
     <ClInclude Include="SWEPreBlanaced2d.h" />
+    <ClInclude Include="SWETopographySourceTerm2d.h" />
+    <ClInclude Include="WindTermSolver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
