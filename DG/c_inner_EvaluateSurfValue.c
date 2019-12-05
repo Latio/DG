@@ -17,16 +17,16 @@ void c_inner_EvaluateSurfValue(double *FToE_, double *FToN1_, double *FToN2_, do
 	const int Ne = *Ne_;
 	const int Np = *Np_;
 	const int K = *K_;
-	int Nfield;
+	const int Nfield = Nfield_;
 
-	if (Nfield_ > 2)
-	{
-		Nfield = Nfield_;
-	}
-	else
-	{
-		Nfield = 1;
-	}
+	//if (Nfield_ > 2)
+	//{
+	//Nfield = Nfield_;
+	//}
+	//else
+	//{
+	//	Nfield = 1;
+	//}
 
 #ifdef DEBUG
 	printf("Nfp = %d, Ne = %d, Np = %d, K = %d\n", Nfp, Ne, Np, K);

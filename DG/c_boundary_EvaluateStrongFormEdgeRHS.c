@@ -16,7 +16,7 @@ void myfree(double **arr);
 //#define NRHS 8
 //#define NLHS 1
 
-void c_boundary_EvaluateStrongFormEdgeRHS(double *invM_, double *M_, double *FToE_, double *FToN1_, double *Js_, double *J_, double *fluxM__, double *fluxS__, int *Np_, int *K_, int *Nfp_, int *Ne_, int Nfield_, double *frhs_temp_)
+void c_boundary_EvaluateStrongFormEdgeRHS(double *invM_, double *M_, double *FToE_, double *FToN1_, double *Js_, double *J_, double *fluxM__, double *fluxS__, int *Np_, int *K_, int *Nfp_, int *Ne_, int Nfield_,double *const frhs_temp_)
 {
 
 	//void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
@@ -61,10 +61,10 @@ void c_boundary_EvaluateStrongFormEdgeRHS(double *invM_, double *M_, double *FTo
 	plhs[0] = mxCreateNumericArray(ndimOut, dimOut, mxDOUBLE_CLASS, mxREAL);*/
 	double *frhs = frhs_temp_;
 
-	char *chn = "N";
-	double one = 1.0, zero = 0.0;
-	ptrdiff_t oneI = 1;
-	ptrdiff_t np = Np;
+	//char *chn = "N";
+	//double one = 1.0, zero = 0.0;
+	int oneI = 1;
+	//int np = Np;
 
 #ifdef _OPENMP
 #pragma omp parallel for num_threads(DG_THREADS)
@@ -76,7 +76,7 @@ void c_boundary_EvaluateStrongFormEdgeRHS(double *invM_, double *M_, double *FTo
 		double *fluxS_ = fluxS + Nfp * Ne * fld;
 
 		double *rhsM = (double*)malloc(sizeof(double)*Nfp);
-		double *temp = (double*)malloc(sizeof(double)*Np);
+		
 		for (int k = 0; k < Ne; k++) {  // evaluate rhs on each edge
 			const int e1 = (int)FToE[2 * k] - 1;
 			// const int e2 = (int)FToE[2 * k + 1] - 1;
@@ -118,6 +118,7 @@ void c_boundary_EvaluateStrongFormEdgeRHS(double *invM_, double *M_, double *FTo
 
 		//double temp[Np];
 		//double *temp = (double*)malloc(sizeof(double)*Np);
+		double *temp = (double*)malloc(sizeof(double)*Np);
 		for (int k = 0; k < K; k++) {
 			double *rhs_ = rhs + k * Np;
 			double *j = J + k * Np;
@@ -138,6 +139,8 @@ void c_boundary_EvaluateStrongFormEdgeRHS(double *invM_, double *M_, double *FTo
 			//cblas_dgemm(chn, chn, &np, &oneI, &np, &one, invM, &np, rhs_, &np, &zero, temp, &np);
 			cblas_dgemm(Order, TransA, TransB, M, N, K, alpha, invM, lda, rhs_, ldb, beta, temp, ldc);
 
+			//printf( "c_boundary_EvaluateStrongFormEdgeRHS.c\n");
+
 			//dgemm(chn, chn, &np, &oneI, &np, &one, invM, &np, rhs_, &np, &zero, temp,
 			//	&np);
 
@@ -146,9 +149,11 @@ void c_boundary_EvaluateStrongFormEdgeRHS(double *invM_, double *M_, double *FTo
 				rhs_[n] = temp[n] / j[n];
 			}
 
-			myfree(&temp);
-			myfree(&rhsM);
+			
+			
 		}
+		myfree(&temp);
+		myfree(&rhsM);
 	}
 	return;
 }

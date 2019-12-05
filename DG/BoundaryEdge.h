@@ -11,7 +11,7 @@ public:
 	BoundaryEdge();
 	~BoundaryEdge();
 	void EvaluateSurfValue(double *fphys, double *fm, double *fp, int *Np, int *K, int Nfield);
-	void EvaluateStrongFromEdgeRHS(double *invM_, double *J, double *fluxM, double *fluxS, int *Np, int *K, int Nfield, double *frhs_temp);
+	void EvaluateStrongFromEdgeRHS(double *invM_, double *J, double *fluxM, double *fluxS, int *Np, int *K, int Nfield, double *const frhs_temp);
 
 	Bcell bcell;
 

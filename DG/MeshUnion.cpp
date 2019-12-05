@@ -1,5 +1,5 @@
 #include "MeshUnion.h"
-#include<netcdfcpp.h>
+
 
 using namespace netCDF;
 
@@ -133,6 +133,7 @@ void MeshUnion::GetMeshAverageValue(double *nodeVal, double *averageValue)
 	double *integralValue;
 	requestmemory(&integralValue, K);
 	c_GetMeshIntegralValue(nodeVal, wq, J, Vq, Np, K, Nq, integralValue);
+
 
 	for (int i = 0; i < *K; i++)
 	{

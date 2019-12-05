@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include<netcdfcpp.h>
 #include"new_delete.h"
 class MeshUnion_dim
 {

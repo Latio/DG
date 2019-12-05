@@ -1,6 +1,6 @@
 #pragma once
 #include"NdgQuadFreeStrongFormAdvSolver2d.h"
-#include"SWEAbstract2d.h"
+//#include"SWEAbstract2d.h"
 
 extern "C" {
 
@@ -15,21 +15,23 @@ public:
 	void matEvaluateSSPRK22();
 	//double UpdateTimeInterval(double *fphys);
 
-	double *fext;
 
-	void EvaluateSourceTerm(double *fphys);
+
+	//void EvaluateSourceTerm(double *fphys);
 
 	void UpdateExternalField(double *fphys);
+
 	void EvaluateRHS(double *fphys, double *frhs);
 
-	double* EvaluatePostFunc(double *fphys);
+	//double* EvaluatePostFunc(double *fphys);
 
-	void UpdateOutputResult(double time, double *fphys);
+	//void UpdateOutputResult(double time, double *fphys);
 
 
 protected:
 
 	SWEAbstract2d sweabstract2d;
+	SWEConventional2d sweconventional2d;
 
 	//double *fext;
 
@@ -40,9 +42,12 @@ protected:
 	//double *NonhydrostaticSolver;
 
 	double ftime;
-	double *frhs;
+	double time;
+	//double *frhs;
+	double *fext;
 	static double *fphys0;
 	static double *fphys;
+	double *zGrad;
 	//double gra;
 	//double hmin;
 	//int Np;// dimension 

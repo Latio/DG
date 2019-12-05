@@ -1,4 +1,4 @@
-#include "mex.h"
+//#include "mex.h"
 #include "SWE2d.h"
 
 //#define NRHS 4

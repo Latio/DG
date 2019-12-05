@@ -11,10 +11,10 @@
 // #endif
 
 void myfree(double **arr) {
-	if (*arr != 0)
+	if (*arr != NULL)
 	{
 		free(*arr);
-		*arr = 0;
+		*arr = NULL;
 	};
 }
 
@@ -130,6 +130,7 @@ void c_inner_EvaluateStrongFromEdgeRHS(double *invM_, double *M_, double *FToE_,
 			//cblas_dgemm(chn, chn, &np, &oneI, &np, &one, invM, &np, rhs_, &np, &zero, temp, &np);
 			cblas_dgemm(Order, TransA, TransB, M, N, K, alpha, invM, lda, rhs_, ldb, beta, temp, ldc);
 
+			//printf("c_inner_EvaluateStrongFromEdgeRHS.c\n");
 			// copy rhs
 			for (int n = 0; n < Np; n++) {
 				rhs_[n] = temp[n] / j[n];

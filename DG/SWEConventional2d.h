@@ -10,5 +10,6 @@ public:
 	SWEConventional2d();
 	~SWEConventional2d();
 	void EvaluatePostFunc(double *fphys);
+	void UpdateWetDryState(double *fphys);
 };
 

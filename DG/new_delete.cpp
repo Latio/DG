@@ -53,7 +53,7 @@ void freememory(double **meshpoint)
 {
 	if (*meshpoint != NULL)
 	{
-		delete []*meshpoint;
+		delete [](*meshpoint);
 		*meshpoint = NULL;
 
 	}
@@ -64,7 +64,7 @@ void freememory(int **meshpoint)
 {
 	if (*meshpoint != NULL)
 	{
-		delete []*meshpoint;
+		delete [](*meshpoint);
 		*meshpoint = NULL;
 
 	}

@@ -7,7 +7,7 @@
 
 SWEAbstract2d::SWEAbstract2d() :gra(9.8), hmin(1.0e-03), cfl(1), Nfield(7), Nvar(3)
 {
-	requestmemory(&dx, *meshunion->K);
+	requestmemory(&dx, meshunion->K);
 	for (int i = 0; i < *meshunion->K; i++)
 	{
 		*(dx + i) = pow(*(meshunion->LAV + i), 0.5);
@@ -33,13 +33,20 @@ void SWEAbstract2d::EvaluateSurfNumFlux(double *nx, double *ny, double *fm, doub
 //计算时间步长
 double SWEAbstract2d::UpdateTimeInterval(double *fphys)
 {
-	double dt = 0;
-	int N = *meshunion->cell_p->N;
+
+
+	double dt=1e1;
+	const int N = *meshunion->cell_p->N;
 	signed char *status = meshunion->status;
 	int *Np = meshunion->cell_p->Np;
 	int *K = meshunion->K;
 
-	double dtm = UpdateTimeInterval2d(hmin, gra, N, status, fphys, dx, Np, K, Nfield);
+	double dtm = c_UpdateTimeInterval2d(hmin, gra, N, dx, status, fphys,  Np, K, Nfield);
+
+	std::cout << dtm << std::endl;
+
+
+
 	if (dtm > 0)
 	{
 		dt = (dt < dtm*cfl) ? dt : dtm * cfl;

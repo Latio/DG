@@ -1,8 +1,6 @@
 #include "MeshUnion_dim.h"
-
-#include<netcdfcpp.h>
-
 using namespace netCDF;
+using namespace netCDF::exceptions;
 
 int MeshUnion_dim::K = 0;
 int MeshUnion_dim::Nv = 0;
@@ -19,7 +17,6 @@ MeshUnion_dim::MeshUnion_dim()
 {
 	ncdim_read();
 }
-
 
 MeshUnion_dim::~MeshUnion_dim()
 {

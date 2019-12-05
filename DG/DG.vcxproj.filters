@@ -291,9 +291,6 @@
     <ClCompile Include="SWE2d.c">
       <Filter>源文件\SWEAbstract2d\private</Filter>
     </ClCompile>
-    <ClCompile Include="UpdateTimeInterval2d.c">
-      <Filter>源文件\SWEAbstract2d\private</Filter>
-    </ClCompile>
     <ClCompile Include="SWEHLLNumFluxSolver2d.cpp">
       <Filter>源文件\Solver\SWEHLLNumFluxSolver2d</Filter>
     </ClCompile>
@@ -356,6 +353,9 @@
     </ClCompile>
     <ClCompile Include="c_EvaluatePostFunc2d.c">
       <Filter>源文件\SWEConventional2d\private</Filter>
+    </ClCompile>
+    <ClCompile Include="c_UpdateTimeInterval2d.c">
+      <Filter>源文件\SWEAbstract2d\private</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

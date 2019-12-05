@@ -43,7 +43,7 @@ void evaluateFlowRateByDeptheThreshold(
 	double *            ///< velocity
 );
 
-void evaluateWetDryInterface(signed char *, const double *, double *);
+//void evaluateWetDryInterface(signed char *, const double *, double *);
 
 #endif  //__mxSWE_H__
 

@@ -157,7 +157,7 @@
     <ClCompile Include="SWEPreBlanaced2d.cpp" />
     <ClCompile Include="SWETopographySourceTerm2d.cpp" />
     <ClCompile Include="test.c" />
-    <ClCompile Include="UpdateTimeInterval2d.c" />
+    <ClCompile Include="c_UpdateTimeInterval2d.c" />
     <ClCompile Include="new_delete.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MeshUnion.cpp" />

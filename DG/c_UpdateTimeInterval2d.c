@@ -1,6 +1,7 @@
 #include "SWE2d.h"
 #include <math.h>
 #include<stdint.h>
+#include<stdio.h>
 
 #ifdef _OPENMP
 #include <omp.h>
@@ -26,16 +27,20 @@ void evaluateFlowRateByCellState(
 }
 
 
-double UpdateTimeInterval2d(double hmin, double gra, int N, signed char *status, double *fphys, double *dx, int *Np_, int *K_, int Nfield_)
+double c_UpdateTimeInterval2d(double hmin_, double gra_, int N_, double *dx_, signed char *status_, double *const fphys_, int *Np_, int *K_, int Nfield_)
 {
+	double gra = gra_;
+	int N = N_;
+	double *dx = dx_;
+	signed char* regionType = (signed char*)status_;
 
-	signed char* regionType = (signed char*)status;
-	PhysField fphys_ = convertMexToPhysFieldp(fphys, Np_, K_, Nfield_);
+	PhysField fphys = convertMexToPhysFieldp(fphys_, Np_, K_, Nfield_);
 
-	const int Np = fphys_.Np;
-	const int K = fphys_.K;
+	const int Np = fphys.Np;
+	const int K = fphys.K;
 
 	double dt = 1e6;
+
 	for (int k = 0; k < K; k++) {
 		NdgRegionType type = (NdgRegionType)regionType[k];
 		if (type == NdgRegionDry) {
@@ -44,15 +49,22 @@ double UpdateTimeInterval2d(double hmin, double gra, int N, signed char *status,
 		double dx_ = dx[k];
 		for (int n = 0; n < Np; n++) {
 			const int sk = k * Np + n;
-			const double h_ = fphys_.h[sk];
+			const double h_ = fphys.h[sk];
 
 			double u, v;
-			evaluateFlowRateByCellState(type, h_, fphys_.hu[sk], fphys_.hv[sk], &u, &v);
+			evaluateFlowRateByCellState(type, h_, fphys.hu[sk], fphys.hv[sk], &u, &v);
 			const double spe = sqrt(u * u + v * v);
 			const double dtloc = dx_ / (spe + sqrt(gra * h_)) / (2 * N + 1);
 			dt = min(dt, dtloc);
+
+			//printf("dx:%f ,spe: %f, gra:%f,  h_:%f \n ", dx_, spe, gra, h_);
+
 		}
 	}
+	//for (int i = 0; i < 360; i++)
+	//{
+	//	printf("status[%d]:%d\n", i, status_[i]);
+	//}
 
 	return dt;
 }
