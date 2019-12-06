@@ -1,8 +1,10 @@
 //#include "mex.h"
 #include "SWE2d.h"
 #include <math.h>
-#include<stdio.h>
+#include<stdlib.h>
+#include"cblas.h"
 
+void myfree(double **arr);
 #ifdef _OPENMP
 #include <omp.h>
 #endif
@@ -67,7 +69,7 @@ SurfNodeField ConvertMexToSurfField(const double *mxField, const int *Nfp_, cons
 //#define NRHS 6
 //#define NLHS 1
 
-void c_ImposeBoundaryCondition(double gra_, double *nx_, double *ny_, double *fp_, double *fext_, int *ftype_, int *Nfp_, int* Ne_, int Nfield_)
+void c_ImposeBoundaryCondition(double gra_, double *nx_, double *ny_, double *fp_, double *fext_, signed char *ftype_, int *Nfp_, int* Ne_, int Nfield_)
 {
 	//void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
 	//	/* check input & output */
@@ -84,6 +86,11 @@ void c_ImposeBoundaryCondition(double gra_, double *nx_, double *ny_, double *fp
 	double gra = gra_;
 	double *nx = nx_;
 	double *ny = ny_;
+	const int num = (*Nfp_)*(*Ne_)*Nfield_;
+
+	//double *fM_t = malloc(sizeof(double)*num);
+	//cblas_dcopy(num,fp_,1,fM_t,1);
+
 	SurfNodeField fM = ConvertMexToSurfField(fp_, Nfp_, Ne_, Nfield_);
 	SurfNodeField fE = ConvertMexToSurfField(fext_, Nfp_, Ne_, Nfield_);
 	signed char *ftype = (signed char *)ftype_;
@@ -106,6 +113,7 @@ void c_ImposeBoundaryCondition(double gra_, double *nx_, double *ny_, double *fp
 				fP.hv + sk, fP.z + sk);
 		}
 	}
+	//myfree(&fM_t);
 }
 
 /** \brief Impose boundary condition to the next node */

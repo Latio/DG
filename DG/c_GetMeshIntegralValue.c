@@ -61,8 +61,8 @@ void c_GetMeshIntegralValue(double *nodeVal_, double *wq_, double *J_, double *V
 	const int M = Nq;//A的行数，C的行数
 	const int N = 1;//B的列数，C的列数
 	const int K__ = Np;//A的列数，B的行数
-	const double alpha = 1.0;
-	const float beta = 0.0;
+	const double alpha = 1;
+	const double beta = 0;
 	const int lda = M;//A的行        
 	const int ldb = K__;//B的行
 	const int ldc = M;//C的行   //如果列优先，分别写ABC的行
@@ -84,7 +84,6 @@ void c_GetMeshIntegralValue(double *nodeVal_, double *wq_, double *J_, double *V
 		//	&Nq_ptrdiff, fvar + k * Np, &Np_ptrdiff, &zero, fq, &Nq_ptrdiff);
 		double *temp1 = fvar + k * Np;
 		double *temp2 = J + k * Np;
-
 
 		cblas_dgemm(Order, TransA, TransB, M, N, K__, alpha, Vq, lda, temp1, ldb, beta, fq, ldc);
 

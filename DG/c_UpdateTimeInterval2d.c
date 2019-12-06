@@ -46,7 +46,7 @@ double c_UpdateTimeInterval2d(double hmin_, double gra_, int N_, double *dx_, si
 		if (type == NdgRegionDry) {
 			continue;
 		}
-		double dx_ = dx[k];
+		double dx__ = dx[k];
 		for (int n = 0; n < Np; n++) {
 			const int sk = k * Np + n;
 			const double h_ = fphys.h[sk];
@@ -54,16 +54,13 @@ double c_UpdateTimeInterval2d(double hmin_, double gra_, int N_, double *dx_, si
 			double u, v;
 			evaluateFlowRateByCellState(type, h_, fphys.hu[sk], fphys.hv[sk], &u, &v);
 			const double spe = sqrt(u * u + v * v);
-			const double dtloc = dx_ / (spe + sqrt(gra * h_)) / (2 * N + 1);
+			const double dtloc = dx__ / (spe + sqrt(gra * h_)) / (2 * N + 1);
 			dt = min(dt, dtloc);
-
-			//printf("dx:%f ,spe: %f, gra:%f,  h_:%f \n ", dx_, spe, gra, h_);
-
 		}
 	}
 	//for (int i = 0; i < 360; i++)
 	//{
-	//	printf("status[%d]:%d\n", i, status_[i]);
+	//	printf("dx[%d]:%f\n", i, dx[i]);
 	//}
 
 	return dt;

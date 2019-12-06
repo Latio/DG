@@ -1,6 +1,5 @@
 #pragma once
 #include"NdgQuadFreeStrongFormAdvSolver2d.h"
-//#include"SWEAbstract2d.h"
 
 extern "C" {
 
@@ -19,7 +18,7 @@ public:
 
 	//void EvaluateSourceTerm(double *fphys);
 
-	void UpdateExternalField(double *fphys);
+	void UpdateExternalField(double tloc);
 
 	void EvaluateRHS(double *fphys, double *frhs);
 
@@ -41,13 +40,22 @@ protected:
 	//double *viscositySolver;
 	//double *NonhydrostaticSolver;
 
-	double ftime;
-	double time;
-	//double *frhs;
-	double *fext;
-	static double *fphys0;
-	static double *fphys;
+	//double ftime;
+
+	double *frhs;
+	double *fext;//
+	double *fphys0;
+	double *fphys;
 	double *zGrad;
+
+
+	int *Np;
+	int *K;
+	int Nfield;
+	int *Nv;
+	int Nvar;
+	int *boundarydge_Nfp;
+	int *boundarydge_Ne;
 	//double gra;
 	//double hmin;
 	//int Np;// dimension 

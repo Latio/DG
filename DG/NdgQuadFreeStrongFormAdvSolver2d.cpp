@@ -39,66 +39,38 @@ void multiply(double *const matrix1, double *const matrix2, double *const result
 
 void NdgQuadFreeStrongFormAdvSolver2d::evaluateAdvectionRHS(double *fphys, double *frhs, double *fext)
 {
-
-	double *fm;
-	double *fp;
-	double *fluxM;
-	double *fluxP;
-	double *fluxS;
-	const int  NVAR = 3;
-
-	int *Nfp = meshunion->inneredge_p->Nfp;//define temporary dimemsion
-	int *Ne = meshunion->inneredge_p->Ne;//define temporary dimemsion
-	int Nfield = meshunion->Nfield;//define temporary dimemsion
-	int *Np = meshunion->cell_p->Np;//define temporary dimemsion
-	int *K = meshunion->K;//define temporary dimemsion
+	int Nfield = meshunion->Nfield;
+	int *Np = meshunion->cell_p->Np;
+	int *K = meshunion->K;
 	double *invM = meshunion->cell_p->invM;
 	double *J = meshunion->J;
+	int *Nfp = meshunion->inneredge_p->Nfp;
+	int *Ne = meshunion->inneredge_p->Ne;
+	int *Nfp_b = meshunion->boundarydge_p->Nfp;
+	int *Ne_b = meshunion->boundarydge_p->Ne;
+	const int NVAR = 3;
 
+	double *fm, *fp, *fluxM, *fluxP, *fluxS;
 	requestmemory(&fm, Nfp, Ne, Nfield);
 	requestmemory(&fp, Nfp, Ne, Nfield);
 	requestmemory(&fluxM, Nfp, Ne, NVAR);
 	requestmemory(&fluxP, Nfp, Ne, NVAR);
-	requestmemory(&fluxS, Nfp, Ne, NVAR);//request memory for fm,fp,fluxM,fluxP,fluxS.
+	requestmemory(&fluxS, Nfp, Ne, NVAR);
 
 	// evaluate inner edge
 	double *nx = meshunion->inneredge_p->nx;
 	double *ny = meshunion->inneredge_p->ny;
 	mesh.inneredge.EvaluateSurfValue(fphys, fm, fp, Np, K, Nfield);//return fm,fp
-	//for (int i = 0; i < 1008 * 7; i++)
-	//{
-	//	std::cout << i << "  " << fm[i] << std::endl;
-	//}
-
 	sweabstract2d.EvaluateSurfFlux(nx, ny, fm, fluxM, Nfp, Ne);//return fluxM
-
-	sweabstract2d.EvaluateSurfFlux(nx, ny, fm, fluxP, Nfp, Ne);//return fluxP
-
+	sweabstract2d.EvaluateSurfFlux(nx, ny, fp, fluxP, Nfp, Ne);//return fluxP
 	sweabstract2d.EvaluateSurfNumFlux(nx, ny, fm, fp, fluxS, Nfp, Ne);//retuen fluxS
-
-
-
 	mesh.inneredge.EvaluateStrongFromEdgeRHS(fluxM, fluxP, fluxS, frhs, invM, J, Np, K, NVAR);
-
 
 	freememory(&fm);
 	freememory(&fp);
 	freememory(&fluxM);
 	freememory(&fluxP);
 	freememory(&fluxS);
-	//for (int i = 0; i < 1080 * 3; i++)
-	//{
-	//	std::cout << i << "  " << fm[i] << std::endl;
-	//}
-
-	//std::cout << "        " << fm << std::endl;
-	//std::cout << "        " << fp << std::endl;
-	//std::cout << "        " << fluxM << std::endl;
-	//std::cout << "        " << fluxP << std::endl;
-	//std::cout << "        " << fluxS << std::endl;
-
-	int *Nfp_b = meshunion->boundarydge_p->Nfp;//define temporary dimemsion
-	int *Ne_b = meshunion->boundarydge_p->Ne;//define temporary dimemsion
 
 	requestmemory(&fm, Nfp_b, Ne_b, Nfield);
 	requestmemory(&fp, Nfp_b, Ne_b, Nfield);
@@ -109,13 +81,9 @@ void NdgQuadFreeStrongFormAdvSolver2d::evaluateAdvectionRHS(double *fphys, doubl
 	// evaluate boundary edge
 	nx = meshunion->boundarydge_p->nx;
 	ny = meshunion->boundarydge_p->ny;
-
 	mesh.boundarydge.EvaluateSurfValue(fphys, fm, fp, Np, K, Nfield);
-
 	sweabstract2d.ImposeBoundaryCondition(nx, ny, fm, fp, fext);
-
 	sweabstract2d.EvaluateSurfFlux(nx, ny, fm, fluxM, Nfp_b, Ne_b);//return fluxM
-
 	sweabstract2d.EvaluateSurfNumFlux(nx, ny, fm, fp, fluxS, Nfp_b, Ne_b);
 
 	double *frhs_temp;
@@ -141,8 +109,8 @@ void NdgQuadFreeStrongFormAdvSolver2d::evaluateAdvectionRHS(double *fphys, doubl
 	double *G;
 	requestmemory(&E, Np, K, NVAR);
 	requestmemory(&G, Np, K, NVAR);
-	swepreblanaced2d.EvaluateFlux(fphys, E, G);
 
+	swepreblanaced2d.EvaluateFlux(fphys, E, G);
 
 	double *const Dr = meshunion->cell_p->Dr;
 	double *const Ds = meshunion->cell_p->Ds;
@@ -153,12 +121,8 @@ void NdgQuadFreeStrongFormAdvSolver2d::evaluateAdvectionRHS(double *fphys, doubl
 
 	double *rx_dr_e, *sx_ds_e, *ry_dr_g, *sy_ds_g;
 
-	requestmemory(&rx_dr_e, Np, K);
-	requestmemory(&sx_ds_e, Np, K);
-	requestmemory(&ry_dr_g, Np, K);
-	requestmemory(&sy_ds_g, Np, K);
-	//cblas_dgemm(chn, chn, &np, &oneI, &np, &one, invM, &np, rhs_, &np, &zero, temp, &np);
 
+	//cblas_dgemm(chn, chn, &np, &oneI, &np, &one, invM, &np, rhs_, &np, &zero, temp, &np);
 
 	//for i = 1:phys.Nvar
 	//	phys.frhs{ m }(:, : , i) = ...
@@ -172,7 +136,10 @@ void NdgQuadFreeStrongFormAdvSolver2d::evaluateAdvectionRHS(double *fphys, doubl
 	double alpha_ = -1.0;
 	for (int i = 0; i < NVAR; i++)
 	{
-
+		requestmemory(&rx_dr_e, Np, K);
+		requestmemory(&sx_ds_e, Np, K);
+		requestmemory(&ry_dr_g, Np, K);
+		requestmemory(&sy_ds_g, Np, K);
 
 		double *frhs_ = frhs + i * dis;
 		double *E_ = E + i * dis;
@@ -183,16 +150,10 @@ void NdgQuadFreeStrongFormAdvSolver2d::evaluateAdvectionRHS(double *fphys, doubl
 		multiply(Dr, G_, ry_dr_g);
 		multiply(Ds, G_, sy_ds_g);
 
-
-		//for (int j = 0; j < 9; j++)
-		//{
-		//	std::cout << j << "Ds:  " << Ds[j] << std::endl;
-		//}
 		dotmul(dis, rx, rx_dr_e);
 		dotmul(dis, sx, sx_ds_e);
 		dotmul(dis, ry, ry_dr_g);
 		dotmul(dis, sy, sy_ds_g);
-
 
 		//	cblas_daxpy(num,alpha,a,1,a,1);
 		//cblas_dscal(dis, alpha, rx_dr_e, 1);
@@ -204,29 +165,20 @@ void NdgQuadFreeStrongFormAdvSolver2d::evaluateAdvectionRHS(double *fphys, doubl
 		cblas_daxpy(dis, alpha, sx_ds_e, 1, ry_dr_g, 1);
 		cblas_daxpy(dis, alpha, ry_dr_g, 1, sy_ds_g, 1);
 		cblas_daxpy(dis, alpha_, sy_ds_g, 1, frhs_, 1);
-		//
-		//for (int k = 0; k < 1080; k++)
-		//{
-		//	std::cout << frhs[i * 1080 + k] << std::endl;
-		//}
 
+		freememory(&rx_dr_e);
+		freememory(&sx_ds_e);
+		freememory(&ry_dr_g);
+		freememory(&sy_ds_g);
 	}
-
-	//for (int i = 0; i < 9; i++)
-	//{
-	//	std::cout << i << "  " << Dr[i] << std::endl;
-	//}
-	//for (int i = 0; i < 9; i++)
-	//{
-	//	std::cout << i << "  " << Dr[i] << std::endl;
-	//}
 	freememory(&E);
 	freememory(&G);
-	freememory(&rx_dr_e);
-	freememory(&sx_ds_e);
-	freememory(&ry_dr_g);
-	freememory(&sy_ds_g);
 
+
+	//for (int i = 0; i < 1080 * 3; i++)
+	//{
+	//	std::cout << " frhs[" << i << "];  " << frhs[i] << std::endl;
+	//}//test
 
 };
 

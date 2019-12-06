@@ -134,10 +134,9 @@ void MeshUnion::GetMeshAverageValue(double *nodeVal, double *averageValue)
 	requestmemory(&integralValue, K);
 	c_GetMeshIntegralValue(nodeVal, wq, J, Vq, Np, K, Nq, integralValue);
 
-
-	for (int i = 0; i < *K; i++)
+	for (int i = 0; i < (*K); i++)
 	{
-		*(averageValue + i) = (*(integralValue + i)) / (*(LAV + i));
+		averageValue[i] = integralValue[i] / LAV[i];
 	}
 
 	freememory(&integralValue);

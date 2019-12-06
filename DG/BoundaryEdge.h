@@ -21,7 +21,7 @@ public:
 	static double* FToN1;
 	static double* FToN2;
 	static double* FToV;
-	static int* ftype;
+	static signed char* ftype;
 	static double* Js;
 	static double* LAV;
 	static double* M;

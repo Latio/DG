@@ -30,10 +30,10 @@ void SWETopographySourceTerm2d::EvaluateTopographySourceTerm(double gra, double 
 	//}
 	const int num = (*Np)*(*K)*Nvar;
 
-	cblas_daxpy(num, 1.00, frhs_temp, 1, frhs, 1);//????wrong????
+	cblas_daxpy(num, 1, frhs_temp, 1, frhs, 1);//????wrong????
 	//for (int i = 0; i < 1080 * 3; i++)
 	//{
-	//	std::cout << i << " ; " << frhs_temp[i] << std::endl;
+	//	std::cout << i << " ; " << frhs[i] << std::endl;
 	//}
 
 	freememory(&frhs_temp);

@@ -1,6 +1,6 @@
 #ifndef __mxSWE_H__
 #define __mxSWE_H__
-
+//void myfree(double**arr);
 //#include "mex.h"
 
 #define max(a, b) ((a > b) ? a : b)

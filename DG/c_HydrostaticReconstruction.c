@@ -1,6 +1,9 @@
 //#include "mex.h"
 #include "SWE2d.h"
 #include <math.h>
+#include<stdlib.h>
+#include"cblas.h"
+void myfree(double**arr);
 
 #ifdef _OPENMP
 #include <omp.h>
@@ -72,8 +75,8 @@ SurfNodeField ConvertMexToSurfField_same(const double *mxField, const int *Nfp_,
 	return field;
 }
 
-#define NRHS 3
-#define NLHS 2
+//#define NRHS 3
+//#define NLHS 2
 
 void c_HydrostaticReconstruction(double hmin_, double *fm_, double *fp_, const int *Nfp_, const int *Ne_, const int Nfield_) {
 
@@ -89,9 +92,19 @@ void c_HydrostaticReconstruction(double hmin_, double *fm_, double *fp_, const i
 	//    mexPrintf("%d inputs required.\n", NLHS);
 	//  }
 	//
+	const int num = (*Nfp_)*(*Ne_)*Nfield_;
+
+	double *fM_t = (double*)malloc(sizeof(double)*num);
+	double *fP_t = (double*)malloc(sizeof(double)*num);
+
+	cblas_dcopy(num, fm_, 1, fM_t, 1);
+	cblas_dcopy(num, fp_, 1, fP_t, 1);
 	double hmin = hmin_;
-	SurfNodeField fM = ConvertMexToSurfField_same(fm_, Nfp_, Ne_, Nfield_);
+
+	SurfNodeField fM_temp = ConvertMexToSurfField_same(fM_t, Nfp_, Ne_, Nfield_);
+	SurfNodeField fP_temp = ConvertMexToSurfField_same(fP_t, Nfp_, Ne_, Nfield_);
 	SurfNodeField fP = ConvertMexToSurfField_same(fp_, Nfp_, Ne_, Nfield_);
+	SurfNodeField fM = ConvertMexToSurfField_same(fm_, Nfp_, Ne_, Nfield_);
 	const int Nfp = fM.Nfp;
 	const int Ne = fM.Ne;
 
@@ -105,10 +118,12 @@ void c_HydrostaticReconstruction(double hmin_, double *fm_, double *fp_, const i
 	for (int k = 0; k < Ne; k++) {
 		for (int n = 0; n < Nfp; n++) {
 			const int sk = k * Nfp + n;
-			evaluateHydrostaticReconstructValue(hmin, sk, fM, fP, fM, fP);
+			evaluateHydrostaticReconstructValue(hmin, sk, fM_temp, fP_temp, fM, fP);
 		}
 	}
 
+	myfree(&fM_t);
+	myfree(&fP_t);
 }
 
 

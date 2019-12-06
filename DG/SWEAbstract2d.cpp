@@ -7,10 +7,13 @@
 
 SWEAbstract2d::SWEAbstract2d() :gra(9.8), hmin(1.0e-03), cfl(1), Nfield(7), Nvar(3)
 {
-	requestmemory(&dx, meshunion->K);
-	for (int i = 0; i < *meshunion->K; i++)
+	int *K = meshunion->K;
+	double *LAV = meshunion->LAV;
+
+	requestmemory(&dx, K);
+	for (int i = 0; i < *K; i++)
 	{
-		*(dx + i) = pow(*(meshunion->LAV + i), 0.5);
+		*(dx + i) = pow(*(LAV + i), 0.5);
 	}
 }
 
@@ -25,9 +28,9 @@ void SWEAbstract2d::EvaluateSurfFlux(double *nx, double *ny, double *fm, double 
 	swefacefluxsolver2d.surfluxSolver_evaluate(hmin, gra, nx, ny, fm, fluxM, Nfp, Ne);
 };
 
-void SWEAbstract2d::EvaluateSurfNumFlux(double *nx, double *ny, double *fm, double *fp, double *fluxS,int *Nfp,int *Ne)
+void SWEAbstract2d::EvaluateSurfNumFlux(double *nx, double *ny, double *fm, double *fp, double *fluxS, int *Nfp, int *Ne)
 {
-	swehllnumfluxsolver2d.numfluxSolver_evaluate(hmin, gra, nx, ny, fm, fp, fluxS,Nfp,Ne);
+	swehllnumfluxsolver2d.numfluxSolver_evaluate(hmin, gra, nx, ny, fm, fp, fluxS, Nfp, Ne);
 };
 
 //计算时间步长
@@ -35,13 +38,13 @@ double SWEAbstract2d::UpdateTimeInterval(double *fphys)
 {
 
 
-	double dt=1e1;
+	double dt = 1e1;
 	const int N = *meshunion->cell_p->N;
 	signed char *status = meshunion->status;
 	int *Np = meshunion->cell_p->Np;
 	int *K = meshunion->K;
 
-	double dtm = c_UpdateTimeInterval2d(hmin, gra, N, dx, status, fphys,  Np, K, Nfield);
+	double dtm = c_UpdateTimeInterval2d(hmin, gra, N, dx, status, fphys, Np, K, Nfield);
 
 	std::cout << dtm << std::endl;
 
@@ -57,7 +60,7 @@ double SWEAbstract2d::UpdateTimeInterval(double *fphys)
 
 void SWEAbstract2d::ImposeBoundaryCondition(double *nx, double *ny, double *fm, double *fp, double *fext)
 {
-	int *ftype = meshunion->boundarydge_p->ftype;
+	signed char *ftype = meshunion->boundarydge_p->ftype;
 	int *Nfp = meshunion->boundarydge_p->Nfp;
 	int *Ne = meshunion->boundarydge_p->Ne;
 	int Nfield = meshunion->Nfield;
@@ -73,7 +76,7 @@ void SWEAbstract2d::ImposeBoundaryCondition(double *nx, double *ny, double *fm, 
 
 }
 
-void SWEAbstract2d::EvaluateSourceTerm(double *fphys,double *frhs,double *zGrad)
+void SWEAbstract2d::EvaluateSourceTerm(double *fphys, double *frhs, double *zGrad)
 {
 	//function matEvaluateSourceTerm(obj, fphys)
 	//	% frhs = frhs + BottomTerm
