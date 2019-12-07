@@ -166,6 +166,12 @@
     <Filter Include="源文件\SWEConventional2d\private">
       <UniqueIdentifier>{568f361c-e062-46bf-a8cf-77c3ba8776fb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\AbstractOutputFile">
+      <UniqueIdentifier>{012e911f-64e3-4840-8198-ee4c82db1e8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\AbstractOutputFile">
+      <UniqueIdentifier>{01b101ae-7efb-4da2-ab0a-94499550ee25}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -357,6 +363,9 @@
     <ClCompile Include="c_UpdateTimeInterval2d.c">
       <Filter>源文件\SWEAbstract2d\private</Filter>
     </ClCompile>
+    <ClCompile Include="AbstractOutputFile.cpp">
+      <Filter>源文件\AbstractOutputFile</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MeshUnion.h">
@@ -427,6 +436,9 @@
     </ClInclude>
     <ClInclude Include="NdghydrostaticSolver2d.h">
       <Filter>头文件\Solver\SWESourceTerm2d\NdghydrostaticSolver2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractOutputFile.h">
+      <Filter>头文件\AbstractOutputFile</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

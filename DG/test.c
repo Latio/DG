@@ -104,48 +104,48 @@
 ////	cout << x.cell_Dr << endl;
 //
 //
-////#include <iostream>
-////#include <netcdfcpp.h>
-////#include <vector>
-////using namespace std;
-////using namespace netCDF;
-////using namespace netCDF::exceptions;
-////
-////static const int NX = 6;
-////static const int NY = 12;
-////
-////static const int NC_ERR = 2;
-////
-////int main()
-////{
-////	int dataOut[NX][NY];
-////
-////	for (int i = 0; i < NX; i++)
-////		for (int j = 0; j < NY; j++)
-////			dataOut[i][j] = i * NY + j;
-////
-////	try
-////	{
-////		NcFile dataFile("simple_xy.nc", NcFile::replace);
-////
-////		NcDim xDim = dataFile.addDim("x", NX);
-////		NcDim yDim = dataFile.addDim("y", NY);
-////
-////		vector<NcDim> dims;
-////		dims.push_back(xDim);
-////		dims.push_back(yDim);
-////		NcVar data = dataFile.addVar("data", ncInt, dims);
-////
-////		data.putVar(dataOut);
-////		system("pause");
-////		return 0;
-////	}
-////	catch (NcException& e)
-////	{
-////		e.what();
-////		return NC_ERR; 
-////	}
-////}
+//#include <iostream>
+//#include <netcdfcpp.h>
+//#include <vector>
+//using namespace std;
+//using namespace netCDF;
+//using namespace netCDF::exceptions;
+//
+//static const int NX = 6;
+//static const int NY = 12;
+//
+//static const int NC_ERR = 2;
+//
+//int main()
+//{
+//	int dataOut[NX][NY];
+//
+//	for (int i = 0; i < NX; i++)
+//		for (int j = 0; j < NY; j++)
+//			dataOut[i][j] = i * NY + j;
+//
+//	try
+//	{
+//		NcFile dataFile("simple_xy.nc", NcFile::replace);
+//
+//		NcDim xDim = dataFile.addDim("x", NX);
+//		NcDim yDim = dataFile.addDim("y", NY);
+//
+//		vector<NcDim> dims;
+//		dims.push_back(xDim);
+//		dims.push_back(yDim);
+//		NcVar data = dataFile.addVar("data", ncInt, dims);
+//
+//		data.putVar(dataOut);
+//		system("pause");
+//		return 0;
+//	}
+//	catch (NcException& e)
+//	{
+//		e.what();
+//		return NC_ERR;
+//	}
+//}
 ////
 ////#include<iostream>
 ////#include <netcdfcpp.h>

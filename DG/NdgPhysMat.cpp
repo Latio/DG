@@ -1,7 +1,11 @@
 #include "NdgPhysMat.h"
 
 
-NdgPhysMat::NdgPhysMat() :frhs(NULL)
+using namespace std;
+using namespace netCDF;
+using namespace netCDF::exceptions;
+
+NdgPhysMat::NdgPhysMat() :frhs(NULL), ftime(10), outputIntervalNum(1500), abstractoutputfile("test001.nc", 10 / 1500, 1500)
 {
 	Np = meshunion->cell_p->Np;
 	K = meshunion->K;
@@ -15,6 +19,12 @@ NdgPhysMat::NdgPhysMat() :frhs(NULL)
 	requestmemory(&fphys0, Np, K, Nfield);
 	requestmemory(&fext, boundarydge_Nfp, boundarydge_Ne, Nvar);
 	requestmemory(&zGrad, Np, K, 2);
+
+	netCDF::NcFile dataFile("init_fphys.nc", netCDF::NcFile::read);
+	netCDF::NcVar fphys_v = dataFile.getVar("fphys");
+	fphys_v.getVar(fphys);
+	netCDF::NcVar zGrad_v = dataFile.getVar("zGrad");
+	zGrad_v.getVar(zGrad);
 }
 
 
@@ -37,30 +47,22 @@ void NdgPhysMat::matSolver()
 
 void NdgPhysMat::matEvaluateSSPRK22()
 {
-	netCDF::NcFile dataFile("init_fphys.nc", netCDF::NcFile::read);
-	netCDF::NcVar fphys_v = dataFile.getVar("fphys");
-	fphys_v.getVar(fphys);
-	netCDF::NcVar zGrad_v = dataFile.getVar("zGrad");
-	zGrad_v.getVar(zGrad);
+
 
 	double time = 0;
-	double ftime = 10;
 	const int num = (*K)*(*Nv)*Nvar;
+	double outputTimeInterval = ftime / outputIntervalNum;
+
+	abstractoutputfile.ncFile_create(Np, K, Nvar);
 
 	while (time < ftime)
 	{
-
-		for (int i = 0; i < 3; i++)
-		{
-			std::cout << i << "  " << fphys[i] << std::endl;
-		}
 
 		double dt = sweabstract2d.UpdateTimeInterval(fphys)*0.4;
 		if (time + dt > ftime)
 		{
 			dt = ftime - time;
 		}
-		std::cout << "dt: " << dt << std::endl;
 
 		cblas_dcopy(num, fphys, 1, fphys0, 1);//fphys0{n} = fphys{n};
 
@@ -96,13 +98,15 @@ void NdgPhysMat::matEvaluateSSPRK22()
 		cblas_daxpy(num, 0.5, fphys0, 1, fphys, 1);
 
 
+		UpdateOutputResult(time, fphys, Nvar);
 
 		time = time + dt;
-		//UpdateOutputResult(time, fphys);
+
 
 		double timeRatio = time / ftime;
-		std::cout << "____________________finished____________________: " << timeRatio << std::endl;
+		//std::cout << "____________________finished____________________: " << timeRatio << std::endl;
 	}
+
 }
 
 
@@ -118,4 +122,9 @@ void NdgPhysMat::EvaluateRHS(double *fphys, double *frhs)
 void NdgPhysMat::UpdateExternalField(double tloc)
 {
 
+};
+
+void NdgPhysMat::UpdateOutputResult(double& time, double *fphys, int Nvar)
+{
+	abstractoutputfile.outputIntervalResult(time, fphys, Nvar, Np, K);
 };

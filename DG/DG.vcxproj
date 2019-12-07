@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AbstractOutputFile.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="c_boundary_EvaluateStrongFormEdgeRHS.c" />
     <ClCompile Include="c_boundary_EvaluateSurfValue.c" />
@@ -196,6 +197,7 @@
     <ClCompile Include="WindTermSolver.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractOutputFile.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="FrictionTermSolver.h" />
     <ClInclude Include="NdghydrostaticSolver2d.h" />

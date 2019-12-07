@@ -92,17 +92,17 @@ void c_HydrostaticReconstruction(double hmin_, double *fm_, double *fp_, const i
 	//    mexPrintf("%d inputs required.\n", NLHS);
 	//  }
 	//
-	const int num = (*Nfp_)*(*Ne_)*Nfield_;
+	//const int num = (*Nfp_)*(*Ne_)*Nfield_;
 
-	double *fM_t = (double*)malloc(sizeof(double)*num);
-	double *fP_t = (double*)malloc(sizeof(double)*num);
+	//double *fM_t = (double*)malloc(sizeof(double)*num);
+	//double *fP_t = (double*)malloc(sizeof(double)*num);
 
-	cblas_dcopy(num, fm_, 1, fM_t, 1);
-	cblas_dcopy(num, fp_, 1, fP_t, 1);
+	//cblas_dcopy(num, fm_, 1, fM_t, 1);
+	//cblas_dcopy(num, fp_, 1, fP_t, 1);
 	double hmin = hmin_;
 
-	SurfNodeField fM_temp = ConvertMexToSurfField_same(fM_t, Nfp_, Ne_, Nfield_);
-	SurfNodeField fP_temp = ConvertMexToSurfField_same(fP_t, Nfp_, Ne_, Nfield_);
+	//SurfNodeField fM_temp = ConvertMexToSurfField_same(fM_t, Nfp_, Ne_, Nfield_);
+	//SurfNodeField fP_temp = ConvertMexToSurfField_same(fP_t, Nfp_, Ne_, Nfield_);
 	SurfNodeField fP = ConvertMexToSurfField_same(fp_, Nfp_, Ne_, Nfield_);
 	SurfNodeField fM = ConvertMexToSurfField_same(fm_, Nfp_, Ne_, Nfield_);
 	const int Nfp = fM.Nfp;
@@ -118,12 +118,12 @@ void c_HydrostaticReconstruction(double hmin_, double *fm_, double *fp_, const i
 	for (int k = 0; k < Ne; k++) {
 		for (int n = 0; n < Nfp; n++) {
 			const int sk = k * Nfp + n;
-			evaluateHydrostaticReconstructValue(hmin, sk, fM_temp, fP_temp, fM, fP);
+			evaluateHydrostaticReconstructValue(hmin, sk, fM, fP, fM, fP);
 		}
 	}
 
-	myfree(&fM_t);
-	myfree(&fP_t);
+	//myfree(&fM_t);
+	//myfree(&fP_t);
 }
 
 
