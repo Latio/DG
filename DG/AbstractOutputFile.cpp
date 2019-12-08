@@ -13,6 +13,7 @@ AbstractOutputFile::AbstractOutputFile(std::string NCfile_name, double timeInerv
 
 AbstractOutputFile::~AbstractOutputFile()
 {
+	resultFile.close();
 }
 
 void AbstractOutputFile::outputIntervalResult(double &time, double *field, int Nvar, int *Np, int *K)
@@ -41,9 +42,9 @@ void AbstractOutputFile::outputResult(double time, double *field, int Nvar, int 
 	std::vector<size_t> countInd_fphys(count, count + sizeof(count) / sizeof(count[0]));
 	output_fphys.putVar(startInd_fphys, countInd_fphys, field);
 
-	if (outputStep == StepPerFile)
+	if (outputStep == StepPerFile+1)
 	{
-		resultFile.close();
+		//resultFile.close();
 	}
 	else
 	{

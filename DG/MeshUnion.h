@@ -34,7 +34,7 @@ public:
 	static double*EToE;
 	static double*EToF;
 	static double*EToM;
-	static double*EToR;
+	static signed char*EToR;
 	static double*EToV;
 	static double*ind;
 	static double*J;

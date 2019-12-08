@@ -5,11 +5,11 @@ using namespace std;
 using namespace netCDF;
 using namespace netCDF::exceptions;
 
-NdgPhysMat::NdgPhysMat() :frhs(NULL), ftime(10), outputIntervalNum(1500), abstractoutputfile("test001.nc", 10 / 1500, 1500)
+NdgPhysMat::NdgPhysMat() :frhs(NULL), ftime(10), outputIntervalNum(1500), abstractoutputfile("20191208.nc", 10.0 / 1500.0, 1500)
 {
 	Np = meshunion->cell_p->Np;
 	K = meshunion->K;
-	Nv = meshunion->cell_p->Nv;
+	//Nv = meshunion->cell_p->Nv;
 	boundarydge_Nfp = meshunion->boundarydge_p->Nfp;
 	boundarydge_Ne = meshunion->boundarydge_p->Ne;
 	Nfield = meshunion->Nfield;
@@ -50,7 +50,7 @@ void NdgPhysMat::matEvaluateSSPRK22()
 
 
 	double time = 0;
-	const int num = (*K)*(*Nv)*Nvar;
+	const int num = (*K)*(*Np)*Nvar;
 	double outputTimeInterval = ftime / outputIntervalNum;
 
 	abstractoutputfile.ncFile_create(Np, K, Nvar);
@@ -97,10 +97,9 @@ void NdgPhysMat::matEvaluateSSPRK22()
 		cblas_dscal(num, 0.5, fphys, 1);
 		cblas_daxpy(num, 0.5, fphys0, 1, fphys, 1);
 
-
+		time = time + dt;
 		UpdateOutputResult(time, fphys, Nvar);
 
-		time = time + dt;
 
 
 		double timeRatio = time / ftime;

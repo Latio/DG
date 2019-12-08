@@ -10,9 +10,7 @@ int main()
 {
 	clock_t begintime, endtime;
 
-
 	NdgPhysMat Solver;
-
 	begintime = clock();
 	Solver.matSolver();
 
