@@ -25,6 +25,17 @@ NdgPhysMat::NdgPhysMat() :frhs(NULL), ftime(10), outputIntervalNum(1500), abstra
 	fphys_v.getVar(fphys);
 	netCDF::NcVar zGrad_v = dataFile.getVar("zGrad");
 	zGrad_v.getVar(zGrad);
+
+	ifstream data("D:\\Desktop\\tidal.txt");//read tidal data
+	if (!data.is_open())
+	{
+		cout << "Error File Path !!!" << endl;
+		system("pause");
+	}
+	double point_tidal;
+	while (data >> point_tidal)
+		tidal.push_back(point_tidal);
+	data.close();
 }
 
 
@@ -89,7 +100,7 @@ void NdgPhysMat::matEvaluateSSPRK22()
 			//freememory(&frhs_temp);
 
 			cblas_daxpy(num, dt, frhs, 1, fphys, 1);
-
+			
 			sweconventional2d.EvaluatePostFunc(fphys);//Update status
 			freememory(&frhs);
 		}

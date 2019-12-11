@@ -318,9 +318,6 @@
     <ClCompile Include="c_HydrostaticReconstruction.c">
       <Filter>源文件\SWEAbstract2d\private</Filter>
     </ClCompile>
-    <ClCompile Include="test.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="c_boundary_EvaluateStrongFormEdgeRHS.c">
       <Filter>源文件\MeshUnion\BoundaryEdge\private</Filter>
     </ClCompile>
@@ -365,6 +362,9 @@
     </ClCompile>
     <ClCompile Include="AbstractOutputFile.cpp">
       <Filter>源文件\AbstractOutputFile</Filter>
+    </ClCompile>
+    <ClCompile Include="test.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

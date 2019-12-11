@@ -1,4 +1,60 @@
 //#include<iostream>
+//#include<vector>
+//#include<algorithm>
+//#include<fstream>
+//#include<iomanip>
+//
+//using namespace std;
+//
+//int main()
+//{
+//	vector<char> test;
+//	vector<char>::iterator it;
+//	ifstream data("D:\\Desktop\\tidal.txt");
+//	char d;
+//	while (data >> d)
+//		test.push_back(d);
+//
+//
+//	if (!data.is_open())
+//	{
+//		cout << "Error File Path" << endl;
+//		system("pause");
+//		return 0;
+//	}
+//	for (int i = 0; i < 97; i++)
+//	{
+//		for (size_t j = 0; j < 3; j++)
+//		{
+//			cout << i <<"is "<< test[i * 3 + j] << "   ";
+//		}
+//		cout << endl;
+//	}
+//	data.close();
+//	//int i = 0;
+//	//for (it=test.begin(); it!=test.end();it++)
+//	//{
+//	//	cout << "test[" << i << "] = " << setprecision(6) << *it << endl;
+//	//	i++;
+//	//}
+//
+//	system("pause");
+//	return 0;
+//
+//};
+
+
+
+
+
+
+
+
+
+
+
+
+//#include<iostream>
 //#include"cblas.h"
 //
 //using namespace std;

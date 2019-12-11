@@ -1,6 +1,10 @@
 #pragma once
 #include"NdgQuadFreeStrongFormAdvSolver2d.h"
 #include"AbstractOutputFile.h"
+#include<vector>
+//#include<algorithm>
+#include<fstream>
+#include<iomanip>
 
 extern "C" {
 
@@ -16,7 +20,7 @@ public:
 	void UpdateExternalField(double tloc);
 	void EvaluateRHS(double *fphys, double *frhs);
 	void UpdateOutputResult(double& time, double *fphys,int Nvar);
-
+	std::vector<double> tidal;
 
 	//double* EvaluatePostFunc(double *fphys);
 	//double UpdateTimeInterval(double *fphys);
@@ -43,6 +47,7 @@ protected:
 	double *fphys0;
 	double *fphys;
 	double *zGrad;
+	//std::vector<double> tidal;
 
 	double ftime;
 	int outputIntervalNum;
