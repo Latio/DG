@@ -83,7 +83,7 @@ NdgPhysMat::NdgPhysMat() :frhs(NULL), ftime(10), outputIntervalNum(1500), tidali
 	{
 		cout << obeindex[j] << endl;
 	}
-	ifstream data("D:\\Desktop\\tidal.txt");//read tidal data
+	ifstream data("D:\\Desktop\\TideElevation.txt");//read tidal data
 	if (!data.is_open())
 	{
 		cout << "Error File Path !!!" << endl;
@@ -127,7 +127,8 @@ void NdgPhysMat::matEvaluateSSPRK22()
 	while (time < ftime)
 	{
 
-		double dt = sweabstract2d.UpdateTimeInterval(fphys)*0.4;
+		double dt = sweabstract2d.UpdateTimeInterval(fphys)*0.5;
+		cout << dt << endl;
 		if (time + dt > ftime)
 		{
 			dt = ftime - time;
@@ -139,7 +140,7 @@ void NdgPhysMat::matEvaluateSSPRK22()
 		{
 
 			double tloc = time + dt;
-			//UpdateExternalField(tloc, fphys);
+			UpdateExternalField(tloc, fphys);
 
 			requestmemory(&frhs, Np, K, Nvar);
 			EvaluateRHS(fphys, frhs);
@@ -172,7 +173,7 @@ void NdgPhysMat::matEvaluateSSPRK22()
 
 
 		double timeRatio = time / ftime;
-		std::cout << "____________________finished____________________: " << timeRatio << std::endl;
+		//std::cout << "____________________finished____________________: " << timeRatio << std::endl;
 	}
 
 }
@@ -210,11 +211,11 @@ void NdgPhysMat::UpdateExternalField(double tloc, double *fphys)
 	}
 
 	double *fext_4 = fext + 3 * benfp * bene;
-	for (int i = 0; i < num; i++)
+	for (int i = 0; i < obeindex.size(); i++)
 	{
 		for (int j = 0; j < benfp; j++)
 		{
-			fext[obeindex[i] * benfp + j] = max(fnT[i] - fext_4[obeindex[i] * benfp + j], 0);
+			fext[obeindex[i] * benfp + j] = max(fnT[i*benfp + j] - fext_4[obeindex[i] * benfp + j], 0);
 		}
 	}
 }
