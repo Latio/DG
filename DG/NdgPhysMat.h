@@ -20,7 +20,7 @@ public:
 	void UpdateExternalField(double tloc, double *fphys);
 	void EvaluateRHS(double *fphys, double *frhs);
 	void UpdateOutputResult(double& time, double *fphys, int Nvar);
-
+	void matEvaluateLimiter();
 	//double* EvaluatePostFunc(double *fphys);
 	//double UpdateTimeInterval(double *fphys);
 	//void EvaluateSourceTerm(double *fphys);

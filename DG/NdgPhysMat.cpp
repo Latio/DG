@@ -5,7 +5,7 @@ using namespace std;
 using namespace netCDF;
 using namespace netCDF::exceptions;
 
-NdgPhysMat::NdgPhysMat() :frhs(NULL), ftime(10), outputIntervalNum(1500), tidalinterval(600)/*潮流数据间隔*/, abstractoutputfile("20191208.nc", 10.0 / 1500.0, 1500)
+NdgPhysMat::NdgPhysMat() :frhs(NULL), ftime(259200), outputIntervalNum(1500), tidalinterval(600)/*潮流数据间隔*/, abstractoutputfile("20191208.nc", 259200.0 / 1500.0, 1500)
 {
 	Np = meshunion->cell_p->Np;
 	K = meshunion->K;
@@ -173,7 +173,7 @@ void NdgPhysMat::matEvaluateSSPRK22()
 
 
 		double timeRatio = time / ftime;
-		//std::cout << "____________________finished____________________: " << timeRatio << std::endl;
+		std::cout << "____________________finished____________________: " << timeRatio << std::endl;
 	}
 
 }
@@ -218,6 +218,7 @@ void NdgPhysMat::UpdateExternalField(double tloc, double *fphys)
 			fext[obeindex[i] * benfp + j] = max(fnT[i*benfp + j] - fext_4[obeindex[i] * benfp + j], 0);
 		}
 	}
+
 }
 
 
@@ -225,4 +226,9 @@ void NdgPhysMat::UpdateExternalField(double tloc, double *fphys)
 void NdgPhysMat::UpdateOutputResult(double& time, double *fphys, int Nvar)
 {
 	abstractoutputfile.outputIntervalResult(time, fphys, Nvar, Np, K);
+};
+
+void NdgPhysMat::matEvaluateLimiter()
+{
+	sweabstract2d.sweelevationlimiter2d.apply(fphys);
 };

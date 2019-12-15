@@ -172,6 +172,15 @@
     <Filter Include="源文件\AbstractOutputFile">
       <UniqueIdentifier>{01b101ae-7efb-4da2-ab0a-94499550ee25}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Solver\SWEElevationLimiter2d">
+      <UniqueIdentifier>{49e487d1-cd54-4338-a0af-0d558ecf9dd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWEElevationLimiter2d">
+      <UniqueIdentifier>{037477ea-330b-4c49-b9cf-e2f54c311d59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWEElevationLimiter2d\private">
+      <UniqueIdentifier>{0bed1e40-18d0-4a65-94d2-9216209ce1a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -366,6 +375,12 @@
     <ClCompile Include="test.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="SWEElevationLimiter2d.cpp">
+      <Filter>源文件\Solver\SWEElevationLimiter2d</Filter>
+    </ClCompile>
+    <ClCompile Include="c_EvaluateVertAverage.c">
+      <Filter>源文件\Solver\SWEElevationLimiter2d\private</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MeshUnion.h">
@@ -439,6 +454,9 @@
     </ClInclude>
     <ClInclude Include="AbstractOutputFile.h">
       <Filter>头文件\AbstractOutputFile</Filter>
+    </ClInclude>
+    <ClInclude Include="SWEElevationLimiter2d.h">
+      <Filter>头文件\Solver\SWEElevationLimiter2d</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

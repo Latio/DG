@@ -139,6 +139,7 @@
     <ClCompile Include="c_EvaluateFlux2d.c" />
     <ClCompile Include="c_EvaluatePostFunc2d.c" />
     <ClCompile Include="c_EvaluateSourceTopography2d.c" />
+    <ClCompile Include="c_EvaluateVertAverage.c" />
     <ClCompile Include="c_GetMeshIntegralValue.c" />
     <ClCompile Include="c_HydrostaticReconstruction.c" />
     <ClCompile Include="c_inner_EvaluateSurfValue.c" />
@@ -152,6 +153,7 @@
     <ClCompile Include="SWE2d.c" />
     <ClCompile Include="SWEAbstract2d.cpp" />
     <ClCompile Include="SWEConventional2d.cpp" />
+    <ClCompile Include="SWEElevationLimiter2d.cpp" />
     <ClCompile Include="SWEFaceFluxSolver2d.cpp" />
     <ClCompile Include="SWEHLLNumFluxSolver2d.cpp" />
     <ClCompile Include="SWEPrebalanceVolumeFlux2d.cpp" />
@@ -214,6 +216,7 @@
     <ClInclude Include="NdgPhysMat.h" />
     <ClInclude Include="SWEAbstract2d.h" />
     <ClInclude Include="SWEConventional2d.h" />
+    <ClInclude Include="SWEElevationLimiter2d.h" />
     <ClInclude Include="SWEFaceFluxSolver2d.h" />
     <ClInclude Include="SWEHLLNumFluxSolver2d.h" />
     <ClInclude Include="SWENumFlux2d.h" />

@@ -4,6 +4,7 @@
 #include"SWEHLLNumFluxSolver2d.h"
 #include"SWEPrebalanceVolumeFlux2d.h"
 #include"SWETopographySourceTerm2d.h"
+#include"SWEElevationLimiter2d.h"
 
 extern "C" {
 	//void surfluxSolver_evaluate(double hmin_, double gra_, double *nx_, double *ny_, MeshUnion *mesh_, InnerEdge *edge_);//(hmin, gra, nx, ny, fm, mesh, edge)
@@ -31,8 +32,8 @@ public:
 		Sponge = 3, // % sponge cell
 		Wet,		//well cell(SWE)
 		Dry,		//dry cell(SWE)
-		PartialWet, 
-		PartialWetFlood, 
+		PartialWet,
+		PartialWetFlood,
 		PartialWetDamBreak
 	} enumsweregion;
 
@@ -51,5 +52,6 @@ public:
 	SWEHLLNumFluxSolver2d swehllnumfluxsolver2d;
 	SWEPrebalanceVolumeFlux2d sweprebalancevolumeflux2d;
 	SWETopographySourceTerm2d swetopographysourceterm2d;
+	SWEElevationLimiter2d sweelevationlimiter2d;
 };
 
