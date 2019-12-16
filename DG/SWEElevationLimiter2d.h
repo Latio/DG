@@ -5,7 +5,7 @@
 #include"cblas.h"
 
 extern "C" {
-	void c_EvaluateVertAverage();
+	//void c_EvaluateVertAverage();
 }
 
 extern MeshUnion mesh;

@@ -48,7 +48,7 @@ SWEElevationLimiter2d::SWEElevationLimiter2d()
 		for (int n = 0; n < Nv_cell; n++)
 		{
 			ind[n] = Nvc[(int)v[n]] + 1 + (v[n] - 1)*Nvcmax;
-			VToK[(int)ind[n]] = k;
+			VToK[(int)ind[n]] = k+1;
 			VToM[(int)ind[n]] = 1;
 			Nvc[(int)v[n]] = Nvc[(int)v[n]] + 1;
 		}
@@ -80,6 +80,11 @@ SWEElevationLimiter2d::SWEElevationLimiter2d()
 		}
 
 		freememory(&w);
+	}
+
+	for (int i = 0; i < Nv*Nvcmax+1; i++)
+	{
+		std::cout << i << "    : " << VToK[i] << std::endl;
 	}
 
 	freememory(&ind);
@@ -137,7 +142,7 @@ void SWEElevationLimiter2d::EvaluateVertAverage(double *fphys, int fieldId, doub
 	double *fphys_5 = fphys + 4 * K*Np;
 	mesh.GetMeshAverageValue(fphys_5, cvar);
 
-	c_EvaluateVertAverage();
+	//c_EvaluateVertAverage();
 
 };
 

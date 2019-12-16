@@ -83,7 +83,7 @@ NdgPhysMat::NdgPhysMat() :frhs(NULL), ftime(259200), outputIntervalNum(1500), ti
 	{
 		cout << obeindex[j] << endl;
 	}
-	ifstream data("D:\\Desktop\\TideElevation.txt");//read tidal data
+	ifstream data("TideElevation.txt");//read tidal data
 	if (!data.is_open())
 	{
 		cout << "Error File Path !!!" << endl;
@@ -192,8 +192,8 @@ void NdgPhysMat::UpdateExternalField(double tloc, double *fphys)
 {
 	double delta = tidalinterval;
 
-	double s1 = ceil(tloc / delta);//double s1 = floor(tloc / delta) + 1;
-	double s2 = s1 + 1;
+	int s1 = ceil(tloc / delta);//double s1 = floor(tloc / delta) + 1;
+	int s2 = s1 + 1;
 	double alpha1 = (delta*s1 - tloc) / delta;
 	double alpha2 = (tloc - delta * (s1 - 1)) / delta;
 
@@ -230,5 +230,5 @@ void NdgPhysMat::UpdateOutputResult(double& time, double *fphys, int Nvar)
 
 void NdgPhysMat::matEvaluateLimiter()
 {
-	sweabstract2d.sweelevationlimiter2d.apply(fphys);
+	//sweabstract2d.sweelevationlimiter2d.apply(fphys);
 };
