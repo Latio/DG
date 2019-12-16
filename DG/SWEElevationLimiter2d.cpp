@@ -15,8 +15,10 @@ SWEElevationLimiter2d::SWEElevationLimiter2d()
 	double *EToV = meshunion->EToV;
 
 	requestmemory(&Nvc, Nv);
+
 	double *v;
 	requestmemory(&v, Nv_cell);
+
 	for (int k = 0; k < K; k++)
 	{
 		double *temp_etov = EToV + k * Nv_cell;
@@ -24,7 +26,7 @@ SWEElevationLimiter2d::SWEElevationLimiter2d()
 
 		for (int i = 0; i < Nv_cell; i++)
 		{
-			Nvc[(int)v[i]] = Nvc[(int)v[i]] + 1;
+			Nvc[(int)v[i] - 1] = Nvc[(int)v[i] - 1] + 1;
 		}
 	}
 
@@ -47,15 +49,15 @@ SWEElevationLimiter2d::SWEElevationLimiter2d()
 
 		for (int n = 0; n < Nv_cell; n++)
 		{
-			ind[n] = Nvc[(int)v[n]] + 1 + (v[n] - 1)*Nvcmax;
-			VToK[(int)ind[n]] = k+1;
-			VToM[(int)ind[n]] = 1;
-			Nvc[(int)v[n]] = Nvc[(int)v[n]] + 1;
+			ind[n] = Nvc[(int)v[n] - 1] + 1 + (v[n] - 1)*Nvcmax;
+			VToK[(int)ind[n] - 1] = k + 1;
+			VToM[(int)ind[n] - 1] = 1;
+			Nvc[(int)v[n] - 1] = Nvc[(int)v[n] - 1] + 1;
 		}
 
 	}
 
-	requestmemory(&VTow, Nvcmax, Nv);
+	requestmemory(&VToW, Nvcmax, Nv);
 	for (int n = 0; n < Nv; n++)
 	{
 		int nvcn = (int)Nvc[n];
@@ -63,10 +65,10 @@ SWEElevationLimiter2d::SWEElevationLimiter2d()
 		requestmemory(&w, nvcn);
 		for (int m = 0; m < nvcn; m++)
 		{
-			int cellid = VToK[n*Nvcmax + m];
-			int msehid = VToM[n*Nvcmax + m];
-			double xc_ = xc[cellid - 1];
-			double yc_ = yc[cellid - 1];
+			int cellid = VToK[n*Nvcmax + m] - 1;
+			int msehid = VToM[n*Nvcmax + m] - 1;
+			double xc_ = xc[cellid];
+			double yc_ = yc[cellid];
 
 			w[m] = 1.0 / (pow(vx[n] - xc_, 2) + pow(vy[n] - yc_, 2));
 
@@ -76,15 +78,11 @@ SWEElevationLimiter2d::SWEElevationLimiter2d()
 
 		for (int i = 0; i < nvcn; i++)
 		{
-			VTow[n*Nvcmax + i] = w[i] / sum;
+			VToW[n*Nvcmax + i] = w[i] / sum;
 		}
 
-		freememory(&w);
-	}
 
-	for (int i = 0; i < Nv*Nvcmax+1; i++)
-	{
-		std::cout << i << "    : " << VToK[i] << std::endl;
+		freememory(&w);
 	}
 
 	freememory(&ind);
@@ -97,7 +95,7 @@ SWEElevationLimiter2d::~SWEElevationLimiter2d()
 	freememory(&Nvc);
 	freememory(&VToK);
 	freememory(&VToM);
-	freememory(&VTow);
+	freememory(&VToW);
 
 }
 
@@ -116,6 +114,7 @@ void SWEElevationLimiter2d::apply(double *fphys, int *Np, int *K)
 void SWEElevationLimiter2d::matLimit(double *fphys, int fieldId)
 {
 	int K = *meshunion->K;
+	int Np = *meshunion->cell_p->Np;
 	double  *fvert, *fvmin, *fvmax, *cvar;
 
 	requestmemory(&fvert, K);
@@ -123,7 +122,8 @@ void SWEElevationLimiter2d::matLimit(double *fphys, int fieldId)
 	requestmemory(&fvmax, K);
 	requestmemory(&cvar, K);
 
-
+	EvaluateVertAverage(fphys, fieldId, fvert, fvmin, fvmax, cvar);
+	double *fphys_field = fphys + (fieldId - 1)*K*Np;
 
 
 	freememory(&fvert);
@@ -135,14 +135,14 @@ void SWEElevationLimiter2d::matLimit(double *fphys, int fieldId)
 
 void SWEElevationLimiter2d::EvaluateVertAverage(double *fphys, int fieldId, double *fvert, double *fvmin, double *fvmax, double *cvar)
 {
-	const int Nv = *meshunion->Nv;
+	int *Nv = meshunion->Nv;
 	int Np = *meshunion->cell_p->Np;
 	int K = *meshunion->K;
 
-	double *fphys_5 = fphys + 4 * K*Np;
-	mesh.GetMeshAverageValue(fphys_5, cvar);
+	double *fphys_fieldId = fphys + (fieldId - 1) * K*Np;
+	mesh.GetMeshAverageValue(fphys_fieldId, cvar);
 
-	//c_EvaluateVertAverage();
+	c_EvaluateVertAverage(cvar, Nv, Nvc, VToM, VToK, VToW, fvert, fvmin, fvmax, Nvcmax);
 
 };
 

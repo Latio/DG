@@ -121,13 +121,13 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\DG_wrj\OpenBLAS-0.3.6-x64\include;D:\netCDF_4.7.1\netCDF 4.7.1\include;D:\MATLAB\extern\include;D:\DG_wrj\netcdf-cxx4-4.3.1\cxx4;D:\DG_wrj\netcdf-cxx4-4.3.1\netcdf-cxx4-4.3.1\cxx4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\DG_wrj\OpenBLAS-0.3.6-x64\include;D:\DG_wrj\netCDF4.7.1-NC4-64\netCDF 4.7.1\include;D:\netCDF_4.7.1\netCDF 4.7.1\include;D:\MATLAB\extern\include;D:\DG_wrj\netcdf-cxx4-4.3.1\cxx4;D:\DG_wrj\netcdf-cxx4-4.3.1\netcdf-cxx4-4.3.1\cxx4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>D:\netCDF_4.7.1\netCDF 4.7.1\lib;D:\DG_wrj\OpenBLAS-0.3.6-x64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\DG_wrj\OpenBLAS-0.3.6-x64\lib;D:\DG_wrj\netCDF4.7.1-NC4-64\netCDF 4.7.1\lib;D:\netCDF_4.7.1\netCDF 4.7.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>libopenblas.dll.a;netcdf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
