@@ -161,6 +161,7 @@ void NdgPhysMat::matEvaluateSSPRK22()
 			cblas_daxpy(num, dt, frhs, 1, fphys, 1);
 
 			sweconventional2d.EvaluatePostFunc(fphys);//Update status
+			matEvaluateLimiter(fphys);
 			freememory(&frhs);
 		}
 
@@ -228,7 +229,7 @@ void NdgPhysMat::UpdateOutputResult(double& time, double *fphys, int Nvar)
 	abstractoutputfile.outputIntervalResult(time, fphys, Nvar, Np, K);
 };
 
-void NdgPhysMat::matEvaluateLimiter()
+void NdgPhysMat::matEvaluateLimiter(double *fphys)
 {
-	//sweabstract2d.sweelevationlimiter2d.apply(fphys);
+	sweabstract2d.sweelevationlimiter2d.apply(fphys);
 };

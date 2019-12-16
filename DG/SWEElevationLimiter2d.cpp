@@ -99,32 +99,80 @@ SWEElevationLimiter2d::~SWEElevationLimiter2d()
 
 }
 
-void SWEElevationLimiter2d::apply(double *fphys, int *Np, int *K)
+void SWEElevationLimiter2d::apply(double *fphys)
 {
+
+	int *Np = meshunion->cell_p->Np;
+	int *K = meshunion->K;
+	signed char *status = meshunion->status;
+
 	const int num = (*Np)*(*K);
 	double *fphys_1 = fphys;
+	double *fphys_2 = fphys + num;
+	double *fphys_3 = fphys + 2 * num;
 	double *fphys_4 = fphys + 3 * num;
 	double *fphys_5 = fphys + 4 * num;
 	cblas_dcopy(num, fphys_1, 1, fphys_5, 1);
 	cblas_daxpy(num, 1, fphys_4, 1, fphys_5, 1);
 
+	matLimit(fphys, 5);
+
+
+	bool *ind;
+	requestmemory(&ind, K);
+	for (int i = 0; i < (*K); i++)
+	{
+		if (status[i] == (signed char)enumSWERegion::Wet) {
+			ind[i] = true;
+		}
+		else {
+			ind[i] = false;
+		}
+	}
+
+	for (int i = 0; i < (*K); i++)
+	{
+		if (ind[i] = true) {
+			for (int j = 0; j < (*Np); j++)
+			{
+				fphys_1[i*(*Np) + j] = fphys_5[i*(*Np) + j] + fphys_4[i*(*Np) + j];
+			}
+		}
+	}
+
+	matLimit(fphys, 2);
+	matLimit(fphys, 3);
+
+	freememory(&ind);
 };
 
 
 void SWEElevationLimiter2d::matLimit(double *fphys, int fieldId)
 {
-	int K = *meshunion->K;
-	int Np = *meshunion->cell_p->Np;
-	double  *fvert, *fvmin, *fvmax, *cvar;
+	int *K = meshunion->K;
+	int *Np = meshunion->cell_p->Np;
+	int *Nv_cell = meshunion->cell_p->Nv;
+	int *Nfp = meshunion->inneredge_p->Nfp;
 
+	double *x = meshunion->x;
+	double *y = meshunion->y;
+	double *xc = meshunion->xc;
+	double *yc = meshunion->yc;
+	double *vx = meshunion->vx;
+	double *vy = meshunion->vy;
+	double *EToV = meshunion->EToV;
+	double *Fmask = meshunion->cell_p->Fmask;
+
+	double  *fvert, *fvmin, *fvmax, *cvar;
 	requestmemory(&fvert, K);
 	requestmemory(&fvmin, K);
 	requestmemory(&fvmax, K);
 	requestmemory(&cvar, K);
 
 	EvaluateVertAverage(fphys, fieldId, fvert, fvmin, fvmax, cvar);
-	double *fphys_field = fphys + (fieldId - 1)*K*Np;
+	double *fphys_fieldId = fphys + (fieldId - 1)*(*K)*(*Np);
 
+	c_VertLimit2d(fphys_fieldId, x, y, xc, yc, vx, vy, fvert, fvmin, fvmax, cvar, EToV, Fmask, Np, Nv_cell, K, Nfp);
 
 	freememory(&fvert);
 	freememory(&fvmin);
